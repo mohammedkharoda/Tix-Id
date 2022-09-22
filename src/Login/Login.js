@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   CardContent,
@@ -9,7 +9,6 @@ import {
   Button,
   IconButton,
   FormControl,
-  Alert,
 } from "@mui/material";
 import BackgroundImage from "../assets/Picture.png";
 import Visibility from "@mui/icons-material/Visibility";
@@ -36,12 +35,12 @@ const Login = () => {
   const [phoneNumber, setIsPhoneNumber] = useState("");
 
   // ======================= Form Checker =========
-  // useEffect(() => {
-  //   const storageUser = localStorage.getItem(phoneNumber);
-  //   if (storageUser === values.password) {
-  //     setIsLogging(true);
-  //   }
-  // }, []);
+
+  const handleNumberChange = (event) => {
+    const limit = 10;
+
+    setIsPhoneNumber(event.target.value.slice(0, limit));
+  };
 
   const FormSubmitHandler = () => {
     let re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
@@ -116,7 +115,7 @@ const Login = () => {
                 </Typography>
                 <TextField
                   value={phoneNumber}
-                  onChange={(e) => setIsPhoneNumber(e.target.value)}
+                  onChange={handleNumberChange}
                   // error={!phoneNumber}
                   helperText={
                     !phoneNumber
