@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   CardContent,
@@ -9,11 +10,13 @@ import {
   Button,
   IconButton,
   FormControl,
+  Alert,
 } from "@mui/material";
 import BackgroundImage from "../assets/Picture.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 const Login = () => {
+  const navigate = useNavigate();
   // ============= password ==================
   const [values, setValues] = React.useState({
     password: "",
@@ -34,11 +37,21 @@ const Login = () => {
   // ====================== Phone Number ============
   const [phoneNumber, setIsPhoneNumber] = useState("");
 
-  // ======================= Form Checker =========
+  // ========================= Local Storage =========
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
+
+    if (storedUserLoggedInInformation === "1") {
+      navigate("/movieHome");
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  // ======================= Form Checker =========
   const handleNumberChange = (event) => {
     const limit = 10;
-
     setIsPhoneNumber(event.target.value.slice(0, limit));
   };
 
@@ -50,9 +63,12 @@ const Login = () => {
       phoneNumber === "7778878653" &&
       values.password === "abcdef"
     ) {
+      localStorage.setItem("isLoggedIn", "1");
+      setIsLoggedIn(true);
+      // window.location.href = "/movieHome";
+      navigate("/movieHome");
       setIsPhoneNumber("");
       values.password = "";
-      alert("Welcome!");
     } else {
       alert("Wrong Credentials");
       values.password = "";
