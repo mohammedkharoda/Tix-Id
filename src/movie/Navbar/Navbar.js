@@ -7,7 +7,14 @@ import { Box, display } from "@mui/system";
 const Navbar = () => {
   return (
     <>
-      <AppBar sx={{ backgroundColor: "transparent", boxShadow: "0px 0px" }}>
+      <AppBar
+        position="absolute"
+        sx={{
+          backgroundColor: "transparent",
+          boxShadow: "0px 0px",
+          marginBottom: "80px",
+        }}
+      >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box
             component="img"
