@@ -1,7 +1,7 @@
 import Login from "./Login/Login";
 import { Route, Routes, Navigate } from "react-router-dom";
 import MovieHome from "./movie/MovieHome";
-import MovieBook from "./movie/movieBook/MovieBook";
+import MovieBook from "./BookingTime/movieBook/MovieBook";
 function App() {
   return (
     <>

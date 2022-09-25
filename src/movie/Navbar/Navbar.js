@@ -1,7 +1,7 @@
 import React from "react";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import TixLogo from "../../assets/tix id 1.png";
+import TixLogo from "../../assets/tix id 1.svg";
 
 import { Box, display } from "@mui/system";
 const Navbar = () => {
@@ -15,7 +15,13 @@ const Navbar = () => {
           marginBottom: "80px",
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "24px",
+          }}
+        >
           <Box
             component="img"
             sx={{
