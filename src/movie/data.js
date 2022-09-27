@@ -74,3 +74,53 @@ export const MoreMovie = [
     moreText: "Sci-Fi & Fantasy, Drama",
   },
 ];
+
+export const theaterData = {
+  Theater: {
+    Headings: {
+      headingName_1: "Grand Indonesia CGV",
+      headingName_2: "leasuires SQUARE CINÉPOLIS",
+      headingName_3: "PLAZA INDONESIA XXI",
+    },
+    TheaterType: {
+      theaterName_1: "CCV",
+      type_1: {
+        screen_1: "Regular 2D",
+        screen_2: "Gold Class 2D",
+        screen_3: "Velvet 2D",
+        amount_1: "Rp 45.000 - 50.000",
+        amount_2: "Rp 100.000",
+        amount_3: "Rp 100.00",
+        type_timing: [
+          "10:00",
+          "1:00",
+          "2:00",
+          "3:00",
+          "4:00",
+          "5:00",
+          "6:00",
+          "7:00",
+        ],
+        type_timing_2: ["12:40", "15:40", "18:35", "17:10"],
+        type_timing_3: ["12:15", "15:40", "18:35", "17:10"],
+        enable: true,
+        disable: false,
+      },
+      theaterName_2: "CINÉPOLIS",
+      type_2: {
+        screen_1: "2D",
+        amount_1: "Rp 30.00",
+        type_timing: ["13:45", "17:45", "20:00"],
+      },
+      theaterName_3: "XXI",
+      type_3: {
+        screen_1: "2D",
+        amount_1: "Rp 50.00",
+        type_timing: ["12:19", "16:54", "19:45"],
+      },
+    },
+    Location: {
+      address: "JL. MH. TAHMRIN NO.1",
+    },
+  },
+};
