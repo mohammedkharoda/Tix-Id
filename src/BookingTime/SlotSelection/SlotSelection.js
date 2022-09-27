@@ -74,7 +74,7 @@ const SlotSelection = () => {
           <Box sx={{ marginLeft: "66px", marginRight: "16px" }}>
             <img src={`${Star}`} />
           </Box>
-          <Box sx={{ width: "30%" }}>
+          <Box sx={{ width: "100%" }}>
             <Typography sx={typoHeading}>
               {theaterData.Theater.Headings.headingName_1}
             </Typography>
@@ -197,7 +197,7 @@ const SlotSelection = () => {
           <Box sx={{ marginLeft: "66px", marginRight: "16px" }}>
             <img src={`${Star}`} />
           </Box>
-          <Box sx={{ width: "30%" }}>
+          <Box sx={{ width: "100%" }}>
             <Typography sx={typoHeading}>
               {theaterData.Theater.Headings.headingName_2}
             </Typography>
@@ -258,7 +258,7 @@ const SlotSelection = () => {
           <Box sx={{ marginLeft: "66px", marginRight: "16px" }}>
             <img src={`${Star}`} />
           </Box>
-          <Box sx={{ width: "30%" }}>
+          <Box sx={{ width: "100%" }}>
             <Typography sx={typoHeading}>
               {theaterData.Theater.Headings.headingName_3}
             </Typography>

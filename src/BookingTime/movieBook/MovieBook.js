@@ -3,10 +3,16 @@ import { Box } from "@mui/system";
 import React from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../movie/Navbar/Navbar";
+import DisplayMovie from "../DisplayMovie/DisplayMovie";
 import SlotSelection from "../SlotSelection/SlotSelection";
 import TheaterSelect from "../TheaterSelect/TheaterSelect";
 const MovieBook = () => {
-  const { id } = useParams();
+  const hoverSx = {
+    "&:hover": {
+      backgroundColor: "#000",
+      color: "#fff",
+    },
+  };
   const boxSX = {
     padding: "18px",
     border: "1px solid #5A637A",
@@ -14,9 +20,10 @@ const MovieBook = () => {
     height: "82px",
     borderRadius: "8px",
     cursor: "pointer",
+    color: "#333333",
     "&:hover": {
-      color: "#fff",
       backgroundColor: "#1A2C50",
+      color: "#fff",
     },
   };
   const typographySx = {
@@ -24,21 +31,15 @@ const MovieBook = () => {
     whiteSpace: "nowrap",
     fontWeight: "500",
     fontSize: "16px",
-    color: "#5A637A",
-    "&:hover": {
-      color: "#fff",
-    },
+    color: "inherit",
   };
 
   const typoDaySx = {
     textAlign: "center",
     fontWeight: "900",
     fontSize: "20px",
-    color: "#333",
+    color: "inherit",
     textTransform: "capitalize",
-    "&:hover": {
-      color: "#fff",
-    },
   };
 
   return (
@@ -74,17 +75,17 @@ const MovieBook = () => {
             </Box>
             {/* Box-3 */}
             <Box component="div" sx={boxSX}>
-              <Typography sx={typographySx}>15 Aug</Typography>
+              <Typography sx={typographySx}>17 Aug</Typography>
               <Typography sx={typoDaySx}>wed</Typography>
             </Box>
             {/* Box-4 */}
             <Box component="div" sx={boxSX}>
-              <Typography sx={typographySx}>15 Aug</Typography>
+              <Typography sx={typographySx}>18 Aug</Typography>
               <Typography sx={typoDaySx}>thr</Typography>
             </Box>
             {/* Box-5 */}
             <Box component="div" sx={boxSX}>
-              <Typography sx={typographySx}>15 Aug</Typography>
+              <Typography sx={typographySx}>19 Aug</Typography>
               <Typography sx={typoDaySx}>fri</Typography>
             </Box>
           </Box>
@@ -92,7 +93,6 @@ const MovieBook = () => {
       </Box>
       <hr style={{ width: "630px", marginLeft: "72px", marginTop: "22px" }} />
       <TheaterSelect />
-      <SlotSelection />
     </>
   );
 };

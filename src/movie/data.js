@@ -6,7 +6,12 @@ export const movieData = [
     category2: "XXI",
     category3: "Cinepolis",
     linkImg:
-      "https://www.themoviedb.org/t/p/original/1TtKxoyfoWNXViePrklOwILMuCC.jpg",
+      "https://www.themoviedb.org/t/p/original/ixOE4qfspKZaaGZUnPCQDANznTz.jpg",
+    Genera: "Mystery",
+    TimeHH: 1,
+    TimeMM: 25,
+    Director: "John Watts",
+    Rating1: "MA",
   },
   {
     id: 2,
@@ -16,6 +21,12 @@ export const movieData = [
     category3: "Cinepolis",
     linkImg:
       "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2xfSO3YLkfW7rfLFKCpt9cROeBy.jpg",
+    Genera: "Horror , Thriller ",
+    TimeHH: 1,
+    TimeMM: 43,
+    Director: "Scott Derrickson",
+
+    Rating1: "R",
   },
   {
     id: 3,
@@ -24,7 +35,13 @@ export const movieData = [
     category2: "XXI",
     category3: "Cinepolis",
     linkImg:
-      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cc255zocmoPkGKEUN6g952q9EoF.jpg",
+      "https://www.themoviedb.org/t/p/original/xOk8XAUnJR08GDFq6hwqD1vjV9O.jpg",
+    Genera: "Action,Drama",
+    TimeHH: 2,
+    TimeMM: 10,
+    Director: "Joseph Kosinski  ",
+
+    Rating1: "PG-13",
   },
   {
     id: 4,
@@ -33,7 +50,13 @@ export const movieData = [
     category2: "XXI",
     category3: "Cinepolis",
     linkImg:
-      "https://www.themoviedb.org/t/p/original/zBOazTMYwxvyRjm0L9ig1WxiqSK.jpg",
+      "https://www.themoviedb.org/t/p/original/fHQuhMKniqfvb3IrjIU1F5MfgQT.jpg",
+    Genera: "Action & Adventure",
+    TimeHH: 1,
+    TimeMM: 15,
+    Director: "Jeremy Slater",
+
+    Rating1: "TV-14",
   },
 ];
 
@@ -121,6 +144,28 @@ export const theaterData = {
     },
     Location: {
       address: "JL. MH. TAHMRIN NO.1",
+    },
+  },
+
+  movieDisplay: {
+    id: 1,
+    poster:
+      "https://www.themoviedb.org/t/p/original/t6l3e2pnVrg0DPhgdGY1GBGlrIQ.jpg",
+    title: "House of Dragon",
+    Genera: {
+      type1: "Action",
+      type2: "Adventure",
+    },
+    Time: {
+      hh: 2,
+      min: 25,
+    },
+    Director: {
+      name: "John Watts",
+    },
+    Rating: {
+      type_1: "MA",
+      type_2: "PG18",
     },
   },
 };
