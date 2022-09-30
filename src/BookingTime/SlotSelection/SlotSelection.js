@@ -2,8 +2,38 @@
 import React, { useState } from "react";
 import Star from "../../assets/Star.svg";
 import { Box, Typography } from "@mui/material";
-import { theaterData } from "../../movie/data";
+import { theatreData } from "../../movie/data";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { slotActions } from "../../components/Slices/ticketShow";
+import { ticketVisibility } from "../../components/Slices/ticketVisible";
+
 const SlotSelection = () => {
+  const dispatch = useDispatch();
+  const selectedSlot = useSelector((state) => state.slot.tempSelectedTheatre);
+
+  const ToggleSlotHandler = () => {
+    dispatch(ticketVisibility.toggle());
+  };
+
+  const dataTheaterHandler = ({
+    showTypeName,
+    showTypeId,
+    showTime,
+    showPrice,
+    theatreName,
+  }) => {
+    dispatch(
+      slotActions.selectedShow({
+        showTypeName,
+        showTypeId,
+        showTime,
+        showPrice,
+        theatreName,
+      })
+    );
+  };
+
   const typoHeading = {
     fontWeight: "500",
     fontSize: "24px",
@@ -17,6 +47,10 @@ const SlotSelection = () => {
     marginRight: "72px",
   };
 
+  const theaterNames = {
+    marginLeft: "66px",
+  };
+
   const gridLayout = {
     display: "grid",
     gridTemplateColumns: "repeat(4,0fr)",
@@ -25,6 +59,7 @@ const SlotSelection = () => {
     gap: "24px",
     marginTop: "16px",
     gridRowGap: "10px",
+    marginBottom: "36px",
   };
 
   const disableTime = {
@@ -45,6 +80,7 @@ const SlotSelection = () => {
     cursor: "pointer",
     padding: "10px 20px",
     border: "1px solid #9DA8BE",
+
     "&:hover": {
       textAlign: "center",
       background: "#1A2C50",
@@ -53,263 +89,117 @@ const SlotSelection = () => {
     },
   };
 
+  const selected = {
+    width: "77px",
+    borderRadius: "4px",
+    textAlign: "center",
+    height: "40px",
+    cursor: "pointer",
+    padding: "10px 20px",
+    border: "1px solid #9DA8BE",
+    background: "#000E62",
+    borderRadius: "4px",
+    color: "#fff",
+    textAlign: "center",
+  };
+
   const locationSx = {
     marginLeft: "66px",
     color: "#5A637A",
     marginTop: "18px",
     fontWeight: "400",
     fontSize: "16px",
-    lineHeight: "24px",
+    marginBottom: "24px",
+  };
+
+  const ccvBadge = {
+    color: "#fff",
+    background: "#EC1E2B",
+    padding: "6px 8px",
+    borderRadius: "4px",
+    marginRight: "auto",
+  };
+
+  const cinemaBadge = {
+    color: "#fff",
+    background: "#000E62",
+    padding: "6px 8px",
+    borderRadius: "4px",
+    marginRight: "auto",
+    marginLeft: "150px",
+  };
+
+  const plazaBadge = {
+    color: "#fff",
+    background: "#F2C46F",
+    padding: "6px 8px",
+    borderRadius: "4px",
+    marginRight: "auto",
   };
 
   return (
     <>
-      <Box>
-        <Box
-          style={{
-            display: "flex",
-            marginTop: "42px",
-          }}
-        >
-          <Box sx={{ marginLeft: "66px", marginRight: "16px" }}>
-            <img src={`${Star}`} />
-          </Box>
-          <Box sx={{ width: "100%" }}>
-            <Typography sx={typoHeading}>
-              {theaterData.Theater.Headings.headingName_1}
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              background: "#EC1E2B",
-              color: "#fff",
-              padding: "6px 8px",
-              borderRadius: "4px",
-              marginRight: "auto",
-            }}
-          >
-            {theaterData.Theater.TheaterType.theaterName_1}
-          </Box>
-        </Box>
-        {/* Box-1 */}
+      {theatreData.map((item) => (
         <Box>
-          <Typography sx={locationSx}>
-            {theaterData.Theater.Location.address}
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            marginLeft: "66px",
-            marginTop: "24px",
-            display: "flex",
-          }}
-        >
-          <Typography sx={subHeadingTypo}>
-            {theaterData.Theater.TheaterType.type_1.screen_1}
-          </Typography>
-          <Typography
-            sx={{
-              fontWeight: "400",
-              fontSize: "18px",
-              color: "#5A637A",
-              width: "240px",
-            }}
-          >
-            {theaterData.Theater.TheaterType.type_1.amount_1}
-          </Typography>
-        </Box>
-        <Box sx={gridLayout}>
-          <>
-            {theaterData.Theater.TheaterType.type_1.type_timing.map((item) => (
-              <Typography sx={notSelected}>{item}</Typography>
-            ))}
-          </>
-        </Box>
-        {/* Screen-2 */}
-        <Box
-          sx={{
-            marginLeft: "66px",
-            marginTop: "24px",
-            display: "flex",
-          }}
-        >
-          <Typography sx={subHeadingTypo}>
-            {theaterData.Theater.TheaterType.type_1.screen_2}
-          </Typography>
-          <Typography
-            sx={{
-              fontWeight: "400",
-              fontSize: "18px",
-              color: "#5A637A",
-              width: "240px",
-            }}
-          >
-            {theaterData.Theater.TheaterType.type_1.amount_2}
-          </Typography>
-        </Box>
-        <Box sx={gridLayout}>
-          <>
-            {theaterData.Theater.TheaterType.type_1.type_timing_2.map(
-              (item) => (
-                <Typography sx={notSelected}>{item}</Typography>
-              )
-            )}
-          </>
-        </Box>
-        {/* Screen-3 */}
-        <Box
-          sx={{
-            marginLeft: "66px",
-            marginTop: "24px",
-            display: "flex",
-          }}
-        >
-          <Typography sx={subHeadingTypo}>
-            {theaterData.Theater.TheaterType.type_1.screen_3}
-          </Typography>
-          <Typography
-            sx={{
-              fontWeight: "400",
-              fontSize: "18px",
-              color: "#5A637A",
-              width: "240px",
-            }}
-          >
-            {theaterData.Theater.TheaterType.type_1.amount_2}
-          </Typography>
-        </Box>
-        <Box sx={gridLayout}>
-          <>
-            {theaterData.Theater.TheaterType.type_1.type_timing_3.map(
-              (item) => (
-                <Typography sx={notSelected}>{item}</Typography>
-              )
-            )}
-          </>
-        </Box>
-        {/* --------------------------------- Theater 2 ------------------------------------- */}
-        <Box
-          style={{
-            display: "flex",
-            marginTop: "42px",
-          }}
-        >
-          <Box sx={{ marginLeft: "66px", marginRight: "16px" }}>
-            <img src={`${Star}`} />
-          </Box>
-          <Box sx={{ width: "100%" }}>
-            <Typography sx={typoHeading}>
-              {theaterData.Theater.Headings.headingName_2}
-            </Typography>
-          </Box>
           <Box
-            sx={{
-              background: "#000E62",
-              color: "#fff",
-              padding: "6px 8px",
-              borderRadius: "4px",
-              marginRight: "auto",
+            style={{
+              display: "flex",
+              marginTop: "42px",
             }}
           >
-            {theaterData.Theater.TheaterType.theaterName_2}
+            <Box sx={{ marginLeft: "66px", marginRight: "16px" }}>
+              <img src={`${Star}`} />
+            </Box>
+            <Box sx={{ width: "100%" }}>
+              <Typography sx={typoHeading}>{item.name}</Typography>
+            </Box>
+            <Box>
+              {item.theatreLogo.match("CGV") ? (
+                <Box sx={ccvBadge}>{item.theatreLogo}</Box>
+              ) : (
+                <Box sx={cinemaBadge}>{item.theatreLogo}</Box>
+              )}
+            </Box>
           </Box>
-        </Box>
-        {/* Screen-2 */}
-        <Box>
-          <Typography sx={locationSx}>
-            {theaterData.Theater.Location.address}
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            marginLeft: "66px",
-            marginTop: "24px",
-            display: "flex",
-          }}
-        >
-          <Typography sx={subHeadingTypo}>
-            {theaterData.Theater.TheaterType.type_2.screen_1}
-          </Typography>
-          <Typography
-            sx={{
-              fontWeight: "400",
-              fontSize: "18px",
-              color: "#5A637A",
-              width: "240px",
-            }}
-          >
-            {theaterData.Theater.TheaterType.type_2.amount_1}
-          </Typography>
-        </Box>
-        <Box sx={gridLayout}>
-          <>
-            {theaterData.Theater.TheaterType.type_2.type_timing.map((item) => (
-              <Typography sx={notSelected}>{item}</Typography>
+          <Box>
+            <Typography sx={locationSx}>{item.address}</Typography>
+          </Box>
+          <Box>
+            {item.showType.map((nameTheater) => (
+              <Box>
+                <Box sx={theaterNames}>
+                  <Typography sx={subHeadingTypo}>
+                    {nameTheater.name}
+                  </Typography>
+                </Box>
+                <Box component="section" sx={gridLayout}>
+                  {nameTheater.show.map((timings) => (
+                    <Typography
+                      sx={
+                        timings.id === selectedSlot.showType_Id
+                          ? selected
+                          : notSelected
+                      }
+                      onClick={() => {
+                        ToggleSlotHandler();
+                        dataTheaterHandler({
+                          theatreName: item.name,
+                          showTypeName: nameTheater.name,
+                          showTime: timings.showTime,
+                          showPrice: timings.showPrice,
+                          showTypeId: timings.id,
+                        });
+                      }}
+                    >
+                      {timings.showTime}
+                    </Typography>
+                  ))}
+                </Box>
+              </Box>
             ))}
-          </>
-        </Box>
-        {/* ---------------------------------- Theater 3 ------------------------------------- */}
-        <Box
-          style={{
-            display: "flex",
-            marginTop: "42px",
-          }}
-        >
-          <Box sx={{ marginLeft: "66px", marginRight: "16px" }}>
-            <img src={`${Star}`} />
-          </Box>
-          <Box sx={{ width: "100%" }}>
-            <Typography sx={typoHeading}>
-              {theaterData.Theater.Headings.headingName_3}
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              background: "#F2C46F",
-              color: "#fff",
-              padding: "6px 8px",
-              borderRadius: "4px",
-              marginRight: "auto",
-            }}
-          >
-            {theaterData.Theater.TheaterType.theaterName_3}
           </Box>
         </Box>
-        {/* Screen-2 */}
-        <Box>
-          <Typography sx={locationSx}>
-            {theaterData.Theater.Location.address}
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            marginLeft: "66px",
-            marginTop: "24px",
-            display: "flex",
-          }}
-        >
-          <Typography sx={subHeadingTypo}>
-            {theaterData.Theater.TheaterType.type_3.screen_1}
-          </Typography>
-          <Typography
-            sx={{
-              fontWeight: "400",
-              fontSize: "18px",
-              color: "#5A637A",
-              width: "240px",
-            }}
-          >
-            {theaterData.Theater.TheaterType.type_3.amount_1}
-          </Typography>
-        </Box>
-        <Box sx={gridLayout}>
-          <>
-            {theaterData.Theater.TheaterType.type_3.type_timing.map((item) => (
-              <Typography sx={notSelected}>{item}</Typography>
-            ))}
-          </>
-        </Box>
-      </Box>
+      ))}
     </>
   );
 };

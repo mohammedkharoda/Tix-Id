@@ -25,7 +25,7 @@ const movieSelection = () => {
           navigation={true}
           modules={[Navigation]}
         >
-          {movieData.map((item) => (
+          {movieData.primary.map((item) => (
             <SwiperSlide>
               <Box style={{ padding: "0 80px" }}>
                 <Box>

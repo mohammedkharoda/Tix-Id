@@ -1,18 +1,25 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import { useParams } from "react-router-dom";
 import Navbar from "../../movie/Navbar/Navbar";
-import DisplayMovie from "../DisplayMovie/DisplayMovie";
-import SlotSelection from "../SlotSelection/SlotSelection";
 import TheaterSelect from "../TheaterSelect/TheaterSelect";
+import { theatreData } from "../../movie/data";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { slotActions } from "../../components/Slices/ticketShow";
+
 const MovieBook = () => {
-  const hoverSx = {
-    "&:hover": {
-      backgroundColor: "#000",
-      color: "#fff",
-    },
+  const dispatch = useDispatch();
+  const dateSelector = useSelector((state) => state.slot.DateAndDay);
+
+  const dateSelectHandler = (date) => {
+    dispatch(slotActions.dateShow(date));
   };
+
+  const ToggleSlotHandler = () => {
+    dispatch(slotActions.toggle());
+  };
+
   const boxSX = {
     padding: "18px",
     border: "1px solid #5A637A",
@@ -22,7 +29,7 @@ const MovieBook = () => {
     cursor: "pointer",
     color: "#333333",
     "&:hover": {
-      backgroundColor: "#1A2C50",
+      backgroundColor: "#282764",
       color: "#fff",
     },
   };
@@ -42,6 +49,17 @@ const MovieBook = () => {
     textTransform: "capitalize",
   };
 
+  const selected = {
+    padding: "18px",
+    border: "1px solid #5A637A",
+    width: "86px",
+    height: "82px",
+    borderRadius: "8px",
+    cursor: "pointer",
+    color: "#fff",
+    background: "#1A2C50",
+  };
+
   return (
     <>
       <Box component="section" sx={{ marginTop: "24px" }}>
@@ -50,8 +68,15 @@ const MovieBook = () => {
       <Box component="section" sx={{ marginTop: "100px", marginLeft: "72px" }}>
         <Box>
           <Typography variant="h5">Select Date</Typography>
-          <Typography>
-            Lorem ipsum dolor sit amet. Et dolorum libero eos enim tempora aut
+          <Typography
+            sx={{
+              fontFamily: "Roboto",
+              fontStyle: "Normal",
+              fontSize: "20px",
+              marginTop: "18px",
+            }}
+          >
+            Book Ticket for the Latest Show Of {dateSelector.date}
           </Typography>
         </Box>
         <Box>
@@ -64,30 +89,25 @@ const MovieBook = () => {
             }}
           >
             {/* Box-1 */}
-            <Box component="div" sx={boxSX}>
-              <Typography sx={typographySx}>15 Aug</Typography>
-              <Typography sx={typoDaySx}>mon</Typography>
-            </Box>
-            {/* Box-2 */}
-            <Box component="div" sx={boxSX}>
-              <Typography sx={typographySx}>16 Aug</Typography>
-              <Typography sx={typoDaySx}>tue</Typography>
-            </Box>
-            {/* Box-3 */}
-            <Box component="div" sx={boxSX}>
-              <Typography sx={typographySx}>17 Aug</Typography>
-              <Typography sx={typoDaySx}>wed</Typography>
-            </Box>
-            {/* Box-4 */}
-            <Box component="div" sx={boxSX}>
-              <Typography sx={typographySx}>18 Aug</Typography>
-              <Typography sx={typoDaySx}>thr</Typography>
-            </Box>
-            {/* Box-5 */}
-            <Box component="div" sx={boxSX}>
-              <Typography sx={typographySx}>19 Aug</Typography>
-              <Typography sx={typoDaySx}>fri</Typography>
-            </Box>
+            {theatreData?.map((date) =>
+              date?.theaterDates?.map((day) => (
+                <Box
+                  component="div"
+                  sx={day.id ===  dateSelector.showDateId ? selected : boxSX}
+                  onClick={() => {
+                    ToggleSlotHandler();
+                    dateSelectHandler({
+                      showDate: day.date,
+                      showDay: day.dayName,
+                      showDateId: day.id,
+                    });
+                  }}
+                >
+                  <Typography sx={typographySx}>{day.date}</Typography>
+                  <Typography sx={typoDaySx}>{day.dayName}</Typography>
+                </Box>
+              ))
+            )}
           </Box>
         </Box>
       </Box>

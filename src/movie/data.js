@@ -1,64 +1,89 @@
-export const movieData = [
-  {
-    id: 1,
-    title: "House of the Dragon",
-    category1: "CCV",
-    category2: "XXI",
-    category3: "Cinepolis",
-    linkImg:
-      "https://www.themoviedb.org/t/p/original/ixOE4qfspKZaaGZUnPCQDANznTz.jpg",
-    Genera: "Mystery",
-    TimeHH: 1,
-    TimeMM: 25,
-    Director: "John Watts",
-    Rating1: "MA",
-  },
-  {
-    id: 2,
-    title: "Black Phone",
-    category1: "CCV",
-    category2: "XXI",
-    category3: "Cinepolis",
-    linkImg:
-      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2xfSO3YLkfW7rfLFKCpt9cROeBy.jpg",
-    Genera: "Horror , Thriller ",
-    TimeHH: 1,
-    TimeMM: 43,
-    Director: "Scott Derrickson",
+/* eslint-disable no-dupe-keys */
+export const movieData = {
+  primary: [
+    {
+      id: 1,
+      title: "House of the Dragon",
+      category1: "CCV",
+      category2: "XXI",
+      category3: "Cinepolis",
+      linkImg:
+        "https://www.themoviedb.org/t/p/original/ixOE4qfspKZaaGZUnPCQDANznTz.jpg",
+      Genera: "Mystery",
+      TimeHH: 1,
+      TimeMM: 25,
+      Director: "John Watts",
+      Rating1: "MA",
+    },
+    {
+      id: 2,
+      title: "Black Phone",
+      category1: "CCV",
+      category2: "XXI",
+      category3: "Cinepolis",
+      linkImg:
+        "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2xfSO3YLkfW7rfLFKCpt9cROeBy.jpg",
+      Genera: "Horror , Thriller ",
+      TimeHH: 1,
+      TimeMM: 43,
+      Director: "Scott Derrickson",
 
-    Rating1: "R",
-  },
-  {
-    id: 3,
-    title: "Top Gun Maverick",
-    category1: "CCV",
-    category2: "XXI",
-    category3: "Cinepolis",
-    linkImg:
-      "https://www.themoviedb.org/t/p/original/xOk8XAUnJR08GDFq6hwqD1vjV9O.jpg",
-    Genera: "Action,Drama",
-    TimeHH: 2,
-    TimeMM: 10,
-    Director: "Joseph Kosinski  ",
+      Rating1: "R",
+    },
+    {
+      id: 3,
+      title: "Top Gun Maverick",
+      category1: "CCV",
+      category2: "XXI",
+      category3: "Cinepolis",
+      linkImg:
+        "https://www.themoviedb.org/t/p/original/xOk8XAUnJR08GDFq6hwqD1vjV9O.jpg",
+      Genera: "Action,Drama",
+      TimeHH: 2,
+      TimeMM: 10,
+      Director: "Joseph Kosinski  ",
 
-    Rating1: "PG-13",
-  },
-  {
-    id: 4,
-    title: "Moon Knight",
-    category1: "CCV",
-    category2: "XXI",
-    category3: "Cinepolis",
-    linkImg:
-      "https://www.themoviedb.org/t/p/original/fHQuhMKniqfvb3IrjIU1F5MfgQT.jpg",
-    Genera: "Action & Adventure",
-    TimeHH: 1,
-    TimeMM: 15,
-    Director: "Jeremy Slater",
+      Rating1: "PG-13",
+    },
+    {
+      id: 4,
+      title: "Moon Knight",
+      category1: "CCV",
+      category2: "XXI",
+      category3: "Cinepolis",
+      linkImg:
+        "https://www.themoviedb.org/t/p/original/fHQuhMKniqfvb3IrjIU1F5MfgQT.jpg",
+      Genera: "Action & Adventure",
+      TimeHH: 1,
+      TimeMM: 15,
+      Director: "Jeremy Slater",
 
-    Rating1: "TV-14",
-  },
-];
+      Rating1: "TV-14",
+    },
+  ],
+  secondary: [
+    {
+      id: 5,
+      Movie: "https://i.postimg.cc/KvMYhw01/Avengers-Endgame.png",
+      Name: "Avengers Endgame",
+      Text: "Action,Adventures,Fantasy",
+    },
+    {
+      id: 6,
+      Movie:
+        "https://www.themoviedb.org/t/p/original/26GuBJpd9vLoCdrG5ocadINtt0h.jpg",
+      Name: "The Batman",
+      Text: "Action,Thriller,Darma",
+    },
+    {
+      id: 7,
+      Movie:
+        "https://www.themoviedb.org/t/p/original/fkR1cw83KSaFcokZ1Uzh8Ukm3Dd.jpg",
+      Name: "The SandMan",
+      Text: "Sci-Fi & Fantasy, Drama",
+    },
+  ],
+};
 
 export const AdsData = [
   {
@@ -75,97 +100,202 @@ export const AdsData = [
   },
 ];
 
-export const MoreMovie = [
+export const theatreData = [
   {
-    id: 1,
-    moreMovie: "https://i.postimg.cc/KvMYhw01/Avengers-Endgame.png",
-    movieName: "Avengers Endgame",
-    moreText: "Action,Adventures,Fantasy",
+    id: "theatreData-1",
+    name: "Grand indonesia",
+    address: "JL. MH. TAHMRIN NO.1",
+    theatreLogo: "CGV",
+    theaterDates: [
+      {
+        id: "dayDate-1",
+        dayName: "Mon",
+        date: "15 April",
+      },
+      {
+        id: "dayDate-2",
+        dayName: "Tue",
+        date: "16 April",
+      },
+      {
+        id: "dayDate-3",
+        dayName: "Wed",
+        date: "17 April",
+      },
+      {
+        id: "dayDate-4",
+        dayName: "Thr",
+        date: "18 April",
+      },
+      {
+        id: "dayDate-5",
+        dayName: "Fri",
+        date: "19 April",
+      },
+    ],
+    showType: [
+      {
+        id: "showType-theatreData-1-1",
+        name: "REGULAR 2D",
+        show: [
+          {
+            id: "show-theaterData-1--1",
+            showTime: "12:00",
+            showPrice: 350,
+          },
+          {
+            id: "show-theaterData-1--1---2",
+            showTime: "1:00",
+            showPrice: 250,
+          },
+          {
+            id: "show-theaterData-1--1---3",
+            showTime: "2:00",
+            showPrice: 450,
+          },
+          {
+            id: "show-theaterData-1--1---4",
+            showTime: "3:00",
+            showPrice: 550,
+          },
+          {
+            id: "show-theaterData-1--1---5",
+            showTime: "4:00",
+            showPrice: 650,
+          },
+          {
+            id: "show-theaterData-1--1---6",
+            showTime: "5:00",
+            showPrice: 750,
+          },
+          {
+            id: "show-theaterData-1--1---7",
+            showTime: "6:00",
+            showPrice: 850,
+          },
+          {
+            id: "show-theaterData-1--1---8",
+            showTime: "7:00",
+            showPrice: 950,
+          },
+        ],
+      },
+      // -- 2 ---
+      {
+        id: "showType-theatreData-2-2",
+        name: "GOLD CLASS 2D",
+        show: [
+          {
+            id: "show-theaterData-2--2",
+            showTime: "2:00",
+            showPrice: 350,
+          },
+          {
+            id: "show-theaterData-2--2---1",
+            showTime: "3:00",
+            showPrice: 350,
+          },
+          {
+            id: "show-theaterData-2--2---3",
+            showTime: "5:00",
+            showPrice: 350,
+          },
+          {
+            id: "show-theaterData-2--2---4",
+            showTime: "7:00",
+            showPrice: 350,
+          },
+        ],
+      },
+      // -- 3 ---
+      {
+        id: "showType-theatreData-3-3",
+        name: "VELVET 2D",
+        show: [
+          {
+            id: "show-theaterData-3--1",
+            showTime: "12:00",
+            showPrice: 350,
+          },
+          {
+            id: "show-theaterData-3--3---1",
+            showTime: "1:00",
+            showPrice: 350,
+          },
+          {
+            id: "show-theaterData-3--3---2",
+            showTime: "2:00",
+            showPrice: 350,
+          },
+          {
+            id: "show-theaterData-3--3---3",
+            showTime: "3:00",
+            showPrice: 350,
+          },
+        ],
+      },
+    ],
   },
+  // ---- THEATER - 2 -----
   {
-    id: 2,
-    moreMovie:
-      "https://www.themoviedb.org/t/p/original/26GuBJpd9vLoCdrG5ocadINtt0h.jpg",
-    movieName: "The Batman",
-    moreText: "Action,Thriller,Darma",
+    id: "theatreData-2",
+    name: " SQUARE CINÉPOLIS",
+    address: "Trek.L.A",
+    theatreLogo: "Cinemapolis",
+    movies: [1, 2, 3, 4],
+    showType: [
+      {
+        id: "showType-theatreData-2-2",
+        name: "INOX DR WORLD",
+        show: [
+          {
+            id: "show-theaterData-2--2",
+            showTime: "15:00",
+            showPrice: 350,
+          },
+          {
+            id: "show-theaterData-2--3",
+            showTime: "17:15",
+            showPrice: 450,
+          },
+          {
+            id: "show-theaterData-2--4",
+            showTime: "20:00",
+            showPrice: 500,
+          },
+        ],
+      },
+    ],
   },
+  // ---- THEATER - 3 -----
   {
-    id: 3,
-    moreMovie:
-      "https://www.themoviedb.org/t/p/original/fkR1cw83KSaFcokZ1Uzh8Ukm3Dd.jpg",
-    movieName: "The SandMan",
-    moreText: "Sci-Fi & Fantasy, Drama",
+    id: "theatreData-3",
+    name: "PLAZA INDONESIA XXI",
+    address: "Trek.L.A",
+    theatreLogo: "XXI",
+    movies: [1, 2, 3, 4],
+    showType: [
+      {
+        id: "showType-theatreData-3-1",
+        name: "CINEMAX Iris ",
+        show: [
+          {
+            id: "show-theaterData-3--2",
+            showTime: "4:00",
+            showPrice: 250,
+          },
+          {
+            id: "show-theaterData-3--3",
+            showTime: "7:15",
+            showPrice: 650,
+          },
+          {
+            id: "show-theaterData-3--4",
+            showTime: "22:00",
+            showPrice: 700,
+          },
+        ],
+      },
+    ],
   },
 ];
-
-export const theaterData = {
-  Theater: {
-    Headings: {
-      headingName_1: "Grand Indonesia CGV",
-      headingName_2: "leasuires SQUARE CINÉPOLIS",
-      headingName_3: "PLAZA INDONESIA XXI",
-    },
-    TheaterType: {
-      theaterName_1: "CCV",
-      type_1: {
-        screen_1: "Regular 2D",
-        screen_2: "Gold Class 2D",
-        screen_3: "Velvet 2D",
-        amount_1: "Rp 45.000 - 50.000",
-        amount_2: "Rp 100.000",
-        amount_3: "Rp 100.00",
-        type_timing: [
-          "10:00",
-          "1:00",
-          "2:00",
-          "3:00",
-          "4:00",
-          "5:00",
-          "6:00",
-          "7:00",
-        ],
-        type_timing_2: ["12:40", "15:40", "18:35", "17:10"],
-        type_timing_3: ["12:15", "15:40", "18:35", "17:10"],
-        enable: true,
-        disable: false,
-      },
-      theaterName_2: "CINÉPOLIS",
-      type_2: {
-        screen_1: "2D",
-        amount_1: "Rp 30.00",
-        type_timing: ["13:45", "17:45", "20:00"],
-      },
-      theaterName_3: "XXI",
-      type_3: {
-        screen_1: "2D",
-        amount_1: "Rp 50.00",
-        type_timing: ["12:19", "16:54", "19:45"],
-      },
-    },
-    Location: {
-      address: "JL. MH. TAHMRIN NO.1",
-    },
-  },
-
-  movieDisplay: {
-    id: 1,
-    poster:
-      "https://www.themoviedb.org/t/p/original/t6l3e2pnVrg0DPhgdGY1GBGlrIQ.jpg",
-    title: "House of Dragon",
-    Genera: {
-      type1: "Action",
-      type2: "Adventure",
-    },
-    Time: {
-      hh: 2,
-      min: 25,
-    },
-    Director: {
-      name: "John Watts",
-    },
-    Rating: {
-      type_1: "MA",
-      type_2: "PG18",
-    },
-  },
-};

@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import MovieHome from "./movie/MovieHome";
 import MovieBook from "./BookingTime/movieBook/MovieBook";
 import { ContainerSlots } from "./BookingTime/ContainerSlots";
+
 function App() {
   return (
     <>

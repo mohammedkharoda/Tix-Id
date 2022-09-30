@@ -1,8 +1,12 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-
+import { useSelector } from "react-redux";
 const CardBook = () => {
+  const selectedSlot = useSelector((state) => state.slot.tempSelectedTheatre);
+  const dateSelector = useSelector((state) => state.slot.DateAndDay);
+
+  console.log(selectedSlot);
   const mainHeaderBox = {
     marginTop: "30px",
   };
@@ -63,11 +67,20 @@ const CardBook = () => {
           }}
         >
           <Box sx={margins}>
-            <Typography sx={headingTypo}>GRAND INDONESIA CGV</Typography>
-            <Typography sx={greyTypo}>Kamis, 16 Desember 2021</Typography>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography sx={boldText}>REGULAR 2D</Typography>
-              <Typography sx={boldText}>14:40</Typography>
+            <Box>
+              <Typography sx={headingTypo}>{selectedSlot.venue}</Typography>
+
+              <Typography sx={greyTypo}>
+                {dateSelector.day},{dateSelector.date}
+              </Typography>
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Typography sx={boldText}>
+                  {selectedSlot.TheaterName}
+                </Typography>
+                <Typography sx={boldText}>
+                  {selectedSlot.showType_Time}
+                </Typography>
+              </Box>
             </Box>
             <Typography sx={warningTypo}>
               * Pemilihan kursi dapat dilakukan setelah ini

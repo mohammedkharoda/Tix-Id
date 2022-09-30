@@ -6,12 +6,15 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { movieData } from "../../movie/data";
 import CardBook from "../CardBook/CardBook";
+import { useSelector } from "react-redux";
 const DisplayMovie = () => {
+  const showTicket = useSelector((state) => state.visible.ticketVisible);
+
   let { id } = useParams();
   const [data, setData] = useState(movieData);
 
   useEffect(() => {
-    movieData.find((item) => {
+    movieData.primary.find((item) => {
       if (item.id == id) {
         setData(item);
       }
@@ -46,7 +49,6 @@ const DisplayMovie = () => {
     gap: "30px ",
     marginTop: "11px",
   };
-  console.log({ data });
 
   return (
     <>
@@ -89,7 +91,7 @@ const DisplayMovie = () => {
           </Box>
         </Box>
       </Box>
-      <CardBook />
+      {showTicket && <CardBook />}
     </>
   );
 };

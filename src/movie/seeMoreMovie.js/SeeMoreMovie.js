@@ -2,7 +2,7 @@
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import { MoreMovie } from "../data";
+import { movieData } from "../data";
 const SeeMoreMovie = () => {
   return (
     <>
@@ -60,10 +60,10 @@ const SeeMoreMovie = () => {
               gap: "71px",
             }}
           >
-            {MoreMovie.map((items) => (
+            {movieData.secondary.map((items) => (
               <>
                 <img
-                  src={items.moreMovie}
+                  src={items.Movie}
                   style={{
                     height: "530px",
                     width: "360px",
@@ -84,7 +84,7 @@ const SeeMoreMovie = () => {
                 flexGrow: "1",
               }}
             >
-              {MoreMovie.map((items) => (
+              {movieData.secondary.map((items) => (
                 <>
                   <Box>
                     <Typography
@@ -94,7 +94,7 @@ const SeeMoreMovie = () => {
                         color: "#333",
                       }}
                     >
-                      {items.movieName}
+                      {items.Name}
                       <Typography
                         sx={{
                           fontFamily: "Roboto",
@@ -103,7 +103,7 @@ const SeeMoreMovie = () => {
                           color: "#414A63",
                         }}
                       >
-                        {items.moreText}
+                        {items.Text}
                       </Typography>
                     </Typography>
                   </Box>

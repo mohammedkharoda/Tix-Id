@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Box, TextField, MenuItem } from "@mui/material";
 import { ListItemIcon } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { theatreData } from "../../movie/data";
 export const TheaterSelect = () => {
   const [country, setCountry] = useState("");
   const [theater, setTheater] = useState("");
   const [Cinema, setCinema] = useState("");
-  const [Place, setPlace] = useState("");
-  const [category, setCategory] = useState("");
+  const [Badge, setBadge] = useState("");
 
   const handleChange = (event) => {
     setCountry(event.target.value);
@@ -21,12 +21,8 @@ export const TheaterSelect = () => {
     setCinema(event.target.value);
   };
 
-  const handlePlace = (event) => {
-    setPlace(event.target.value);
-  };
-
-  const handleCategory = (event) => {
-    setCategory(event.target.value);
+  const handleBadge = (event) => {
+    setBadge(event.target.value);
   };
 
   const selectSx = {
@@ -35,13 +31,17 @@ export const TheaterSelect = () => {
     marginBottom: "32px",
   };
   const newSelectSx = {
-    marginLeft: "42px",
+    marginLeft: "65px",
   };
 
   const studioSx = {
     marginLeft: "42px",
   };
 
+  const filterData = (setBadge) => {
+    theatreData.filter((item) => item.theatreLogo === setBadge);
+    console.log(setBadge);
+  };
   return (
     <>
       <Box width="174px">
@@ -81,7 +81,7 @@ export const TheaterSelect = () => {
           paddingRight: "20px",
         }}
       >
-        <Box width="342px">
+        <Box width="150px">
           <TextField
             label={`Grand Canons`}
             select
@@ -114,36 +114,21 @@ export const TheaterSelect = () => {
             <MenuItem value="regular 2d">REGULAR 2D</MenuItem>
           </TextField>
         </Box>
-        {/* Box-2 */}
-        <Box width="90px">
-          <TextField
-            variant="standard"
-            label={`Sortir`}
-            select
-            value={Cinema}
-            fullWidth
-            onChange={handlePlace}
-            sx={studioSx}
-          >
-            <MenuItem value="Gold Class 2D">Terdekat</MenuItem>
-            <MenuItem value="Cineplois">Harga Termurah </MenuItem>
-            <MenuItem value="regular 2d">Alfabet</MenuItem>
-          </TextField>
-        </Box>
+
         {/* Box-3 */}
-        <Box width="90px">
+        <Box width="90px" x>
           <TextField
+            onClick={() => filterData(Badge)}
             variant="standard"
-            label={`Category    `}
+            label={`Category`}
             select
-            value={Cinema}
+            value={Badge}
             fullWidth
-            onChange={handleCategory}
+            onChange={handleBadge}
             sx={studioSx}
           >
-            <MenuItem value="Spotlight">Spotlight</MenuItem>
-            <MenuItem value="News">News </MenuItem>
-            <MenuItem value="Videos">Videos</MenuItem>
+            <MenuItem value="CGV">CGV</MenuItem>
+            <MenuItem value="PVR">PVR </MenuItem>
           </TextField>
         </Box>
       </Box>
