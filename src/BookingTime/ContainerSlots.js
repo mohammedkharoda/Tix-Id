@@ -2,12 +2,12 @@ import React from "react";
 import SlotSelection from "./SlotSelection/SlotSelection";
 import DisplayMovie from "./DisplayMovie/DisplayMovie";
 import MovieBook from "./movieBook/MovieBook";
+import Footer from "../movie/Footer/Footer";
 
 export const ContainerSlots = () => {
   return (
     <>
       <MovieBook />
-
       <div
         style={{
           display: "flex",
@@ -17,10 +17,11 @@ export const ContainerSlots = () => {
         <div>
           <SlotSelection />
         </div>
-        <div style={{ marginTop: "-18%", marginRight: "182px" }}>
+        <div style={{ marginTop: "-5%", marginRight: "182px" }}>
           <DisplayMovie />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

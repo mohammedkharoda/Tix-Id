@@ -2,11 +2,11 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import Navbar from "../../movie/Navbar/Navbar";
-import TheaterSelect from "../TheaterSelect/TheaterSelect";
 import { theatreData } from "../../movie/data";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { slotActions } from "../../components/Slices/ticketShow";
+import Footer from "../../movie/Footer/Footer";
 
 const MovieBook = () => {
   const dispatch = useDispatch();
@@ -93,7 +93,7 @@ const MovieBook = () => {
               date?.theaterDates?.map((day) => (
                 <Box
                   component="div"
-                  sx={day.id ===  dateSelector.showDateId ? selected : boxSX}
+                  sx={day.id === dateSelector.showDateId ? selected : boxSX}
                   onClick={() => {
                     ToggleSlotHandler();
                     dateSelectHandler({
@@ -112,7 +112,6 @@ const MovieBook = () => {
         </Box>
       </Box>
       <hr style={{ width: "630px", marginLeft: "72px", marginTop: "22px" }} />
-      <TheaterSelect />
     </>
   );
 };

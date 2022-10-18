@@ -43,7 +43,7 @@ const Login = () => {
   useEffect(() => {
     const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
 
-    if (storedUserLoggedInInformation === "1") {
+    if (storedUserLoggedInInformation === "true") {
       navigate("/movieHome");
       setIsLoggedIn(true);
     }
@@ -63,7 +63,7 @@ const Login = () => {
       phoneNumber === "7778878653" &&
       values.password === "abcdef"
     ) {
-      localStorage.setItem("isLoggedIn", "1");
+      localStorage.setItem("isLoggedIn", "true");
       setIsLoggedIn(true);
       // window.location.href = "/movieHome";
       navigate("/movieHome");
@@ -94,26 +94,72 @@ const Login = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "flex-end",
-              padding: "64px",
+              justifyContent: {
+                md: "flex-end",
+                xs: "center",
+                sm: "center",
+              },
+              paddingTop: {
+                md: "64px",
+                sm: "25px",
+                xs: "15px",
+              },
+              paddingRight: {
+                md: "64px",
+                sm: "25px",
+                xs: "15px",
+              },
+              paddingBottom: {
+                md: "64px",
+                sm: "25px",
+                xs: "15px",
+              },
+              paddingLeft: {
+                xs: "7px",
+              },
             }}
           >
             <CardContent
               sx={{
-                width: "670px",
-                height: "640px",
-                marginBottom: "64px",
+                width: {
+                  lg: "670px",
+                  md: "550px",
+                  sm: "99%",
+                  xs: "342px",
+                },
+                height: {
+                  lg: "570px",
+                  md: "570px",
+                  xs: "490px",
+                },
+                marginBottom: {
+                  lg: "64px",
+                  md: "64px",
+                  xs: "25px",
+                },
                 background: "#fff",
               }}
             >
-              <FormControl sx={{ marginLeft: "80px" }}>
+              <FormControl
+                sx={{
+                  marginLeft: {
+                    xs: "0%",
+                    sm: "8%",
+                    md: "10%",
+                  },
+                }}
+              >
                 <Typography
                   variant="h2"
                   sx={{
                     fontWeight: "700",
                     fontSize: "36px",
                     lineHeight: "42px",
-                    marginTop: "98px",
+                    marginTop: {
+                      xs: "57px",
+                      sm: "25px",
+                      md: "98px",
+                    },
                   }}
                 >
                   TIX ID
@@ -130,9 +176,16 @@ const Login = () => {
                   Phone Number
                 </Typography>
                 <TextField
+                  sx={{
+                    width: {
+                      xs: "285px",
+                      sm: "560px",
+                      md: "435px",
+                      lg: "458px",
+                    },
+                  }}
                   value={phoneNumber}
                   onChange={handleNumberChange}
-                  // error={!phoneNumber}
                   helperText={
                     !phoneNumber
                       ? "Enter Phone Number"
@@ -181,9 +234,17 @@ const Login = () => {
                   onClick={FormSubmitHandler}
                   fullWidth
                   sx={{
-                    marginTop: "66px",
+                    marginTop: {
+                      ls: "66px",
+                      md: "66px",
+                      xs: "50px",
+                    },
                     marginBottom: "24px",
-                    width: "423px",
+                    width: {
+                      lg: "423px",
+                      xs: "90%",
+                      md: "420px",
+                    },
                     height: " 48px",
                     fontWeight: "500",
                     fontSize: "20px",
@@ -194,37 +255,6 @@ const Login = () => {
                   }}
                 >
                   login
-                </Button>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontSize: "12px",
-                    lineHeight: "14px",
-                    transform: "translateX(160px)",
-                    fontWeight: "400",
-                    color: "#5A637A",
-                  }}
-                >
-                  don't have account?
-                </Typography>
-                <Button
-                  variant="outlined"
-                  fullWidth
-                  sx={{
-                    marginTop: "8px",
-                    width: "423px",
-                    height: " 48px",
-                    color: "#1A2C50",
-                    fontWeight: "500",
-                    fontSize: "20px",
-                    textTransform: "capitalize",
-                    "&:hover": {
-                      backgroundColor: "#383782",
-                      color: "#DADFE8",
-                    },
-                  }}
-                >
-                  create account
                 </Button>
               </FormControl>
             </CardContent>

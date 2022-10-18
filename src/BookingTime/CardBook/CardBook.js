@@ -2,11 +2,12 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 const CardBook = () => {
-  const selectedSlot = useSelector((state) => state.slot.tempSelectedTheatre);
+  const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const dateSelector = useSelector((state) => state.slot.DateAndDay);
-
-  console.log(selectedSlot);
+  let { id } = useParams();
   const mainHeaderBox = {
     marginTop: "30px",
   };
@@ -68,24 +69,33 @@ const CardBook = () => {
         >
           <Box sx={margins}>
             <Box>
-              <Typography sx={headingTypo}>{selectedSlot.venue}</Typography>
+              <Typography sx={headingTypo}>
+                {selectedSlot.showType.showTypeName}
+              </Typography>
 
               <Typography sx={greyTypo}>
                 {dateSelector.day},{dateSelector.date}
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography sx={boldText}>
-                  {selectedSlot.TheaterName}
+                  {selectedSlot.theatreName}
                 </Typography>
                 <Typography sx={boldText}>
-                  {selectedSlot.showType_Time}
+                  {selectedSlot.showType.show.showTime}
                 </Typography>
               </Box>
             </Box>
             <Typography sx={warningTypo}>
-              * Pemilihan kursi dapat dilakukan setelah ini
+              *GST AND OTHER PRICE ARE EXCLUDED
             </Typography>
-            <Box sx={button}>BELI SEKARANG</Box>
+            <Box sx={button}>
+              <Link
+                to={`/seatsSelect/${id}`}
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                Book Now
+              </Link>
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -93,4 +103,5 @@ const CardBook = () => {
   );
 };
 
+// to={`/confirmTicket/${id}`}
 export default CardBook;

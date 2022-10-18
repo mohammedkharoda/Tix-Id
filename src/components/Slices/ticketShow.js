@@ -1,12 +1,13 @@
 /* eslint-disable no-restricted-globals */
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  tempSelectedTheatre: {
+  SelectedTheatre: {
     // TheaterData
     theaterLocation: "",
     theatreId: "",
     theatreName: "",
     theatreAddress: "",
+    movieId: "",
     // => ShowTypes
     showType: {
       showTypeId: "",
@@ -27,6 +28,7 @@ const initialState = {
   },
   toggle: true,
 };
+
 const slotSlice = createSlice({
   name: "slot",
   initialState,
@@ -34,14 +36,23 @@ const slotSlice = createSlice({
     // ==> Reducer storing Show & Venue Data
     selectedShow(state, action) {
       const data = action.payload;
-      state.tempSelectedTheatre = {
-        showType_Id: data.showTypeId,
-        show_Price: data.showPrice,
-        venue: data.showTypeName,
-        showType_Time: data.showTime,
-        TheaterName: data.theatreName,
+      state.SelectedTheatre = {
+        theatreId: data.theaterId,
+        theaterLocation: "",
+        theatreAddress: "",
+        movieId: data.movieId,
+        theatreName: data.theatreName,
+        showType: {
+          showTypeId: data.showTypeId,
+          showTypeName: data.showTypeName,
+          show: {
+            showId: data.showId,
+            showTime: data.showTime,
+            showPrice: data.showPrice,
+          },
+        },
       };
-      console.log(data);
+      console.log("From Redux ==>>", state.SelectedTheatre.movieId);
     },
 
     dateShow(state, action) {

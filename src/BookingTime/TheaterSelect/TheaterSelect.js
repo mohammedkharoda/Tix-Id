@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import { Box, TextField, MenuItem } from "@mui/material";
 import { ListItemIcon } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { theatreData } from "../../movie/data";
+import { locationData } from "../../movie/data";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { slotActions } from "../../components/Slices/ticketShow";
 export const TheaterSelect = () => {
   const [country, setCountry] = useState("");
   const [theater, setTheater] = useState("");
   const [Cinema, setCinema] = useState("");
   const [Badge, setBadge] = useState("");
 
-  const handleChange = (event) => {
+  const dispatch = useDispatch();
+
+  const handleChange = (event, theaterLocation) => {
     setCountry(event.target.value);
+    dispatch(slotActions.selectedShow({ theaterLocation }));
   };
 
   const handleTheater = (event) => {
@@ -38,10 +44,6 @@ export const TheaterSelect = () => {
     marginLeft: "42px",
   };
 
-  const filterData = (setBadge) => {
-    theatreData.filter((item) => item.theatreLogo === setBadge);
-    console.log(setBadge);
-  };
   return (
     <>
       <Box width="174px">
@@ -53,23 +55,14 @@ export const TheaterSelect = () => {
           onChange={handleChange}
           sx={selectSx}
         >
-          <MenuItem value="IN">
-            <ListItemIcon>
-              <LocationOnIcon />
-              India
-            </ListItemIcon>
-          </MenuItem>
-          <MenuItem value="US">
-            <ListItemIcon>
-              <LocationOnIcon />
-              United State
-            </ListItemIcon>
-          </MenuItem>
-          <MenuItem value="AU">
-            <ListItemIcon>
-              <LocationOnIcon /> Australia
-            </ListItemIcon>
-          </MenuItem>
+          {locationData.map((loc) => (
+            <MenuItem value={loc.locationId}>
+              <ListItemIcon>
+                <LocationOnIcon />
+                {loc.locationName}
+              </ListItemIcon>
+            </MenuItem>
+          ))}
         </TextField>
       </Box>
       <Box
@@ -118,7 +111,6 @@ export const TheaterSelect = () => {
         {/* Box-3 */}
         <Box width="90px" x>
           <TextField
-            onClick={() => filterData(Badge)}
             variant="standard"
             label={`Category`}
             select

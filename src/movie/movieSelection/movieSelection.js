@@ -2,7 +2,6 @@
 import React from "react";
 import { movieData } from "../data";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
 import "swiper/css/navigation";
 import "swiper/css";
 import { Link } from "react-router-dom";
@@ -10,24 +9,66 @@ import { Box, Typography } from "@mui/material";
 const movieSelection = () => {
   return (
     <>
-      <section
-        style={{
-          marginLeft: "181px",
-          marginRight: "181px",
+      <Box
+        sx={{
+          marginLeft: {
+            xs: "61px",
+            sm: "80",
+            md: "100px",
+            lg: "181px",
+          },
+          marginRight: {
+            xs: "61px",
+            sm: "80",
+            md: "100px",
+            lg: "181px",
+          },
           marginTop: "150px",
         }}
       >
         <Swiper
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+            },
+            375: {
+              slidesPerView: 1,
+            },
+            425: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            576: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+          }}
           slidesPerView={2}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           keyboard={true}
-          navigation={true}
-          modules={[Navigation]}
+          // autoplay={{
+          //   delay: 2500,
+          //   disableOnInteraction: false,
+          // }}
+          // modules={[Autoplay]}
         >
           {movieData.primary.map((item) => (
             <SwiperSlide>
-              <Box style={{ padding: "0 80px" }}>
+              <Box
+                sx={{
+                  paddingLeft: {
+                    xs: "12px",
+                    sm: "45px",
+                    md: "65px",
+                    lg: "75px",
+                  },
+                }}
+              >
                 <Box>
                   <Link to={`/movieBook/${item.id}`}>
                     <img
@@ -45,8 +86,17 @@ const movieSelection = () => {
                         fontFamily: "Roboto",
                         fontStyle: "normal",
                         fontWeight: 700,
-                        fontSize: "36px",
-                        marginTop: "52px",
+                        fontSize: {
+                          lg: "36px",
+                          md: "24px",
+                          sm: "18px",
+                        },
+                        marginTop: {
+                          lg: "52px",
+                          md: "20px",
+                          sm: "12px",
+                          xs: "8px",
+                        },
                         textAlign: "center",
                         color: "#333",
                       }}
@@ -59,18 +109,31 @@ const movieSelection = () => {
                         gap: "18px",
                         justifyContent: "center",
                         alignItems: "center",
-                        marginBottom: "1.5rem",
+                        marginTop: {
+                          sm: "15px",
+                          md: "25px",
+                          lg: "35px",
+                        },
                       }}
                     >
                       <Typography
                         sx={{
                           fontFamily: "Roboto",
                           fontWeight: "700",
-                          fontSize: "12px",
+                          fontSize: {
+                            xs: "10px",
+                            sm: "12px",
+                            md: "15px",
+                            lg: "18px",
+                          },
                           lineHeight: "14px",
                           background: "#F2C46F",
                           borderRadius: "4px",
-                          padding: "6px 8px",
+                          padding: {
+                            xs: "4px 6px",
+                            sm: "8px 11px",
+                            md: "10px 12px",
+                          },
                           color: "#FFFFFF",
                         }}
                       >
@@ -80,11 +143,20 @@ const movieSelection = () => {
                         sx={{
                           fontFamily: "Roboto",
                           fontWeight: "700",
-                          fontSize: "12px",
+                          fontSize: {
+                            xs: "10px",
+                            sm: "12px",
+                            md: "15px",
+                            lg: "18px",
+                          },
                           lineHeight: "14px",
                           background: "#EC1E2B",
                           borderRadius: "4px",
-                          padding: "6px 8px",
+                          padding: {
+                            xs: "4px 6px",
+                            sm: "8px 11px",
+                            md: "10px 12px",
+                          },
                           color: "#FFFFFF",
                         }}
                       >
@@ -94,11 +166,20 @@ const movieSelection = () => {
                         sx={{
                           fontFamily: "Roboto",
                           fontWeight: "700",
-                          fontSize: "12px",
+                          fontSize: {
+                            xs: "10px",
+                            sm: "12px",
+                            md: "15px",
+                            lg: "18px",
+                          },
                           lineHeight: "14px",
                           background: "#000E62",
                           borderRadius: "4px",
-                          padding: "6px 8px",
+                          padding: {
+                            xs: "4px 6px",
+                            sm: "8px 11px",
+                            md: "10px 12px",
+                          },
                           color: "#FFFFFF",
                         }}
                       >
@@ -111,7 +192,7 @@ const movieSelection = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </section>
+      </Box>
     </>
   );
 };

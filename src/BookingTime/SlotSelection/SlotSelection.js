@@ -1,27 +1,30 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Star from "../../assets/Star.svg";
 import { Box, Typography } from "@mui/material";
-import { theatreData } from "../../movie/data";
+import { theatreData, movieData } from "../../movie/data";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { slotActions } from "../../components/Slices/ticketShow";
 import { ticketVisibility } from "../../components/Slices/ticketVisible";
+import { useParams } from "react-router-dom";
 
 const SlotSelection = () => {
+  let { id } = useParams();
   const dispatch = useDispatch();
-  const selectedSlot = useSelector((state) => state.slot.tempSelectedTheatre);
-
+  const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
+  const movieId = movieData.primary.map((movieIds) => movieIds.id);
   const ToggleSlotHandler = () => {
     dispatch(ticketVisibility.toggle());
   };
-
   const dataTheaterHandler = ({
     showTypeName,
     showTypeId,
     showTime,
     showPrice,
     theatreName,
+    theaterId,
+    movieId,
   }) => {
     dispatch(
       slotActions.selectedShow({
@@ -30,6 +33,8 @@ const SlotSelection = () => {
         showTime,
         showPrice,
         theatreName,
+        theaterId,
+        movieId,
       })
     );
   };
@@ -98,9 +103,7 @@ const SlotSelection = () => {
     padding: "10px 20px",
     border: "1px solid #9DA8BE",
     background: "#000E62",
-    borderRadius: "4px",
     color: "#fff",
-    textAlign: "center",
   };
 
   const locationSx = {
@@ -176,7 +179,7 @@ const SlotSelection = () => {
                   {nameTheater.show.map((timings) => (
                     <Typography
                       sx={
-                        timings.id === selectedSlot.showType_Id
+                        timings.id === selectedSlot.showType.showTypeId
                           ? selected
                           : notSelected
                       }
@@ -188,6 +191,8 @@ const SlotSelection = () => {
                           showTime: timings.showTime,
                           showPrice: timings.showPrice,
                           showTypeId: timings.id,
+                          theaterId: item.id,
+                          movieId: movieId,
                         });
                       }}
                     >

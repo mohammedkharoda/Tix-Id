@@ -60,7 +60,7 @@ const DisplayMovie = () => {
               width: "100%",
               height: "364px",
               borderRadius: "5px",
-              objectFit: "cover",
+              objectFit: "contain",
               objectPosition: "bottom",
             }}
           />
@@ -73,7 +73,7 @@ const DisplayMovie = () => {
             </Box>
             {/* Time */}
             <Box sx={flexDisplay}>
-              <Typography sx={categoryATypoSx}>Time</Typography>
+              <Typography sx={{ categoryATypoSx }}>Time</Typography>
               <Typography
                 sx={categoryBTypoSx}
               >{`${data.TimeHH}hr ${data.TimeMM}min`}</Typography>

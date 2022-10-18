@@ -105,6 +105,8 @@ export const theatreData = [
     id: "theatreData-1",
     name: "Grand indonesia",
     address: "JL. MH. TAHMRIN NO.1",
+    locationId: "loc--2",
+    location: "Mumbai",
     theatreLogo: "CGV",
     theaterDates: [
       {
@@ -241,6 +243,7 @@ export const theatreData = [
     id: "theatreData-2",
     name: " SQUARE CINÉPOLIS",
     address: "Trek.L.A",
+    locationId: "loc--2",
     theatreLogo: "Cinemapolis",
     movies: [1, 2, 3, 4],
     showType: [
@@ -273,6 +276,7 @@ export const theatreData = [
     name: "PLAZA INDONESIA XXI",
     address: "Trek.L.A",
     theatreLogo: "XXI",
+    locationId: "loc--1",
     movies: [1, 2, 3, 4],
     showType: [
       {
@@ -299,3 +303,23 @@ export const theatreData = [
     ],
   },
 ];
+
+export const locationData = [
+  {
+    locationId: "loc--1",
+    locationName: "Surat",
+  },
+  {
+    locationId: "loc--2",
+    locationName: "Mumbai",
+  },
+  {
+    locationId: "loc--3",
+    locationName: "Delhi",
+  },
+  {
+    locationId: "loc--4",
+    locationName: "Bangalore",
+  },
+];
+

@@ -1,10 +1,12 @@
 import React from "react";
 import { AppBar, Toolbar, Typography } from "@mui/material";
-import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import TixLogo from "../../assets/tix id 1.svg";
-
-import { Box, display } from "@mui/system";
+import { Link } from "react-router-dom";
+import { Box } from "@mui/system";
 const Navbar = () => {
+  const FormSubmitHandler = () => {
+    localStorage.removeItem("isLoggedIn");
+  };
   return (
     <>
       <AppBar
@@ -18,8 +20,22 @@ const Navbar = () => {
         <Toolbar
           sx={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: {
+              lg: "space-between",
+              md: "space-evenly",
+              sm: "space-evenly",
+              xs: "space-evenly",
+            },
+            gap: {
+              lg: "62%",
+            },
             marginBottom: "24px",
+            paddingRight: {
+              lg: "72px",
+              md: "72px",
+              sm: "120px",
+              xs: "72px",
+            },
           }}
         >
           <Box
@@ -39,29 +55,37 @@ const Navbar = () => {
               display: "flex",
               alignItems: "center",
               gap: "48px",
-              marginRight: "72px",
             }}
           >
-            <Typography sx={{ color: "#000" }}>Home</Typography>
-            <Typography sx={{ color: "#000" }}>movies</Typography>
-            <Typography sx={{ color: "#000" }}>Payments</Typography>
-            <Typography sx={{ color: "#000" }}>
-              <NotificationsNoneOutlinedIcon />
-            </Typography>
-            <Typography
-              sx={{
-                color: "#fff",
-                backgroundColor: "#F2C46F",
-                borderRadius: "50%",
-                width: "40px",
-                height: "40px",
-                textAlign: "center",
-                fontWeight: "500",
-                fontSize: "25px",
-              }}
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography sx={{ color: "#383782" }}>Home</Typography>
+            </Link>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography sx={{ color: "#000" }}>Movies</Typography>
+            </Link>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography sx={{ color: "#000" }}>Payments</Typography>
+            </Link>
+            <Link
+              to="/login"
+              style={{ textDecoration: "none" }}
+              onClick={FormSubmitHandler}
             >
-              A
-            </Typography>
+              <Typography
+                sx={{
+                  color: "#fff",
+                  backgroundColor: "#F2C46F",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                  textAlign: "center",
+                  fontWeight: "500",
+                  fontSize: "25px",
+                }}
+              >
+                A
+              </Typography>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>
