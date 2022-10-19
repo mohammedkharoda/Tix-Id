@@ -1,53 +1,127 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable eqeqeq */
 import React, { useState, useEffect } from "react";
 import Navbar from "../movie/Navbar/Navbar";
 import { Box, Button, Typography } from "@mui/material";
 import Footer from "../movie/Footer/Footer";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { slotActions } from "../components/Slices/ticketShow";
 const SeatsDisplay = () => {
+  const seatsSelect = useSelector((state) => state.slot.SeatSelected);
   const [seatNameRender, setSeatNameRender] = useState();
+  const [seatSideRender, setSeatSideRender] = useState();
+  const [multipleSeats, setMultipleSeats] = useState([]);
   const dispatch = useDispatch();
+  // ==>> For Rendering the All the Seats
   useEffect(() => {
+    //  ====>> For 1st Set of the SEATS
     const row = [];
-    let count = 0;
+    const Siderow = [];
+    let count = 1;
     for (let seat = 1; seat < 81; seat++) {
-      const seatsData = { id: "S1", name: "", isSelected: false };
+      const seatsData = { name: "", isSelected: false };
       if (seat <= 10) {
-        seatsData.name = "A" + seat;
-      } else if (seat >= 11 && seat <= 20) {
-        count = 1;
-        seatsData.name = "B" + seat;
-      } else if (seat >= 21 && seat <= 30) {
-        count = 1;
-        seatsData.name = "C" + seat;
-      } else if (seat >= 31 && seat <= 40) {
-        count = 1;
-        seatsData.name = "D" + seat;
-      } else if (seat >= 41 && seat <= 50) {
-        count = 1;
-        seatsData.name = "E" + seat;
-      } else if (seat >= 51 && seat <= 60) {
-        count = 1;
-        seatsData.name = "F" + seat;
-      } else if (seat >= 61 && seat <= 70) {
-        count = 1;
-        seatsData.name = "G" + seat;
-      } else if (seat >= 71 && seat <= 80) {
-        count = 1;
-        seatsData.name = "H" + seat;
+        if (seat == 10) {
+          count = 10;
+        }
+        seatsData.name = "A" + count;
       }
+      if (seat >= 11 && seat <= 20) {
+        count = 1;
+        if (count == 1) {
+          seatsData.name = "B" + parseInt(seat - 10);
+        }
+      }
+      if (seat >= 21 && seat <= 30) {
+        count = 1;
+        if (count == 1) {
+          seatsData.name = "C" + parseInt(seat - 20);
+        }
+      }
+      if (seat >= 31 && seat <= 40) {
+        count = 1;
+        if (count == 1) {
+          seatsData.name = "D" + parseInt(seat - 30);
+        }
+      }
+      if (seat >= 41 && seat <= 50) {
+        count = 1;
+        if (count == 1) {
+          seatsData.name = "E" + parseInt(seat - 40);
+        }
+      }
+      if (seat >= 51 && seat <= 60) {
+        count = 1;
+        if (count == 1) {
+          seatsData.name = "F" + parseInt(seat - 50);
+        }
+      }
+      if (seat >= 61 && seat <= 70) {
+        count = 1;
+        if (count == 1) {
+          seatsData.name = "G" + parseInt(seat - 60);
+        }
+      }
+
+      if (seat >= 71 && seat <= 80) {
+        count = 1;
+        if (count == 1) {
+          seatsData.name = "H" + parseInt(seat - 70);
+        }
+      }
+
       row.push(seatsData);
       count++;
     }
-    console.log("row ===>>", row);
+    // console.log("row ===>>", row);
     setSeatNameRender(row);
+    // ===============================================
+    //  ====>> For 2nd Side of the SEATS
+    for (let seatSide = 1; seatSide < 81; seatSide++) {
+      let countSide = 11;
+      const seatsSideData = { name: "", isSelected: false };
+      if (seatSide <= 10) {
+        if (seatSide <= 10) {
+          countSide = seatSide + 10;
+          seatsSideData.name = "A" + countSide;
+        }
+      } else if (seatSide <= 20) {
+        countSide = seatSide;
+        seatsSideData.name = "B" + countSide;
+      } else if (seatSide <= 30) {
+        countSide = seatSide - 10;
+        seatsSideData.name = "C" + countSide;
+      } else if (seatSide <= 40) {
+        countSide = seatSide - 20;
+        seatsSideData.name = "D" + countSide;
+      } else if (seatSide <= 50) {
+        countSide = seatSide - 30;
+        seatsSideData.name = "E" + countSide;
+      } else if (seatSide <= 60) {
+        countSide = seatSide - 40;
+        seatsSideData.name = "F" + countSide;
+      } else if (seatSide <= 70) {
+        countSide = seatSide - 50;
+        seatsSideData.name = "G" + countSide;
+      } else if (seatSide <= 80) {
+        countSide = seatSide - 60;
+        seatsSideData.name = "H" + countSide;
+      }
+      Siderow.push(seatsSideData);
+      count++;
+    }
+    // console.log("Siderow ===>>", Siderow);
+    setSeatSideRender(Siderow);
   }, []);
+  // ==>> For Rendering the All the Seats
 
   const { id } = useParams();
 
   const handler = (SeatName) => {
-    dispatch(slotActions.seatsSelected(SeatName.name));
+    dispatch(slotActions.seatsSelected(multipleSeats));
+    setMultipleSeats([...multipleSeats, SeatName.name]);
   };
 
   const Navigate = useNavigate();
@@ -96,6 +170,31 @@ const SeatsDisplay = () => {
                         border: "1px solid #9DA8BE",
                         borderRadius: "6px",
                         padding: "4px 4px",
+                        backgroundColor:
+                          seatsSelect === seatData.name ? "#118EEA" : "#fff",
+                      }}
+                      onClick={() => handler(seatData)}
+                    >
+                      {console.log(seatsSelect)}
+                      {seatData.name}
+                    </Box>
+                  );
+                })}
+              </Box>
+            </Box>
+            {/* 2nd Column */}
+            <Box sx={{ cursor: "pointer" }}>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
+                {seatSideRender?.map((seatData) => {
+                  return (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        width: "40px",
+                        height: "36px",
+                        border: "1px solid #9DA8BE",
+                        borderRadius: "6px",
+                        padding: "4px 4px",
                       }}
                       onClick={() => handler(seatData)}
                     >
@@ -105,32 +204,6 @@ const SeatsDisplay = () => {
                 })}
               </Box>
             </Box>
-            {/* <Box sx={{ cursor: "pointer" }}>
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
-                {runCallback(() => {
-                  const row = [];
-                  for (let seat = 1; seat < 81; seat++) {
-                    row.push(
-                      <Box
-                        key={seat}
-                        sx={{
-                          display: "flex",
-                          width: "40px",
-                          height: "36px",
-                          border: "1px solid #9DA8BE",
-                          borderRadius: "6px",
-                          padding: "4px 4px",
-                        }}
-                        onClick={() => handler(seat)}
-                      >
-                        {seat}
-                      </Box>
-                    );
-                  }
-                  return row;
-                })}
-              </Box>
-            </Box> */}
           </Box>
           {/* Screen Side */}
           <Box
@@ -182,7 +255,11 @@ const SeatsDisplay = () => {
                     marginTop: "12px",
                   }}
                 >
-                  C1,C2,C3
+                  {`${
+                    seatsSelect.seatName.length < 3
+                      ? seatsSelect.seatName
+                      : console.log("Done")
+                  }`}
                 </Typography>
               </Box>
               <Box>
@@ -226,6 +303,7 @@ const SeatsDisplay = () => {
                       fontSize: "20px",
                       fontWeight: "500",
                     }}
+                    onClick={() => Navigate(`/confirmTicket/${id}`)}
                   >
                     Confirm
                   </Typography>

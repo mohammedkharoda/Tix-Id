@@ -14,6 +14,7 @@ const ConfirmTicket = () => {
   let { id } = useParams();
   const dateSelector = useSelector((state) => state.slot.DateAndDay);
   const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
+  const seatsSelect = useSelector((state) => state.slot.SeatSelected);
 
   const [movieInfo, setMovieInfo] = useState();
   useEffect(() => {
@@ -228,7 +229,7 @@ const ConfirmTicket = () => {
                         marginBottom: "4px",
                       }}
                     >
-                      Ticket(3)
+                      Ticket({seatsSelect.seatName.length - 1})
                     </Typography>
                     <Typography
                       sx={{
@@ -240,7 +241,7 @@ const ConfirmTicket = () => {
                         marginBottom: "10px",
                       }}
                     >
-                      C8, C9, C10
+                      {seatsSelect.seatName}
                     </Typography>
                     <Box
                       component="div"

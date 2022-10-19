@@ -21,13 +21,17 @@ const initialState = {
       },
     },
   },
+
+  // Date and Day
   DateAndDay: {
     showDateId: "",
     showDate: "",
     showDay: "",
   },
+  // Toggle
   toggle: true,
-  
+
+  // Seats
   SeatSelected: {
     seatName: "",
   },
@@ -73,9 +77,8 @@ const slotSlice = createSlice({
     seatsSelected(state, action) {
       const seatSelect = action.payload;
       state.SeatSelected = {
-        seatName: seatSelect.seatName,
+        seatName: seatSelect,
       };
-      console.log("From Redux ==>> ", seatSelect);
     },
   },
 });
