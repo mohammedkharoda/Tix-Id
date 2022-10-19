@@ -3,10 +3,11 @@ import Navbar from "../movie/Navbar/Navbar";
 import { Box, Button, Typography } from "@mui/material";
 import Footer from "../movie/Footer/Footer";
 import { useNavigate, useParams } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { slotActions } from "../components/Slices/ticketShow";
 const SeatsDisplay = () => {
   const [seatNameRender, setSeatNameRender] = useState();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const row = [];
     let count = 0;
@@ -45,8 +46,8 @@ const SeatsDisplay = () => {
 
   const { id } = useParams();
 
-  const handler = (Seatid) => {
-    alert(Seatid.name);
+  const handler = (SeatName) => {
+    dispatch(slotActions.seatsSelected(SeatName.name));
   };
 
   const Navigate = useNavigate();
@@ -98,7 +99,6 @@ const SeatsDisplay = () => {
                       }}
                       onClick={() => handler(seatData)}
                     >
-                      {console.log("Seat ==>>", seatData)}
                       {seatData.name}
                     </Box>
                   );
