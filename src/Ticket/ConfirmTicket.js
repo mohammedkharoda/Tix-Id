@@ -24,6 +24,13 @@ const ConfirmTicket = () => {
     }
   }, [id]);
 
+  let filteredData = seatsSelect.seatName.filter(
+    (premium) =>
+      premium.startsWith("A") ||
+      premium.startsWith("B") ||
+      premium.startsWith("C")
+  );
+  console.log("", filteredData);
   const navigate = useNavigate();
 
   return (
@@ -347,7 +354,11 @@ const ConfirmTicket = () => {
                           marginLeft: "auto",
                         }}
                       >
-                        Rs 500.00
+                        {`Rs ${
+                          filteredData
+                            ? 0
+                            : selectedSlot.showType.show.showPrice
+                        }.00`}
                       </Typography>
                       <Typography
                         sx={{
@@ -361,7 +372,7 @@ const ConfirmTicket = () => {
                           marginLeft: "12px",
                         }}
                       >
-                        x3
+                        {seatsSelect.seatName.length}
                       </Typography>
                     </Box>
                     {/* Premium-Seats  */}
@@ -389,7 +400,11 @@ const ConfirmTicket = () => {
                           marginLeft: "auto",
                         }}
                       >
-                        Rs 800.00
+                        {`Rs ${
+                          filteredData
+                            ? selectedSlot.showType.show.showPrice * 10
+                            : 0
+                        }.00`}
                       </Typography>
                       <Typography
                         sx={{
@@ -403,7 +418,7 @@ const ConfirmTicket = () => {
                           marginLeft: "12px",
                         }}
                       >
-                        x3
+                        x {}
                       </Typography>
                     </Box>
                     <hr style={{ backgroundColor: "#000" }} />

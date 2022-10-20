@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { slotActions } from "../components/Slices/ticketShow";
 const SeatsDisplay = () => {
+  const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
   const [seatNameRender, setSeatNameRender] = useState();
   const [seatSideRender, setSeatSideRender] = useState();
@@ -22,12 +23,13 @@ const SeatsDisplay = () => {
     const Siderow = [];
     let count = 1;
     for (let seat = 1; seat < 81; seat++) {
-      const seatsData = { name: "", isSelected: false };
+      const seatsData = { name: "", isSelected: false, price: "" };
       if (seat <= 10) {
         if (seat == 10) {
           count = 10;
         }
         seatsData.name = "A" + count;
+        seatsData.price = 200;
       }
       if (seat >= 11 && seat <= 20) {
         count = 1;
@@ -121,12 +123,25 @@ const SeatsDisplay = () => {
   const { id } = useParams();
 
   const handler = (SeatName) => {
-    let multipleSeatsHandler = [...multipleSeats, SeatName.name];
-    if (seatsSelect.seatName.length < 3) {
-      dispatch(slotActions.seatsSelected(multipleSeatsHandler));
-      setMultipleSeats(multipleSeatsHandler);
+    let isExist = seatsSelect.seatName?.findIndex(
+      (seat) => seat === SeatName.name
+    );
+    console.log("Exist", isExist);
+
+    if (isExist !== -1) {
+      console.log(seatsSelect);
+      let seatRemove = seatsSelect.seatName;
+      console.log("11111111", seatRemove);
+      let tempName = seatRemove.slice(isExist, 1);
+      console.log("temp==>>", tempName);
     } else {
-      alert("To many Seats!");
+      let multipleSeatsHandler = [...multipleSeats, SeatName.name];
+      if (seatsSelect.seatName.length < 5) {
+        dispatch(slotActions.seatsSelected(multipleSeatsHandler));
+        setMultipleSeats(multipleSeatsHandler);
+      } else {
+        alert("Can't Select more than 5!");
+      }
     }
   };
 
@@ -155,7 +170,7 @@ const SeatsDisplay = () => {
               marginLeft: "72px",
             }}
           >
-            The Screen You Are Watching at 
+            The Screen You Are Watching at {selectedSlot.showType.showTypeName}
           </Typography>
 
           <Box
@@ -183,7 +198,7 @@ const SeatsDisplay = () => {
                       }}
                       onClick={() => handler(seatData)}
                     >
-                      {console.log("Redux ==>>", seatsSelect.seatName)}
+                      {/* {console.log("Redux ==>>", seatsSelect.seatName)} */}
                       {/* {console.log("Seats ==>>", seatData.name)} */}
                       {seatData.name}
                     </Box>
@@ -256,7 +271,8 @@ const SeatsDisplay = () => {
                     marginTop: "12px",
                   }}
                 >
-                  Rs 150.000
+                  {selectedSlot.showType.show.showPrice *
+                    seatsSelect.seatName.length}
                 </Typography>
               </Box>
               <Box component="div" className="Seats">

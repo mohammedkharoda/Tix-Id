@@ -34,7 +34,7 @@ const initialState = {
   // Seats
   SeatSelected: {
     seatName: [],
-    seatPrice:""
+    seatPrice: "",
   },
 };
 
@@ -61,7 +61,7 @@ const slotSlice = createSlice({
           },
         },
       };
-      console.log("From Redux ==>>", state.SelectedTheatre.showType.showTypeId);
+      console.log("From Redux ==>>", state.SelectedTheatre.showType.show.showPrice);
     },
 
     dateShow(state, action) {
