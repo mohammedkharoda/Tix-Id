@@ -77,8 +77,10 @@ const slotSlice = createSlice({
     },
     seatsSelected(state, action) {
       const seatSelect = action.payload;
+      const seatRemove = action.payload
       state.SeatSelected = {
         seatName: seatSelect,
+        seatRemove:seatRemove
       };
     },
   },

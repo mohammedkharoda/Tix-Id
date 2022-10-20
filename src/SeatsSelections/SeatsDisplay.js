@@ -126,21 +126,18 @@ const SeatsDisplay = () => {
     let isExist = seatsSelect.seatName?.findIndex(
       (seat) => seat === SeatName.name
     );
-    console.log("Exist", isExist);
 
     if (isExist !== -1) {
-      console.log(seatsSelect);
-      let seatRemove = seatsSelect.seatName;
-      console.log("11111111", seatRemove);
-      let tempName = seatRemove.slice(isExist, 1);
-      console.log("temp==>>", tempName);
+      let seatRemoving = seatsSelect.seatName;
+      let tempName = seatRemoving.slice(isExist, -4);
+      dispatch(slotActions.seatsSelected([...tempName]));
     } else {
       let multipleSeatsHandler = [...multipleSeats, SeatName.name];
       if (seatsSelect.seatName.length < 5) {
         dispatch(slotActions.seatsSelected(multipleSeatsHandler));
         setMultipleSeats(multipleSeatsHandler);
       } else {
-        alert("Can't Select more than 5!");
+        return alert("Can't Select more than 5!");
       }
     }
   };

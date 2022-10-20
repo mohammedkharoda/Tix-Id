@@ -30,7 +30,19 @@ const ConfirmTicket = () => {
       premium.startsWith("B") ||
       premium.startsWith("C")
   );
-  console.log("", filteredData);
+
+  let RegularData = seatsSelect.seatName.filter(
+    (premium) =>
+      premium.startsWith("D") ||
+      premium.startsWith("E") ||
+      premium.startsWith("F") ||
+      premium.startsWith("G") ||
+      premium.startsWith("H")
+  );
+
+  let regularAmount = selectedSlot.showType.show.showPrice;
+  let premiumPrice = selectedSlot.showType.show.showPrice * 10;
+
   const navigate = useNavigate();
 
   return (
@@ -355,7 +367,7 @@ const ConfirmTicket = () => {
                         }}
                       >
                         {`Rs ${
-                          filteredData
+                          RegularData.length === 0
                             ? 0
                             : selectedSlot.showType.show.showPrice
                         }.00`}
@@ -372,7 +384,9 @@ const ConfirmTicket = () => {
                           marginLeft: "12px",
                         }}
                       >
-                        {seatsSelect.seatName.length}
+                        {`x ${
+                          seatsSelect.seatName.length - filteredData.length
+                        }`}
                       </Typography>
                     </Box>
                     {/* Premium-Seats  */}
@@ -401,9 +415,9 @@ const ConfirmTicket = () => {
                         }}
                       >
                         {`Rs ${
-                          filteredData
-                            ? selectedSlot.showType.show.showPrice * 10
-                            : 0
+                          filteredData.length === 0
+                            ? 0
+                            : selectedSlot.showType.show.showPrice * 10
                         }.00`}
                       </Typography>
                       <Typography
@@ -418,47 +432,7 @@ const ConfirmTicket = () => {
                           marginLeft: "12px",
                         }}
                       >
-                        x {}
-                      </Typography>
-                    </Box>
-                    <hr style={{ backgroundColor: "#000" }} />
-                    {/* Vouchers  */}
-                    <Typography
-                      sx={{
-                        fontWeight: "700",
-                        fontSize: "16px",
-                        lineHeight: "18px",
-                        marginTop: "32px",
-                      }}
-                    >
-                      Promo & Vouchers
-                    </Typography>
-                    {/* Vouchers Details */}
-                    <Box
-                      className="Vouchers-details"
-                      sx={{ display: "flex", marginBottom: "27px" }}
-                    >
-                      <Typography
-                        sx={{
-                          fontWeight: "400",
-                          fontSize: "16px",
-                          lineHeight: "19px",
-                          color: "#333",
-                          marginTop: "16px",
-                        }}
-                      >
-                        MOVIE50
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontWeight: "400px",
-                          fontSize: "16px",
-                          lineHeight: "19px",
-                          marginTop: "16px",
-                          marginLeft: "auto",
-                        }}
-                      >
-                        - Rs 200.00
+                        x {filteredData.length}
                       </Typography>
                     </Box>
                     <hr style={{ backgroundColor: "#000" }} />
@@ -486,7 +460,7 @@ const ConfirmTicket = () => {
                           marginLeft: "auto",
                         }}
                       >
-                        Rs 865.00
+                        {`$ ${regularAmount + premiumPrice}`}
                       </Typography>
                     </Box>
                     <hr style={{ backgroundColor: "#000" }} />
