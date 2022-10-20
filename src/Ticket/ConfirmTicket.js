@@ -229,7 +229,7 @@ const ConfirmTicket = () => {
                         marginBottom: "4px",
                       }}
                     >
-                      Ticket({seatsSelect.seatName.length - 1})
+                      Ticket({seatsSelect.seatName.length})
                     </Typography>
                     <Typography
                       sx={{
@@ -241,7 +241,7 @@ const ConfirmTicket = () => {
                         marginBottom: "10px",
                       }}
                     >
-                      {seatsSelect.seatName}
+                      {`${seatsSelect.seatName}`}
                     </Typography>
                     <Box
                       component="div"

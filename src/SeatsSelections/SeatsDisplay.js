@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable eqeqeq */
@@ -120,8 +121,13 @@ const SeatsDisplay = () => {
   const { id } = useParams();
 
   const handler = (SeatName) => {
-    dispatch(slotActions.seatsSelected(multipleSeats));
-    setMultipleSeats([...multipleSeats, SeatName.name]);
+    let multipleSeatsHandler = [...multipleSeats, SeatName.name];
+    if (seatsSelect.seatName.length < 3) {
+      dispatch(slotActions.seatsSelected(multipleSeatsHandler));
+      setMultipleSeats(multipleSeatsHandler);
+    } else {
+      alert("To many Seats!");
+    }
   };
 
   const Navigate = useNavigate();
@@ -129,7 +135,6 @@ const SeatsDisplay = () => {
   return (
     <>
       <Navbar />
-
       <Box
         component="section"
         sx={{
@@ -150,7 +155,7 @@ const SeatsDisplay = () => {
               marginLeft: "72px",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias quod
+            The Screen You Are Watching at 
           </Typography>
 
           <Box
@@ -170,12 +175,16 @@ const SeatsDisplay = () => {
                         border: "1px solid #9DA8BE",
                         borderRadius: "6px",
                         padding: "4px 4px",
-                        backgroundColor:
-                          seatsSelect === seatData.name ? "#118EEA" : "#fff",
+                        backgroundColor: seatsSelect.seatName.find(
+                          (item) => item === seatData.name
+                        )
+                          ? "#118EEA"
+                          : "#fff",
                       }}
                       onClick={() => handler(seatData)}
                     >
-                      {console.log(seatsSelect)}
+                      {console.log("Redux ==>>", seatsSelect.seatName)}
+                      {/* {console.log("Seats ==>>", seatData.name)} */}
                       {seatData.name}
                     </Box>
                   );
@@ -195,6 +204,11 @@ const SeatsDisplay = () => {
                         border: "1px solid #9DA8BE",
                         borderRadius: "6px",
                         padding: "4px 4px",
+                        backgroundColor: multipleSeats.find(
+                          (item) => item === seatData.name
+                        )
+                          ? "#118EEA"
+                          : "#fff",
                       }}
                       onClick={() => handler(seatData)}
                     >
@@ -255,11 +269,7 @@ const SeatsDisplay = () => {
                     marginTop: "12px",
                   }}
                 >
-                  {`${
-                    seatsSelect.seatName.length < 3
-                      ? seatsSelect.seatName
-                      : console.log("Done")
-                  }`}
+                  {`${seatsSelect.seatName}`}
                 </Typography>
               </Box>
               <Box>

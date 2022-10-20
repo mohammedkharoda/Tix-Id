@@ -33,7 +33,8 @@ const initialState = {
 
   // Seats
   SeatSelected: {
-    seatName: "",
+    seatName: [],
+    seatPrice:""
   },
 };
 
@@ -60,7 +61,7 @@ const slotSlice = createSlice({
           },
         },
       };
-      console.log("From Redux ==>>", state.SelectedTheatre.movieId);
+      console.log("From Redux ==>>", state.SelectedTheatre.showType.showTypeId);
     },
 
     dateShow(state, action) {
