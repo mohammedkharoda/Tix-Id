@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
 import { movieData } from "../movie/data";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Navbar from "../movie/Navbar/Navbar";
@@ -10,6 +10,7 @@ import Footer from "../movie/Footer/Footer";
 import Paytm from "../assets/Paytm-Logo.wine.svg";
 import PhonePe from "../assets/PhonePe-Logo.wine.svg";
 import GooglePay from "../assets/Google_Pay-Logo.wine.svg";
+import { couponList } from "../movie/data";
 const ConfirmTicket = () => {
   let { id } = useParams();
   const dateSelector = useSelector((state) => state.slot.DateAndDay);
@@ -40,10 +41,24 @@ const ConfirmTicket = () => {
       premium.startsWith("H")
   );
 
-  let regularAmount = selectedSlot.showType.show.showPrice;
-  let premiumPrice = selectedSlot.showType.show.showPrice * 10;
+  let regularAmount = selectedSlot.showType.show.showPrice * RegularData.length;
+  let premiumPrice = selectedSlot.showType.show.showPrice + 100;
+  let total = regularAmount + premiumPrice * filteredData.length;
 
   const navigate = useNavigate();
+  const [valid, setvalid] = useState(true);
+  const [coupon, setCoupon] = useState("");
+
+  const couponHandler = () => {
+    const validCoupon = couponList.find(
+      (item) => item.name === coupon.toLowerCase()
+    );
+    if (validCoupon) {
+      setvalid(true);
+    } else {
+      setvalid(false);
+    }
+  };
 
   return (
     <>
@@ -415,9 +430,7 @@ const ConfirmTicket = () => {
                         }}
                       >
                         {`Rs ${
-                          filteredData.length === 0
-                            ? 0
-                            : selectedSlot.showType.show.showPrice * 10
+                          filteredData.length === 0 ? 0 : premiumPrice
                         }.00`}
                       </Typography>
                       <Typography
@@ -433,6 +446,40 @@ const ConfirmTicket = () => {
                         }}
                       >
                         x {filteredData.length}
+                      </Typography>
+                    </Box>
+                    <hr style={{ backgroundColor: "#000" }} />
+                    {/* Promo and Vouchers */}
+                    <Box sx={{ mt: 4 }}>
+                      <Typography sx={{ fontWeight: "700" }}>
+                        Promo and Vouchers
+                      </Typography>
+                      <TextField
+                        onChange={(e) => setCoupon(e.target.value)}
+                        id="standard-basic"
+                        label="Coupon Here!"
+                        variant="standard"
+                        required
+                        value={coupon.toUpperCase()}
+                        sx={{ mb: 4 }}
+                      />
+                      <Button
+                        variant="contained"
+                        sx={{
+                          marginX: "6px",
+                          marginTop: "10px",
+                          color: "#FFFFFF",
+                          backgroundColor: "#118EEA",
+                          "&:hover": {
+                            backgroundColor: "#118EEA",
+                          },
+                        }}
+                        onClick={() => couponHandler()}
+                      >
+                        Apply
+                      </Button>
+                      <Typography sx={{ color: "red", mt: 1 }}>
+                        {!valid ? "Invalid Coupon" : ""}
                       </Typography>
                     </Box>
                     <hr style={{ backgroundColor: "#000" }} />
@@ -460,7 +507,9 @@ const ConfirmTicket = () => {
                           marginLeft: "auto",
                         }}
                       >
-                        {`$ ${regularAmount + premiumPrice}`}
+                        {RegularData.length !== 0 || filteredData.length !== 0
+                          ? total
+                          : 0}
                       </Typography>
                     </Box>
                     <hr style={{ backgroundColor: "#000" }} />

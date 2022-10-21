@@ -123,14 +123,15 @@ const SeatsDisplay = () => {
   const { id } = useParams();
 
   const handler = (SeatName) => {
-    let isExist = seatsSelect.seatName?.findIndex(
+    let isExist = seatsSelect.seatName.indexOf(
       (seat) => seat === SeatName.name
     );
 
     if (isExist !== -1) {
       let seatRemoving = seatsSelect.seatName;
-      let tempName = seatRemoving.slice(isExist, -4);
+      let tempName = seatRemoving.slice(isExist, 1);
       dispatch(slotActions.seatsSelected([...tempName]));
+      console.log("Remove ==>>  ", tempName);
     } else {
       let multipleSeatsHandler = [...multipleSeats, SeatName.name];
       if (seatsSelect.seatName.length < 5) {
