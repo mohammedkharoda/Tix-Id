@@ -331,8 +331,12 @@ export const couponList = [
   },
   {
     id: 2,
-    name: "excited20",
+    name: "popcorn20",
     discountedPercentage: 20,
   },
+  {
+    id: 3,
+    name: "film30",
+    discountedPercentage: 30,
+  },
 ];
-

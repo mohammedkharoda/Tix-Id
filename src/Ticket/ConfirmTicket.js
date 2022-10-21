@@ -13,10 +13,12 @@ import GooglePay from "../assets/Google_Pay-Logo.wine.svg";
 import { couponList } from "../movie/data";
 const ConfirmTicket = () => {
   let { id } = useParams();
+  const navigate = useNavigate();
+  const [valid, setvalid] = useState(true);
+  const [coupon, setCoupon] = useState("");
   const dateSelector = useSelector((state) => state.slot.DateAndDay);
   const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
-
   const [movieInfo, setMovieInfo] = useState();
   useEffect(() => {
     if (id) {
@@ -45,16 +47,16 @@ const ConfirmTicket = () => {
   let premiumPrice = selectedSlot.showType.show.showPrice + 100;
   let total = regularAmount + premiumPrice * filteredData.length;
 
-  const navigate = useNavigate();
-  const [valid, setvalid] = useState(true);
-  const [coupon, setCoupon] = useState("");
-
+  const [calculatedTotal, setCalculatedTotal] = useState(total);
   const couponHandler = () => {
     const validCoupon = couponList.find(
       (item) => item.name === coupon.toLowerCase()
     );
     if (validCoupon) {
       setvalid(true);
+      let finalDiscount =
+        total - (total / 100) * validCoupon.discountedPercentage;
+      setCalculatedTotal(finalDiscount);
     } else {
       setvalid(false);
     }
@@ -508,7 +510,7 @@ const ConfirmTicket = () => {
                         }}
                       >
                         {RegularData.length !== 0 || filteredData.length !== 0
-                          ? total
+                          ? calculatedTotal
                           : 0}
                       </Typography>
                     </Box>
