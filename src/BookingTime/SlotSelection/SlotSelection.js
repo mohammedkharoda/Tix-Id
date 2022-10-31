@@ -43,6 +43,7 @@ const SlotSelection = () => {
     fontWeight: "500",
     fontSize: "24px",
     color: "#333",
+    marginRight: "37px",
   };
   const subHeadingTypo = {
     fontWeight: "500",
@@ -129,7 +130,6 @@ const SlotSelection = () => {
     padding: "6px 8px",
     borderRadius: "4px",
     marginRight: "auto",
-    marginLeft: "150px",
   };
 
   const plazaBadge = {
@@ -153,7 +153,7 @@ const SlotSelection = () => {
             <Box sx={{ marginLeft: "66px", marginRight: "16px" }}>
               <img src={`${Star}`} />
             </Box>
-            <Box sx={{ width: "100%" }}>
+            <Box sx={{ width: { lg: "100%" } }}>
               <Typography sx={typoHeading}>{item.name}</Typography>
             </Box>
             <Box>

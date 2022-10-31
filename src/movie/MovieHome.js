@@ -5,6 +5,8 @@ import MovieSelection from "./movieSelection/movieSelection";
 import Ads from "./Ads/Ads";
 import SeeMoreMovie from "./seeMoreMovie.js/SeeMoreMovie";
 import Footer from "./Footer/Footer";
+import { Box } from "@mui/system";
+import Protected from "../Login/Protected";
 const MovieHome = () => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -15,11 +17,14 @@ const MovieHome = () => {
   }, []);
   return (
     <>
-      <Navbar />
-      <MovieSelection />
-      <Ads />
-      <SeeMoreMovie />
-      <Footer />
+    <Protected/>
+      <Box>
+        <Navbar />
+        <MovieSelection />
+        <Ads />
+        <SeeMoreMovie />
+        <Footer />
+      </Box>
     </>
   );
 };

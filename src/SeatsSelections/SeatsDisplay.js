@@ -9,6 +9,7 @@ import Footer from "../movie/Footer/Footer";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { slotActions } from "../components/Slices/ticketShow";
+import Protected from "../Login/Protected";
 const SeatsDisplay = () => {
   const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
@@ -144,9 +145,16 @@ const SeatsDisplay = () => {
   };
 
   const Navigate = useNavigate();
-
+  const seatsConfirm = () => {
+    if (seatsSelect.seatName.length !== 0) {
+      return Navigate(`/confirmTicket/${id}`);
+    } else {
+      alert("No Seats");
+    }
+  };
   return (
     <>
+      <Protected />
       <Navbar />
       <Box
         component="section"
@@ -164,7 +172,7 @@ const SeatsDisplay = () => {
           <Typography
             sx={{
               fontWeight: "400",
-              marginBottom: "126px",
+              marginBottom: "86px",
               marginLeft: "72px",
             }}
           >
@@ -174,7 +182,12 @@ const SeatsDisplay = () => {
           <Box
             component="div"
             className="SeatsBox"
-            sx={{ display: "flex", marginLeft: "72px" }}
+            sx={{
+              display: "flex",
+              marginLeft: "70px",
+              gap: "50px",
+              marginRight: "70px",
+            }}
           >
             <Box sx={{ cursor: "pointer" }}>
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
@@ -246,6 +259,7 @@ const SeatsDisplay = () => {
               Screen This Side
             </Typography>
           </Box>
+          {/* Tickets Confirms */}
           <Box component="section">
             <Box
               component="div"
@@ -253,7 +267,8 @@ const SeatsDisplay = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 margin: "0px 25px",
-                alignItems: "flex-end",
+                alignItems: { lg: "center", xs: "flex-start" },
+                flexDirection: { lg: "row", xs: "column" },
                 marginTop: "60px",
                 marginBottom: "126px",
               }}
@@ -281,6 +296,7 @@ const SeatsDisplay = () => {
                     fontSize: "36px",
                     lineHeight: "42px",
                     marginTop: "12px",
+                    marginBottom: "15px",
                   }}
                 >
                   {`${seatsSelect.seatName}`}
@@ -293,6 +309,7 @@ const SeatsDisplay = () => {
                     textTransform: "capitalize",
                     textAlign: "center",
                     padding: "12px 8px",
+                    marginBottom: { xs: "25px", lg: "0", md: "0" },
                   }}
                 >
                   <Typography
@@ -327,7 +344,7 @@ const SeatsDisplay = () => {
                       fontSize: "20px",
                       fontWeight: "500",
                     }}
-                    onClick={() => Navigate(`/confirmTicket/${id}`)}
+                    onClick={seatsConfirm}
                   >
                     Confirm
                   </Typography>

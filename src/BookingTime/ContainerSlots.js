@@ -3,24 +3,37 @@ import SlotSelection from "./SlotSelection/SlotSelection";
 import DisplayMovie from "./DisplayMovie/DisplayMovie";
 import MovieBook from "./movieBook/MovieBook";
 import Footer from "../movie/Footer/Footer";
-
+import { Box } from "@mui/material";
+import Protected from "../Login/Protected";
 export const ContainerSlots = () => {
   return (
     <>
+      <Protected />
       <MovieBook />
-      <div
-        style={{
+      <Box
+        sx={{
           display: "flex",
+          flexDirection: {
+            lg: "row",
+            md: "column",
+            sm: "column",
+            xs: "column",
+          },
           justifyContent: "space-between",
         }}
       >
         <div>
           <SlotSelection />
         </div>
-        <div style={{ marginTop: "-5%", marginRight: "182px" }}>
+        <Box
+          sx={{
+            marginTop: { lg: "-5%", md: "5%" },
+            marginRight: { lg: "182px" },
+          }}
+        >
           <DisplayMovie />
-        </div>
-      </div>
+        </Box>
+      </Box>
       <Footer />
     </>
   );

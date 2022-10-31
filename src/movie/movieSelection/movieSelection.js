@@ -51,11 +51,6 @@ const movieSelection = () => {
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           keyboard={true}
-          // autoplay={{
-          //   delay: 2500,
-          //   disableOnInteraction: false,
-          // }}
-          // modules={[Autoplay]}
         >
           {movieData.primary.map((item) => (
             <SwiperSlide>
@@ -90,6 +85,7 @@ const movieSelection = () => {
                           lg: "36px",
                           md: "24px",
                           sm: "18px",
+                          xs: "25px",
                         },
                         marginTop: {
                           lg: "52px",
@@ -113,6 +109,7 @@ const movieSelection = () => {
                           sm: "15px",
                           md: "25px",
                           lg: "35px",
+                          xs: "20px",
                         },
                       }}
                     >

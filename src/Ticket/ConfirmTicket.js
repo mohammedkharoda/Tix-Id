@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { movieData } from "../movie/data";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Navbar from "../movie/Navbar/Navbar";
 import { ReactComponent as LeftArrow } from "../assets/arrowLeft.svg";
@@ -11,6 +11,7 @@ import Paytm from "../assets/Paytm-Logo.wine.svg";
 import PhonePe from "../assets/PhonePe-Logo.wine.svg";
 import GooglePay from "../assets/Google_Pay-Logo.wine.svg";
 import { couponList } from "../movie/data";
+import Protected from "../Login/Protected";
 const ConfirmTicket = () => {
   let { id } = useParams();
   const navigate = useNavigate();
@@ -64,20 +65,26 @@ const ConfirmTicket = () => {
 
   return (
     <>
+      <Protected />
       <Box
         component="section"
         marginBottom="136px"
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "flex-end",
+          flexDirection: { sm: "column", md: "row", lg: "row", xs: "column" },
+          gap: { lg: "250px", md: "190px" },
         }}
       >
         <Box component="section">
           <Navbar />
           <Box
             component="div"
-            sx={{ marginTop: "140px", marginLeft: "72px", marginRight: "auto" }}
+            sx={{
+              marginTop: "140px",
+              marginLeft: { lg: "72px", md: "72px", xs: "30px" },
+              marginRight: "auto",
+            }}
           >
             <Typography
               sx={{
@@ -330,12 +337,23 @@ const ConfirmTicket = () => {
             sx={{
               backgroundColor: "#fff",
               width: "500px",
-              height: "650px",
-              border: "1px solid #c4c4c4",
-              marginRight: "370px",
-              boxShadow: "0px 1px 6px rgba(0,0,0.3)",
+              height: { md: "690px", sm: "690px" },
+              border: {
+                lg: "1px solid #c4c4c4",
+                xs: "0",
+                md: "1px solid #c4c4c4",
+                sm: "1px solid #c4c4c4",
+              },
+              marginRight: { lg: "370px", md: "370px" },
+              boxShadow: {
+                xs: "0",
+              },
               borderRadius: "13px",
-              padding: "26px 48px",
+              paddingLeft: { xs: "34px" },
+              paddingRight: { xs: "100px" },
+              padding: { lg: "30px 48px", xl: "18px 48px", sm: "30px 48px" },
+              marginTop: { lg: "170px", md: "124px", sm: "80px", xs: "80px" },
+              marginLeft: { sm: "35px" },
             }}
           >
             <Box component="div">
@@ -514,6 +532,13 @@ const ConfirmTicket = () => {
                           : 0}
                       </Typography>
                     </Box>
+                    {valid ? (
+                      <Box>
+                        <Typography>COUPON APPLIED : {`${coupon}`}</Typography>
+                      </Box>
+                    ) : (
+                      ""
+                    )}
                     <hr style={{ backgroundColor: "#000" }} />
                   </Box>
                   {/* Payments Modes */}
@@ -572,13 +597,17 @@ const ConfirmTicket = () => {
               <Typography
                 sx={{ color: "#FFBE00", fontSize: "24px", fontWeight: "500" }}
               >
-                Book Ticket
+                <Link
+                  to="./finalTicket"
+                  style={{ textDecoration: "none", color: "#fff" }}
+                >
+                  Book Ticket
+                </Link>
               </Typography>
             </Button>
           </Box>
         </Box>
       </Box>
-
       <Footer />
     </>
   );

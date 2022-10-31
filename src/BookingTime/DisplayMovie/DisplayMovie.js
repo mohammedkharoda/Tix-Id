@@ -27,6 +27,7 @@ const DisplayMovie = () => {
     lineHeight: "32px",
     marginTop: "48px",
     textTransform: "Uppercase",
+    textAlign: { md: "center", sm: "center", xs: "center" },
   };
 
   const categoryATypoSx = {
@@ -65,7 +66,7 @@ const DisplayMovie = () => {
             }}
           />
           <Typography sx={typoSx}>{data.title}</Typography>
-          <Box>
+          <Box sx={{ marginLeft: { md: "70px", sm: "70px", xs: "70px" } }}>
             {/* Genera */}
             <Box sx={flexDisplay}>
               <Typography sx={categoryATypoSx}>Genre</Typography>
@@ -86,7 +87,9 @@ const DisplayMovie = () => {
             {/* Rating */}
             <Box sx={flexDisplay}>
               <Typography sx={categoryATypoSx}>Rating</Typography>
-              <Typography sx={categoryBTypoSx}>{`${data.Rating1} `}</Typography>
+              <Typography
+                sx={{ categoryBTypoSx, marginBottom: "25px" }}
+              >{`${data.Rating1} `}</Typography>
             </Box>
           </Box>
         </Box>

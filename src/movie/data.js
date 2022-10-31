@@ -64,22 +64,23 @@ export const movieData = {
   secondary: [
     {
       id: 5,
-      Movie: "https://i.postimg.cc/KvMYhw01/Avengers-Endgame.png",
-      Name: "Avengers Endgame",
+      Movie:
+        "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/66PWgqYeRjK7Sd36JKxr5QLoNVT.jpg",
+      Name: "Black Adam",
       Text: "Action,Adventures,Fantasy",
     },
     {
       id: 6,
       Movie:
-        "https://www.themoviedb.org/t/p/original/26GuBJpd9vLoCdrG5ocadINtt0h.jpg",
-      Name: "The Batman",
+        "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2uqv9MlFznqee0dcO3oHwlu9PNy.jpg",
+      Name: "Halloween Ends",
       Text: "Action,Thriller,Darma",
     },
     {
       id: 7,
       Movie:
-        "https://www.themoviedb.org/t/p/original/fkR1cw83KSaFcokZ1Uzh8Ukm3Dd.jpg",
-      Name: "The SandMan",
+        "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6EiRUJpuoeQPghrs3YNktfnqOVh.jpg",
+      Name: "Avatar",
       Text: "Sci-Fi & Fantasy, Drama",
     },
   ],

@@ -1,5 +1,6 @@
+/* eslint-disable no-dupe-keys */
 /* eslint-disable jsx-a11y/alt-text */
-import { Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { movieData } from "../data";
@@ -8,13 +9,19 @@ const SeeMoreMovie = () => {
     <>
       <Box
         sx={{
-          marginTop: "177px",
-          marginLeft: "72px",
+          marginTop: { lg: "177px", md: "177px", xs: "50px" },
+          marginLeft: { lg: "72px", md: "72px", xs: "20px" },
           marginRight: "72px",
           marginBottom: "147px",
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            display: { lg: "flex", md: "flex", xs: "flex" },
+            justifyContent: "space-between",
+            flexDirection: { lg: "row", xs: "column", md: "row", sm: "row" },
+          }}
+        >
           <Typography
             sx={{
               fontFamily: "Roboto",
@@ -24,15 +31,19 @@ const SeeMoreMovie = () => {
               lineHeight: "32px",
               textTransform: "capitalize",
               color: "#333",
+              fontSize: { md: "22px", sm: "20px", xs: "15px" },
+              fontWeight: { md: "700", sm: "600" },
             }}
           >
             movie
             <Typography
               sx={{
                 fontWeight: "400",
-                fontSize: "16px",
                 lineHeight: "24px",
                 color: "#414A63",
+                fontSize: { lg: "18px", md: "16px", sm: "15px", xs: "12px" },
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
               }}
             >
               Lorem ipsum dolor sit amet. Et dolorum libero eos enim tempora aut
@@ -41,7 +52,7 @@ const SeeMoreMovie = () => {
           <Typography
             sx={{
               fontWeight: "500",
-              fontSize: "24px",
+              fontSize: { lg: "24px", md: "18px", sm: "16px" },
               lineHeight: "32px",
               textAlign: "center",
               textTransform: "capitalization",
@@ -53,63 +64,53 @@ const SeeMoreMovie = () => {
         </Box>
         <Box>
           <Box
-            style={{
+            sx={{
               display: "flex",
-              justifyContent: "center",
-              alignItem: "center",
-              gap: "71px",
+              gap: "50px",
+              flexDirection: {
+                xs: "column",
+                md: "row",
+                lg: "row",
+              },
             }}
           >
             {movieData.secondary.map((items) => (
-              <>
-                <img
-                  src={items.Movie}
-                  style={{
-                    height: "530px",
-                    width: "360px",
-                    borderRadius: "20px",
-                    marginTop: "1.5rem",
-                    marginBottom: "1.5rem",
-                  }}
-                />
-              </>
-            ))}
-          </Box>
-          <Box>
-            <Box
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-around",
-                flexGrow: "1",
-              }}
-            >
-              {movieData.secondary.map((items) => (
-                <>
-                  <Box>
+              <Box>
+                <Box>
+                  <img
+                    src={items.Movie}
+                    style={{
+                      width: "80%",
+                      borderRadius: "20px",
+                      marginTop: "1.5rem",
+                      marginBottom: "1.5rem",
+                    }}
+                  />
+                </Box>
+
+                <Box>
+                  <Typography
+                    sx={{
+                      fontWeight: "500",
+                      fontSize: { lg: "24px", md: "18px", sm: "25px" },
+                      color: "#333",
+                    }}
+                  >
+                    {items.Name}
                     <Typography
                       sx={{
-                        fontWeight: "500",
-                        fontSize: "24px",
-                        color: "#333",
+                        fontFamily: "Roboto",
+                        fontWeight: "400",
+                        fontSize: { lg: "16px", md: "14px", sm: "25px" },
+                        color: "#414A63",
                       }}
                     >
-                      {items.Name}
-                      <Typography
-                        sx={{
-                          fontFamily: "Roboto",
-                          fontWeight: "400",
-                          fontSize: "16px",
-                          color: "#414A63",
-                        }}
-                      >
-                        {items.Text}
-                      </Typography>
+                      {items.Text}
                     </Typography>
-                  </Box>
-                </>
-              ))}
-            </Box>
+                  </Typography>
+                </Box>
+              </Box>
+            ))}
           </Box>
         </Box>
       </Box>

@@ -10,6 +10,9 @@ const CardBook = () => {
   let { id } = useParams();
   const mainHeaderBox = {
     marginTop: "30px",
+    marginBottom: "30px",
+    marginLeft: { md: "30px", sm: "30px", xs: "30px" },
+    marginRight: { md: "30px", sm: "30px" },
   };
   const headingTypo = {
     fontWeight: "700",
@@ -103,5 +106,4 @@ const CardBook = () => {
   );
 };
 
-// to={`/confirmTicket/${id}`}
 export default CardBook;

@@ -1,145 +1,208 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Box } from "@mui/material";
-import "./Footer.css";
 import TixLogo from "../../assets/tix id 1.svg";
 import GooglePlay from "../../assets/Google Play.svg";
 import AppStore from "../../assets/image 6.svg";
+import { BsInstagram } from "react-icons/bs";
+import { BsTwitter } from "react-icons/bs";
+import { BsFacebook } from "react-icons/bs";
 const Footer = () => {
   return (
     <>
       <Box>
-        <hr />
-        <footer class="footer">
-          <Box class="grid grid--5--cols">
-            <Box class="logo-col">
-              <img class="logo-footer" src={TixLogo} alt="" />
+        <footer>
+          <Box
+            sx={{
+              display: "grid",
+              marginLeft: { sm: "25px", md: "25px", xs: "25px" },
+              gridTemplateColumns: {
+                lg: "repeat(5,1fr)",
+                sm: "repeat(5,-1fr)",
+              },
+              gridTemplateRows: "1fr",
+              gridRowGap: "25px",
+              gridColumnGap: "25px",
+              marginTop: "26px",
+            }}
+          >
+            <Box
+              sx={{
+                marginLeft: { lg: "28px", md: "28px" },
+                marginRight: "auto",
+              }}
+            >
+              <img src={TixLogo} alt="tix-logo" style={{ width: "100%" }} />
             </Box>
 
-            <Box class="nav-col">
-              <p class="footer-heading">Perusahaan</p>
-              <ul class="footer-nav">
+            <Box>
+              <Box
+                sx={{
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  fontSize: "18px",
+                  lineHeight: "35px",
+                  color: "#333",
+                }}
+              >
+                <p>Perusahaan</p>
+              </Box>
+              <ul
+                style={{
+                  listStyleType: "none",
+                  marginTop: "15px",
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  flexDirection: "column",
+                  gap: "18px",
+                }}
+              >
                 <li>
-                  <a class="footer-link" href="#">
-                    Kontak Kami
-                  </a>
+                  <a>Kontak Kami</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    Tentang
-                  </a>
+                  <a>Tentang</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    Partner
-                  </a>
+                  <a>Partner</a>
                 </li>
               </ul>
             </Box>
 
-            <Box class="nav-col">
-              <p class="footer-heading">Seputar</p>
-              <ul class="footer-nav">
+            <Box>
+              <Box
+                sx={{
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  fontSize: { lg: "18px", md: "16px", sm: "14px" },
+                  lineHeight: "35px",
+                  color: "#333",
+                }}
+              >
+                <p>Seputar</p>
+              </Box>
+              <ul
+                style={{
+                  listStyleType: "none",
+                  marginTop: "15px",
+
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  flexDirection: "column",
+                  gap: "18px",
+                }}
+              >
                 <li>
-                  <a class="footer-link" href="#">
-                    TIX ID News
-                  </a>
+                  <a>TIX ID News</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    Bioskop
-                  </a>
+                  <a>Bioskop</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    Tiket Saya
-                  </a>
+                  <a>Tiket Saya</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    Pembayaran
-                  </a>
+                  <a>Pembayaran</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    Cicilan
-                  </a>
+                  <a>Cicilan</a>
                 </li>
               </ul>
             </Box>
-            <Box class="nav-col">
-              <p class="footer-heading">Dukungan</p>
-              <ul class="footer-nav">
+            <Box>
+              <Box
+                sx={{
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  fontSize: "18px",
+                  lineHeight: "35px",
+                  color: "#333",
+                }}
+              >
+                <p>Dukungan</p>
+              </Box>
+              <ul
+                style={{
+                  listStyleType: "none",
+                  marginTop: "15px",
+
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  flexDirection: "column",
+                  gap: "18px",
+                }}
+              >
                 <li>
-                  <a class="footer-link" href="#">
-                    Pusat Bantuan
-                  </a>
+                  <a>Pusat Bantuan</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    Kebijakan Privasi
-                  </a>
+                  <a>Kebijakan Privasi</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    FAQ
-                  </a>
+                  <a>FAQ</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    Syarat dan Ketentuan
-                  </a>
+                  <a>Syarat dan Ketentuan</a>
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    Update Covid-19
-                  </a>
+                  <a>Update Covid-19</a>
                 </li>
               </ul>
             </Box>
 
-            <Box class="nav-col">
-              <p class="footer-heading">Follow On Social Media</p>
-              <ul class="social-links">
-                <li>
-                  <a class="footer-link" href="#">
-                    <ion-icon
-                      class="social-icon"
-                      name="logo-instagram"
-                    ></ion-icon>
-                  </a>
-                </li>
-                <li>
-                  <a class="footer-link" href="#">
-                    <ion-icon
-                      class="social-icon"
-                      name="logo-facebook"
-                    ></ion-icon>
-                  </a>
-                </li>
-                <li>
-                  <a class="footer-link" href="#">
-                    <ion-icon
-                      class="social-icon"
-                      name="logo-twitter"
-                    ></ion-icon>
-                  </a>
-                </li>
+            <Box sx={{ marginRight: "25px" }}>
+              <Box
+                sx={{
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  fontSize: "18px",
+                  lineHeight: "35px",
+                  color: "#333",
+                }}
+              >
+                <p>Follow On Social Media</p>
+              </Box>
+              <ul>
+                <Box
+                  sx={{
+                    width: "150px",
+                    display: "flex",
+                    listStyleType: "none",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginTop: "24px",
+                    marginBottom: "24px",
+                  }}
+                >
+                  <li>
+                    <a>
+                      <BsInstagram style={{ width: "20px", height: "20px" }} />
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <BsFacebook style={{ width: "20px", height: "20px" }} />
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <BsTwitter style={{ width: "20px", height: "20px" }} />
+                    </a>
+                  </li>
+                </Box>
               </ul>
 
-              <Box class="media">
-                <p class="download-text">Download Aplikasi TIX ID</p>
-                <div class="download-info">
-                  <img src={GooglePlay} alt="" class="media-logo" />
+              <Box>
+                <p style={{ marginBottom: "24px" }}>Download Aplikasi TIX ID</p>
+                <div>
+                  <img src={GooglePlay} alt="" />
 
-                  <img src={AppStore} alt="" class="media-logo" />
+                  <img src={AppStore} alt="" />
                 </div>
               </Box>
 
-              <Box class="copyright">
-                <p class="copyright-text">
-                  2021 TIX ID - PT Nusantara Elang Sejahtera.
-                </p>
+              <Box sx={{ marginTop: "26px" }}>
+                <p>2021 TIX ID - PT Nusantara Elang Sejahtera.</p>
               </Box>
             </Box>
           </Box>

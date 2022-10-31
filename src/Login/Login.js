@@ -100,7 +100,7 @@ const Login = () => {
                 sm: "center",
               },
               paddingTop: {
-                md: "64px",
+                md: "14px",
                 sm: "25px",
                 xs: "15px",
               },
@@ -114,21 +114,20 @@ const Login = () => {
                 sm: "25px",
                 xs: "15px",
               },
-              paddingLeft: {
-                xs: "7px",
-              },
             }}
           >
             <CardContent
               sx={{
                 width: {
+                  xl: "620px",
                   lg: "670px",
                   md: "550px",
                   sm: "99%",
                   xs: "342px",
                 },
                 height: {
-                  lg: "570px",
+                  xl: "568px",
+                  lg: "510px",
                   md: "570px",
                   xs: "490px",
                 },
@@ -158,7 +157,7 @@ const Login = () => {
                     marginTop: {
                       xs: "57px",
                       sm: "25px",
-                      md: "98px",
+                      md: "10px",
                     },
                   }}
                 >
