@@ -51,7 +51,7 @@ const SlotSelection = () => {
     color: "#5A637A",
     width: "325px",
     marginRight: "72px",
-    marginLeft: { xs: "50px" },
+    marginLeft: { xs: "50px", lg: "72px", md: "72px" },
   };
 
   const gridLayout = {
@@ -62,9 +62,8 @@ const SlotSelection = () => {
       sm: "repeat(4,0fr)",
       xs: "repeat(2,0fr)",
     },
-    marginLeft: { xs: "50px" },
     gridTemplateRows: "repeat(2,0fr)",
-    // marginLeft: "66px",
+    marginLeft: { xs: "50px", lg: "72px", md: "72px" },
     gap: "24px",
     marginTop: "16px",
     gridRowGap: "10px",
@@ -103,7 +102,7 @@ const SlotSelection = () => {
 
   const locationSx = {
     color: "#5A637A",
-    marginLeft: { xs: "50px" },
+    marginLeft: { xs: "50px", lg: "72px", md: "72px" },
     marginTop: "18px",
     fontWeight: "400",
     fontSize: "16px",
@@ -136,7 +135,13 @@ const SlotSelection = () => {
 
   return (
     <>
-      <Box sx={{ marginLeft: "10px", overflowX: "hidden" }}>
+      <Box
+        className="boost"
+        sx={{
+          marginLeft: { xs: "10px" },
+          overflowX: "hidden",
+        }}
+      >
         {theatreData.map((item) => (
           <Box>
             <Box
@@ -145,7 +150,12 @@ const SlotSelection = () => {
                 marginTop: "42px",
               }}
             >
-              <Box sx={{ marginRight: "16px" }}>
+              <Box
+                sx={{
+                  marginRight: "16px",
+                  marginLeft: { lg: "72px", md: "72px" },
+                }}
+              >
                 <img src={`${Star}`} />
               </Box>
               <Box sx={{ width: { lg: "100%" } }}>

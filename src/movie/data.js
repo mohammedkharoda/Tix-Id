@@ -274,7 +274,7 @@ export const theatreData = [
   // ---- THEATER - 3 -----
   {
     id: "theatreData-3",
-    name: "PLAZA INDONESIA XXI",
+    name: "Plaza Indonesia",
     address: "Trek.L.A",
     theatreLogo: "XXI",
     locationId: "loc--1",
