@@ -51,30 +51,24 @@ const SlotSelection = () => {
     color: "#5A637A",
     width: "325px",
     marginRight: "72px",
-  };
-
-  const theaterNames = {
-    marginLeft: "66px",
+    marginLeft: { xs: "50px" },
   };
 
   const gridLayout = {
     display: "grid",
-    gridTemplateColumns: "repeat(4,0fr)",
+    gridTemplateColumns: {
+      lg: "repeat(4,0fr)",
+      md: "repeat(4,0fr)",
+      sm: "repeat(4,0fr)",
+      xs: "repeat(2,0fr)",
+    },
+    marginLeft: { xs: "50px" },
     gridTemplateRows: "repeat(2,0fr)",
-    marginLeft: "66px",
+    // marginLeft: "66px",
     gap: "24px",
     marginTop: "16px",
     gridRowGap: "10px",
     marginBottom: "36px",
-  };
-
-  const disableTime = {
-    textAlign: "center",
-    background: "#DADFEB",
-    borderRadius: "4px",
-    width: "77px",
-    height: "40px",
-    padding: "12px 20px",
   };
 
   const notSelected = {
@@ -108,8 +102,8 @@ const SlotSelection = () => {
   };
 
   const locationSx = {
-    marginLeft: "66px",
     color: "#5A637A",
+    marginLeft: { xs: "50px" },
     marginTop: "18px",
     fontWeight: "400",
     fontSize: "16px",
@@ -142,69 +136,71 @@ const SlotSelection = () => {
 
   return (
     <>
-      {theatreData.map((item) => (
-        <Box>
-          <Box
-            style={{
-              display: "flex",
-              marginTop: "42px",
-            }}
-          >
-            <Box sx={{ marginLeft: "66px", marginRight: "16px" }}>
-              <img src={`${Star}`} />
-            </Box>
-            <Box sx={{ width: { lg: "100%" } }}>
-              <Typography sx={typoHeading}>{item.name}</Typography>
+      <Box sx={{ marginLeft: "10px", overflowX: "hidden" }}>
+        {theatreData.map((item) => (
+          <Box>
+            <Box
+              style={{
+                display: "flex",
+                marginTop: "42px",
+              }}
+            >
+              <Box sx={{ marginRight: "16px" }}>
+                <img src={`${Star}`} />
+              </Box>
+              <Box sx={{ width: { lg: "100%" } }}>
+                <Typography sx={typoHeading}>{item.name}</Typography>
+              </Box>
+              <Box>
+                {item.theatreLogo.match("CGV") ? (
+                  <Box sx={ccvBadge}>{item.theatreLogo}</Box>
+                ) : (
+                  <Box sx={cinemaBadge}>{item.theatreLogo}</Box>
+                )}
+              </Box>
             </Box>
             <Box>
-              {item.theatreLogo.match("CGV") ? (
-                <Box sx={ccvBadge}>{item.theatreLogo}</Box>
-              ) : (
-                <Box sx={cinemaBadge}>{item.theatreLogo}</Box>
-              )}
+              <Typography sx={locationSx}>{item.address}</Typography>
+            </Box>
+            <Box>
+              {item.showType.map((nameTheater) => (
+                <Box>
+                  <Box>
+                    <Typography sx={subHeadingTypo}>
+                      {nameTheater.name}
+                    </Typography>
+                  </Box>
+                  <Box component="section" sx={gridLayout}>
+                    {nameTheater.show.map((timings) => (
+                      <Typography
+                        sx={
+                          timings.id === selectedSlot.showType.showTypeId
+                            ? selected
+                            : notSelected
+                        }
+                        onClick={() => {
+                          ToggleSlotHandler();
+                          dataTheaterHandler({
+                            theatreName: item.name,
+                            showTypeName: nameTheater.name,
+                            showTime: timings.showTime,
+                            showPrice: timings.showPrice,
+                            showTypeId: timings.id,
+                            theaterId: item.id,
+                            movieId: movieId,
+                          });
+                        }}
+                      >
+                        {timings.showTime}
+                      </Typography>
+                    ))}
+                  </Box>
+                </Box>
+              ))}
             </Box>
           </Box>
-          <Box>
-            <Typography sx={locationSx}>{item.address}</Typography>
-          </Box>
-          <Box>
-            {item.showType.map((nameTheater) => (
-              <Box>
-                <Box sx={theaterNames}>
-                  <Typography sx={subHeadingTypo}>
-                    {nameTheater.name}
-                  </Typography>
-                </Box>
-                <Box component="section" sx={gridLayout}>
-                  {nameTheater.show.map((timings) => (
-                    <Typography
-                      sx={
-                        timings.id === selectedSlot.showType.showTypeId
-                          ? selected
-                          : notSelected
-                      }
-                      onClick={() => {
-                        ToggleSlotHandler();
-                        dataTheaterHandler({
-                          theatreName: item.name,
-                          showTypeName: nameTheater.name,
-                          showTime: timings.showTime,
-                          showPrice: timings.showPrice,
-                          showTypeId: timings.id,
-                          theaterId: item.id,
-                          movieId: movieId,
-                        });
-                      }}
-                    >
-                      {timings.showTime}
-                    </Typography>
-                  ))}
-                </Box>
-              </Box>
-            ))}
-          </Box>
-        </Box>
-      ))}
+        ))}
+      </Box>
     </>
   );
 };

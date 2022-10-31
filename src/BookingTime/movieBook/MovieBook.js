@@ -23,7 +23,7 @@ const MovieBook = () => {
   const boxSX = {
     padding: "18px",
     border: "1px solid #5A637A",
-    width: "86px",
+    width: { lg: "86px", md: "86px", sm: "86px", xs: "50%" },
     height: "82px",
     borderRadius: "8px",
     cursor: "pointer",
@@ -34,11 +34,17 @@ const MovieBook = () => {
     },
   };
   const typographySx = {
-    display: "inline-block",
+    display: {
+      lg: "inline-block",
+      md: "inline-block",
+      sm: "inline-block",
+      xs: "",
+    },
     whiteSpace: "nowrap",
     fontWeight: "500",
     fontSize: "16px",
     color: "inherit",
+    textAlign: "center",
   };
 
   const typoDaySx = {
@@ -62,10 +68,16 @@ const MovieBook = () => {
 
   return (
     <>
-      <Box component="section" sx={{ marginTop: "24px" }}>
+      <Box component="section" sx={{ marginTop: "24px", overflowX: "hidden" }}>
         <Navbar />
       </Box>
-      <Box component="section" sx={{ marginTop: "100px", marginLeft: "72px" }}>
+      <Box
+        component="section"
+        sx={{
+          marginTop: "100px",
+          marginLeft: { lg: "72px", md: "72px", sm: "72px", xs: "15px" },
+        }}
+      >
         <Box>
           <Typography variant="h5">Select Date</Typography>
           <Typography
@@ -84,6 +96,7 @@ const MovieBook = () => {
             sx={{
               marginTop: "30px",
               display: "flex",
+              flexDirection: { lg: "row", md: "row", xs: "column" },
               gap: "24px",
               alignItems: "center",
             }}
@@ -111,7 +124,6 @@ const MovieBook = () => {
           </Box>
         </Box>
       </Box>
-      <hr style={{ width: "630px", marginLeft: "72px", marginTop: "22px" }} />
     </>
   );
 };

@@ -21,7 +21,7 @@ const CardBook = () => {
   };
   const margins = {
     marginTop: "36px",
-    marginLeft: "24px",
+    marginLeft: { lg: "24px", xs: "10px" },
     marginRight: "24px",
     marginBottom: "174px",
   };
@@ -66,7 +66,7 @@ const CardBook = () => {
         <Box
           sx={{
             border: "1px solid #5A637A",
-            height: "333px",
+            height: { lg: "333px", md: "333px", sm: "333px", xs: "368px" },
             borderRadius: "12px",
           }}
         >
