@@ -1,6 +1,6 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-restricted-globals */
 import { createSlice } from "@reduxjs/toolkit";
-import { couponList } from "../../movie/data";
 
 const initialState = {
   SelectedTheatre: {
@@ -37,14 +37,6 @@ const initialState = {
   SeatSelected: {
     seatName: [],
   },
-
-  coupon: {
-    couponList: couponList,
-    couponData: "",
-    couponApplied: false,
-    totalDiscount: "",
-    totalAmount: 0,
-  },
 };
 
 const slotSlice = createSlice({
@@ -70,10 +62,6 @@ const slotSlice = createSlice({
           },
         },
       };
-      console.log(
-        "From Redux ==>>",
-        state.SelectedTheatre.showType.show.showPrice
-      );
     },
 
     dateShow(state, action) {
@@ -93,21 +81,13 @@ const slotSlice = createSlice({
         seatName: seatSelect,
       };
     },
-
-    addCoupon(state, action) {
-      const coupon = action.payload;
-      state.couponData = coupon;
-      const found = state.couponList.find(
-        (item) => item.name === coupon.toLowerCase()
-      );
-      state.totalDiscount = Math.round(
-        (state.totalAmount / 100) * found.discountedPercentage
-      );
-      state.totalAmount -= Math.round(
-        (state.totalAmount / 100) * found.discountedPercentage
-      );
-
-      state.couponApplied = true;
+    removeSelectedSeats(state, action) {
+      const removeSeats = action.payload;
+      state.SeatSelected.seatName.filter((item) => {
+        if (item === removeSeats) {
+          console.log("==>>", item);
+        }
+      });
     },
   },
 });

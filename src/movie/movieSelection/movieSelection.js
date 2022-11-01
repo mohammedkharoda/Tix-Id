@@ -57,7 +57,6 @@ const movieSelection = () => {
               <Box
                 sx={{
                   paddingLeft: {
-                    xs: "12px",
                     sm: "45px",
                     md: "65px",
                     lg: "75px",

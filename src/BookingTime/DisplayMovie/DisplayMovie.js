@@ -17,6 +17,12 @@ const DisplayMovie = () => {
     movieData.primary.find((item) => {
       if (item.id == id) {
         setData(item);
+      } else {
+        movieData.secondary.find((item) => {
+          if (item.id == id) {
+            setData(item);
+          }
+        });
       }
     });
   }, []);
@@ -27,7 +33,7 @@ const DisplayMovie = () => {
     lineHeight: "32px",
     marginTop: "48px",
     textTransform: "Uppercase",
-    textAlign: { md: "center", sm: "center", xs: "center" },
+    textAlign: { sm: "center", xs: "center" },
   };
 
   const categoryATypoSx = {
@@ -54,27 +60,39 @@ const DisplayMovie = () => {
   return (
     <>
       <Box component="section">
-        <Box component="div" sx={{ width: "413px" }}>
-          <img
-            src={data.linkImg}
-            style={{
-              width: "100%",
-              height: "364px",
-              borderRadius: "5px",
-              objectFit: "contain",
-              objectPosition: "bottom",
+        <Box component="div">
+          <Box
+            sx={{
+              marginLeft: { lg: "0", md: "70px", xs: "0px" },
+              width: { lg: "413px", md: "413px" },
+              height: { lg: "364px", md: "364px", sm: "364px", xs: "364px" },
             }}
-          />
-          <Typography sx={typoSx}>{data.title}</Typography>
-          <Box sx={{ marginLeft: { md: "70px", sm: "70px", xs: "70px" } }}>
+          >
+            <img
+              src={data.linkImg}
+              style={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "5px",
+                objectFit: "cover",
+                objectPosition: "top",
+              }}
+            />
+          </Box>
+          <Box
+            sx={{ marginLeft: { lg: "0", md: "70px", sm: "70px", xs: "10px" } }}
+          >
             {/* Genera */}
+            <Box sx={flexDisplay}>
+              <Typography sx={typoSx}>{data.title}</Typography>
+            </Box>
             <Box sx={flexDisplay}>
               <Typography sx={categoryATypoSx}>Genre</Typography>
               <Typography sx={categoryBTypoSx}>{`${data.Genera}`}</Typography>
             </Box>
             {/* Time */}
             <Box sx={flexDisplay}>
-              <Typography sx={{ categoryATypoSx }}>Time</Typography>
+              <Typography sx={categoryATypoSx}>Time</Typography>
               <Typography
                 sx={categoryBTypoSx}
               >{`${data.TimeHH}hr ${data.TimeMM}min`}</Typography>

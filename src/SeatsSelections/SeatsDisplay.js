@@ -16,7 +16,30 @@ const SeatsDisplay = () => {
   const [seatNameRender, setSeatNameRender] = useState();
   const [seatSideRender, setSeatSideRender] = useState();
   const [multipleSeats, setMultipleSeats] = useState([]);
+  const [isExistData, setIsExistsData] = useState([]);
   const dispatch = useDispatch();
+
+  // ==>> Calculating the Total Amount of the Tickets
+  let filteredData = seatsSelect.seatName.filter(
+    (premium) =>
+      premium.startsWith("A") ||
+      premium.startsWith("B") ||
+      premium.startsWith("C")
+  );
+
+  let RegularData = seatsSelect.seatName.filter(
+    (premium) =>
+      premium.startsWith("D") ||
+      premium.startsWith("E") ||
+      premium.startsWith("F") ||
+      premium.startsWith("G") ||
+      premium.startsWith("H")
+  );
+
+  let regularAmount = selectedSlot.showType.show.showPrice * RegularData.length;
+  let premiumPrice = selectedSlot.showType.show.showPrice + 100;
+  let total = regularAmount + premiumPrice * filteredData.length;
+
   // ==>> For Rendering the All the Seats
   useEffect(() => {
     //  ====>> For 1st Set of the SEATS
@@ -124,15 +147,13 @@ const SeatsDisplay = () => {
   const { id } = useParams();
 
   const handler = (SeatName) => {
-    let isExist = seatsSelect.seatName.indexOf(
-      (seat) => seat === SeatName.name
-    );
+    let isExist = seatsSelect.seatName.find((seat) => seat === SeatName.name);
+    // console.log(SeatName.name);
+    // console.log("exits ==>>", isExist);
+    // console.log("NAME =>", seatsSelect.seatName);
 
-    if (isExist !== -1) {
-      let seatRemoving = seatsSelect.seatName;
-      let tempName = seatRemoving.slice(isExist, 1);
-      dispatch(slotActions.seatsSelected([...tempName]));
-      console.log("Remove ==>>  ", tempName);
+    if (isExist == SeatName.name) {
+      dispatch(slotActions.removeSelectedSeats(isExist));
     } else {
       let multipleSeatsHandler = [...multipleSeats, SeatName.name];
       if (seatsSelect.seatName.length < 5) {
@@ -165,7 +186,11 @@ const SeatsDisplay = () => {
       >
         <Box component="div">
           <Typography
-            sx={{ fontSize: "36px", fontWeight: "700", marginLeft: "72px" }}
+            sx={{
+              fontSize: "36px",
+              fontWeight: "700",
+              marginLeft: { lg: "72px", md: "72px", sm: "40px", xs: "10px" },
+            }}
           >
             Select Seat
           </Typography>
@@ -173,7 +198,7 @@ const SeatsDisplay = () => {
             sx={{
               fontWeight: "400",
               marginBottom: "86px",
-              marginLeft: "72px",
+              marginLeft: { lg: "72px", md: "72px", sm: "40px", xs: "10px" },
             }}
           >
             The Screen You Are Watching at {selectedSlot.showType.showTypeName}
@@ -184,9 +209,9 @@ const SeatsDisplay = () => {
             className="SeatsBox"
             sx={{
               display: "flex",
-              marginLeft: "70px",
+              marginLeft: { lg: "70px", md: "70px", sm: "70px", xs: "15px" },
               gap: "50px",
-              marginRight: "70px",
+              marginRight: { lg: "70px", md: "70px", sm: "70px", xs: "10px" },
             }}
           >
             <Box sx={{ cursor: "pointer" }}>
@@ -209,8 +234,6 @@ const SeatsDisplay = () => {
                       }}
                       onClick={() => handler(seatData)}
                     >
-                      {/* {console.log("Redux ==>>", seatsSelect.seatName)} */}
-                      {/* {console.log("Seats ==>>", seatData.name)} */}
                       {seatData.name}
                     </Box>
                   );
@@ -268,7 +291,9 @@ const SeatsDisplay = () => {
                 justifyContent: "space-between",
                 margin: "0px 25px",
                 alignItems: { lg: "center", xs: "flex-start" },
-                flexDirection: { lg: "row", xs: "column" },
+                flexDirection: { lg: "row", xs: "column", sm: "row" },
+                gap: { sm: "30px" },
+                flexWrap: { sm: "wrap" },
                 marginTop: "60px",
                 marginBottom: "126px",
               }}
@@ -284,8 +309,7 @@ const SeatsDisplay = () => {
                     marginTop: "12px",
                   }}
                 >
-                  {selectedSlot.showType.show.showPrice *
-                    seatsSelect.seatName.length}
+                  {selectedSlot.showType.showTypeName ? total : " "}
                 </Typography>
               </Box>
               <Box component="div" className="Seats">
@@ -293,7 +317,12 @@ const SeatsDisplay = () => {
                 <Typography
                   sx={{
                     fontWeight: "700",
-                    fontSize: "36px",
+                    fontSize: {
+                      lg: "36px",
+                      md: "36px",
+
+                      xs: "26px",
+                    },
                     lineHeight: "42px",
                     marginTop: "12px",
                     marginBottom: "15px",
@@ -309,7 +338,7 @@ const SeatsDisplay = () => {
                     textTransform: "capitalize",
                     textAlign: "center",
                     padding: "12px 8px",
-                    marginBottom: { xs: "25px", lg: "0", md: "0" },
+                    marginBottom: { xs: "25px", lg: "0", md: "25px" },
                   }}
                 >
                   <Typography

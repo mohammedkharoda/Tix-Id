@@ -11,7 +11,7 @@ const CardBook = () => {
   const mainHeaderBox = {
     marginTop: "30px",
     marginBottom: "30px",
-    marginLeft: { md: "30px", sm: "30px", xs: "30px" },
+    marginLeft: { md: "30px", sm: "30px", xs: "0px" },
     marginRight: { md: "30px", sm: "30px" },
   };
   const headingTypo = {
@@ -67,7 +67,7 @@ const CardBook = () => {
           sx={{
             border: "1px solid #5A637A",
             height: { lg: "333px", md: "333px", sm: "333px", xs: "368px" },
-            borderRadius: "12px",
+            borderRadius: { lg: "12px", md: "12px", sm: "8px" },
           }}
         >
           <Box sx={margins}>
@@ -80,9 +80,11 @@ const CardBook = () => {
                 {dateSelector.day},{dateSelector.date}
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Typography sx={boldText}>
-                  {selectedSlot.theatreName}
-                </Typography>
+                <Box sx={{ width: "258px  " }}>
+                  <Typography sx={boldText}>
+                    {selectedSlot.theatreName}
+                  </Typography>
+                </Box>
                 <Typography sx={boldText}>
                   {selectedSlot.showType.show.showTime}
                 </Typography>

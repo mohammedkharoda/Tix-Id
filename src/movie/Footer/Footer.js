@@ -18,7 +18,8 @@ const Footer = () => {
               marginLeft: { sm: "25px", md: "25px", xs: "25px" },
               gridTemplateColumns: {
                 lg: "repeat(5,1fr)",
-                sm: "repeat(5,-1fr)",
+                md: "repeat(5,1fr)",
+                sm: "repeat(4,1fr)",
               },
               gridTemplateRows: "1fr",
               gridRowGap: "25px",

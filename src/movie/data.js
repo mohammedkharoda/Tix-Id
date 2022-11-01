@@ -64,24 +64,39 @@ export const movieData = {
   secondary: [
     {
       id: 5,
-      Movie:
+      linkImg:
         "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/66PWgqYeRjK7Sd36JKxr5QLoNVT.jpg",
-      Name: "Black Adam",
-      Text: "Action,Adventures,Fantasy",
+      title: "Black Adam",
+      Text: "Action, Fantasy, Science Fiction",
+      Genera: "Action, Fantasy, Science Fiction",
+      TimeHH: 2,
+      TimeMM: 5,
+      Director: "Jaume Collet-Serra",
+      Rating1: "PG-13",
     },
     {
       id: 6,
-      Movie:
+      linkImg:
         "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2uqv9MlFznqee0dcO3oHwlu9PNy.jpg",
-      Name: "Halloween Ends",
-      Text: "Action,Thriller,Darma",
+      title: "Halloween Ends",
+      Text: "Horror, Thriller",
+      Genera: "Horror, Thriller",
+      TimeHH: 1,
+      TimeMM: 51,
+      Director: "David Gordon Green",
+      Rating1: "R",
     },
     {
       id: 7,
-      Movie:
-        "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6EiRUJpuoeQPghrs3YNktfnqOVh.jpg",
-      Name: "Avatar",
-      Text: "Sci-Fi & Fantasy, Drama",
+      linkImg:
+        "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ci2vrL970Q9Ckcpc3GVYlEwhx4n.jpg",
+      title: "Wakanda Forever",
+      Text: "Action, Adventure, Science Fiction",
+      Genera: "Action, Adventure, Science Fiction",
+      TimeHH: 2,
+      TimeMM: 45,
+      Director: "Ryan Coogler",
+      Rating1: "PG-13",
     },
   ],
 };
@@ -242,10 +257,10 @@ export const theatreData = [
   // ---- THEATER - 2 -----
   {
     id: "theatreData-2",
-    name: " SQUARE CINÉPOLIS",
+    name: " Square Cinemapolis",
     address: "Trek.L.A",
     locationId: "loc--2",
-    theatreLogo: "Cinemapolis",
+    theatreLogo: "IMAX",
     movies: [1, 2, 3, 4],
     showType: [
       {
@@ -253,7 +268,7 @@ export const theatreData = [
         name: "INOX DR WORLD",
         show: [
           {
-            id: "show-theaterData-2--2",
+            id: "show-theaterData-2--1",
             showTime: "15:00",
             showPrice: 350,
           },

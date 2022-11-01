@@ -58,7 +58,7 @@ const MovieBook = () => {
   const selected = {
     padding: "18px",
     border: "1px solid #5A637A",
-    width: "86px",
+    width: { lg: "86px", md: "86px", sm: "86px", xs: "50%" },
     height: "82px",
     borderRadius: "8px",
     cursor: "pointer",
@@ -75,7 +75,7 @@ const MovieBook = () => {
         component="section"
         sx={{
           marginTop: "100px",
-          marginLeft: { lg: "72px", md: "72px", sm: "72px", xs: "15px" },
+          marginLeft: { lg: "72px", md: "72px", sm: "10px", xs: "15px" },
         }}
       >
         <Box>
@@ -96,7 +96,7 @@ const MovieBook = () => {
             sx={{
               marginTop: "30px",
               display: "flex",
-              flexDirection: { lg: "row", md: "row", xs: "column" },
+              flexDirection: { lg: "row", md: "row", sm: "row", xs: "column" },
               gap: "24px",
               alignItems: "center",
             }}

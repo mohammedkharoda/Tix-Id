@@ -6,19 +6,19 @@ import {
   useMediaQuery,
   Menu,
   MenuItem,
-  Button,
   IconButton,
-  ListItemIcon,
 } from "@mui/material";
 import TixLogo from "../../assets/tix id 1.svg";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import { HiMenu } from "react-icons/hi";
+import { IoMdClose } from "react-icons/io";
 const Navbar = () => {
   const [anchor, setAnchor] = React.useState(null);
   const open = Boolean(anchor);
   const handleMenu = (event) => {
     setAnchor(event.currentTarget);
+    console.log(event.currentTarget);
   };
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const FormSubmitHandler = () => {
@@ -45,7 +45,7 @@ const Navbar = () => {
             lg: "72px",
             md: "72px",
             sm: "120px",
-            xs: "72px",
+            xs: "30px",
           },
         }}
       >
@@ -54,11 +54,11 @@ const Navbar = () => {
           sx={{
             marginTop: "24px",
             marginBottom: "24px",
-            marginLeft: "72px",
+            marginLeft: { lg: "72px", md: "72px", sm: "20px", xs: "20px" },
             height: 32,
             width: 64,
           }}
-          alt="Your logo."
+          alt="Tix Logo."
           src={TixLogo}
         />
         {isMobile ? (
@@ -75,19 +75,22 @@ const Navbar = () => {
                 vertical: "top",
                 horizontal: "right",
               }}
-              KeepMounted
+              keepMounted
               transformOrigin={{
                 vertical: "top",
                 horizontal: "right",
               }}
               open={open}
             >
+              <IconButton onClick={() => setAnchor(null)}>
+                <IoMdClose />
+              </IconButton>
               <MenuItem onClick={() => setAnchor(null)}>
                 <Box
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "48px",
+                    gap: "30px",
                   }}
                 >
                   <Link to="/" style={{ textDecoration: "none" }}>

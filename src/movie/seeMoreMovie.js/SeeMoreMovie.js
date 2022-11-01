@@ -3,6 +3,7 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { Link } from "react-router-dom";
 import { movieData } from "../data";
 const SeeMoreMovie = () => {
   return (
@@ -10,8 +11,9 @@ const SeeMoreMovie = () => {
       <Box
         sx={{
           marginTop: { lg: "177px", md: "177px", xs: "50px" },
-          marginLeft: { lg: "72px", md: "72px", xs: "20px" },
-          marginRight: "72px",
+          marginLeft: { lg: "72px", md: "72px" },
+          paddingLeft: { lg: "0px", md: "0px", xs: "50px" },
+          marginRight: { lg: "72px", md: "72px" },
           marginBottom: "147px",
         }}
       >
@@ -31,7 +33,7 @@ const SeeMoreMovie = () => {
               lineHeight: "32px",
               textTransform: "capitalize",
               color: "#333",
-              fontSize: { md: "22px", sm: "20px", xs: "15px" },
+              fontSize: { md: "22px", sm: "20px", xs: "18px" },
               fontWeight: { md: "700", sm: "600" },
             }}
           >
@@ -41,9 +43,8 @@ const SeeMoreMovie = () => {
                 fontWeight: "400",
                 lineHeight: "24px",
                 color: "#414A63",
-                fontSize: { lg: "18px", md: "16px", sm: "15px", xs: "12px" },
-                whiteSpace: "nowrap",
-                textOverflow: "ellipsis",
+                fontSize: { lg: "18px", md: "16px", sm: "15px", xs: "13px" },
+                overflowWrap: { xs: "break-word" },
               }}
             >
               Lorem ipsum dolor sit amet. Et dolorum libero eos enim tempora aut
@@ -77,15 +78,17 @@ const SeeMoreMovie = () => {
             {movieData.secondary.map((items) => (
               <Box>
                 <Box>
-                  <img
-                    src={items.Movie}
-                    style={{
-                      width: "80%",
-                      borderRadius: "20px",
-                      marginTop: "1.5rem",
-                      marginBottom: "1.5rem",
-                    }}
-                  />
+                  <Link to={`/movieBook/${items.id}`}>
+                    <img
+                      src={items.linkImg}
+                      style={{
+                        width: "80%",
+                        borderRadius: "20px",
+                        marginTop: "1.5rem",
+                        marginBottom: "1.5rem",
+                      }}
+                    />
+                  </Link>
                 </Box>
 
                 <Box>
@@ -96,7 +99,7 @@ const SeeMoreMovie = () => {
                       color: "#333",
                     }}
                   >
-                    {items.Name}
+                    {items.title}
                     <Typography
                       sx={{
                         fontFamily: "Roboto",
