@@ -48,18 +48,21 @@ const Navbar = () => {
           },
         }}
       >
-        <Box
-          component="img"
-          sx={{
-            marginTop: "24px",
-            marginBottom: "24px",
-            marginLeft: { lg: "45px", md: "45px", sm: "45px", xs: "20px" },
-            height: 32,
-            width: 64,
-          }}
-          alt="Tix Logo."
-          src={TixLogo}
-        />
+        <Link to="/">
+          <Box
+            component="img"
+            sx={{
+              marginTop: "24px",
+              marginBottom: "24px",
+              marginLeft: { lg: "45px", md: "45px", sm: "45px", xs: "20px" },
+              height: 32,
+              width: 64,
+            }}
+            alt="Tix Logo."
+            src={TixLogo}
+          />
+        </Link>
+
         {isMobile ? (
           <>
             <IconButton onClick={handleMenu}>

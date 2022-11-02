@@ -89,6 +89,12 @@ const slotSlice = createSlice({
       );
     },
   },
+
+  resetRedux(state) {
+    state.DateAndDay = "";
+    state.SeatSelected = [];
+    state.SelectedTheatre = {};
+  },
 });
 
 export const slotActions = slotSlice.actions;

@@ -343,7 +343,7 @@ export const couponList = [
   {
     id: 1,
     name: "movie50",
-    discountedPercentage: 10,
+    discountedPercentage: 50,
   },
   {
     id: 2,

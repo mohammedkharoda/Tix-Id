@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../movie/Footer/Footer";
 import { useNavigate, useParams } from "react-router-dom";
 import { movieData } from "../movie/data";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Protected from "../Login/Protected";
 const FinalTicket = () => {
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
@@ -17,7 +17,8 @@ const FinalTicket = () => {
   useEffect(() => {
     if (id) {
       let temp = movieData.primary.find((movieInfo) => movieInfo.id === +id);
-      setMovieInfo(temp);
+      let temp2 = movieData.secondary.find((movieInfo) => movieInfo.id === +id);
+      setMovieInfo(temp || temp2);
     }
   }, [id]);
 
@@ -35,7 +36,7 @@ const FinalTicket = () => {
             sx={{
               fontWeight: "700",
               fontSize: "56px",
-              fontFamily: "Montserrat",
+              fontFamily: "Noto Sans",
               textTransform: "capitalize",
             }}
           >
@@ -57,13 +58,13 @@ const FinalTicket = () => {
           </Box>
           <Typography
             sx={{
-              fontWeight: 400,
+              fontWeight: 500,
               fontSize: "20px",
               overflowWrap: "normal",
             }}
           >
-            You have Book the Show for the {movieTitle} and The Total Seats are{" "}
-            {seatsSelect.seatName.length} . Have a Nice Day!!
+            You have Book the Show of {movieTitle}! and The Total Seats are{" "}
+            {seatsSelect.seatName.length}.
           </Typography>
           <Box onClick={homePage}>
             <Button

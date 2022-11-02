@@ -7,11 +7,9 @@ import { useSelector } from "react-redux";
 import Navbar from "../movie/Navbar/Navbar";
 import { ReactComponent as LeftArrow } from "../assets/arrowLeft.svg";
 import Footer from "../movie/Footer/Footer";
-import Paytm from "../assets/Paytm-Logo.wine.svg";
-import PhonePe from "../assets/PhonePe-Logo.wine.svg";
-import GooglePay from "../assets/Google_Pay-Logo.wine.svg";
 import { couponList } from "../movie/data";
 import Protected from "../Login/Protected";
+import GooglePayButton from "@google-pay/button-react";
 const ConfirmTicket = () => {
   let { id } = useParams();
   const navigate = useNavigate();
@@ -424,7 +422,7 @@ const ConfirmTicket = () => {
                       </Typography>
                       <Typography
                         sx={{
-                          fontFamily: "Montserrat",
+                          fontFamily: "Noto Sans",
                           fontStyle: "normal",
                           fontWeight: "700",
                           fontSize: "16px",
@@ -475,7 +473,7 @@ const ConfirmTicket = () => {
                       </Typography>
                       <Typography
                         sx={{
-                          fontFamily: "Montserrat",
+                          fontFamily: "Noto Sans",
                           fontStyle: "normal",
                           fontWeight: "700",
                           fontSize: "16px",
@@ -589,7 +587,7 @@ const ConfirmTicket = () => {
                           },
                         }}
                       >
-                        {isCouponApplied ? `${coupon.slice(-2)}%` : 0}
+                        {isCouponApplied ? calculatedTotal - total : 0}
                       </Typography>
                     </Box>
                     <hr style={{ backgroundColor: "#000" }} />
@@ -622,7 +620,7 @@ const ConfirmTicket = () => {
                           },
                         }}
                       >
-                        {isCouponApplied ? calculatedTotal : 0}
+                        {isCouponApplied ? calculatedTotal : total}
                       </Typography>
                     </Box>
                     <hr style={{ backgroundColor: "#000" }} />
@@ -663,14 +661,47 @@ const ConfirmTicket = () => {
                   </Box>
                   {/* Card Details */}
                   <Box className="Wallets" sx={{ display: "flex" }}>
-                    <Box className="Paytm">
-                      <img src={Paytm} style={{ width: "70px" }} />
-                    </Box>
-                    <Box className="PhonePe">
-                      <img src={PhonePe} style={{ width: "70px" }} />
-                    </Box>
                     <Box className="GooglePay">
-                      <img src={GooglePay} style={{ width: "70px" }} />
+                      <GooglePayButton
+                        environment="TEST"
+                        paymentRequest={{
+                          apiVersion: 2,
+                          apiVersionMinor: 0,
+                          allowedPaymentMethods: [
+                            {
+                              type: "CARD",
+                              parameters: {
+                                allowedAuthMethods: [
+                                  "PAN_ONLY",
+                                  "CRYPTOGRAM_3DS",
+                                ],
+                                allowedCardNetworks: ["MASTERCARD", "VISA"],
+                              },
+                              tokenizationSpecification: {
+                                type: "PAYMENT_GATEWAY",
+                                parameters: {
+                                  gateway: "example",
+                                  gatewayMerchantId: "exampleGatewayMerchantId",
+                                },
+                              },
+                            },
+                          ],
+                          merchantInfo: {
+                            merchantId: "12345678901234567890",
+                            merchantName: "Demo Merchant",
+                          },
+                          transactionInfo: {
+                            totalPriceStatus: "FINAL",
+                            totalPriceLabel: "Total",
+                            totalPrice: `${calculatedTotal}`,
+                            currencyCode: "INR",
+                            countryCode: "US",
+                          },
+                        }}
+                        onLoadPaymentData={(paymentRequest) => {
+                          console.log("load payment data", paymentRequest);
+                        }}
+                      />
                     </Box>
                   </Box>
                 </Box>

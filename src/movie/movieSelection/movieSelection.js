@@ -77,7 +77,7 @@ const movieSelection = () => {
                   <Box>
                     <Typography
                       sx={{
-                        fontFamily: "Montserrat",
+                        fontFamily: "Noto Sans",
                         fontStyle: "normal",
                         fontWeight: 700,
                         fontSize: {
@@ -116,7 +116,7 @@ const movieSelection = () => {
                     >
                       <Typography
                         sx={{
-                          fontFamily: "Montserrat",
+                          fontFamily: "Noto Sans",
                           fontWeight: "700",
                           fontSize: {
                             xs: "10px",
@@ -139,7 +139,7 @@ const movieSelection = () => {
                       </Typography>
                       <Typography
                         sx={{
-                          fontFamily: "Montserrat",
+                          fontFamily: "Noto Sans",
                           fontWeight: "700",
                           fontSize: {
                             xs: "10px",
@@ -162,7 +162,7 @@ const movieSelection = () => {
                       </Typography>
                       <Typography
                         sx={{
-                          fontFamily: "Montserrat",
+                          fontFamily: "Noto Sans",
                           fontWeight: "700",
                           fontSize: {
                             xs: "10px",

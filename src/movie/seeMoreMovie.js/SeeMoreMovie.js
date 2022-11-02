@@ -26,7 +26,7 @@ const SeeMoreMovie = () => {
         >
           <Typography
             sx={{
-              fontFamily: "Montserrat",
+              fontFamily: "Noto Sans",
               fontStyle: "normal",
               fontWeight: "500",
               fontSize: "24px",
@@ -102,7 +102,7 @@ const SeeMoreMovie = () => {
                     {items.title}
                     <Typography
                       sx={{
-                        fontFamily: "Montserrat",
+                        fontFamily: "Noto Sans",
                         fontWeight: "400",
                         fontSize: { lg: "16px", md: "14px", sm: "25px" },
                         color: "#414A63",
