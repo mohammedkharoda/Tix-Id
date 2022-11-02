@@ -15,12 +15,13 @@ import Protected from "../Login/Protected";
 const ConfirmTicket = () => {
   let { id } = useParams();
   const navigate = useNavigate();
-  const [valid, setvalid] = useState(true);
+  const [valid, setvalid] = useState(false);
   const [coupon, setCoupon] = useState("");
   const dateSelector = useSelector((state) => state.slot.DateAndDay);
   const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
   const [movieInfo, setMovieInfo] = useState();
+  const [isCouponApplied, setIsCouponApplied] = useState(false);
   useEffect(() => {
     if (id) {
       let temp = movieData.primary.find((movieInfo) => movieInfo.id === +id);
@@ -50,17 +51,19 @@ const ConfirmTicket = () => {
   let total = regularAmount + premiumPrice * filteredData.length;
 
   const [calculatedTotal, setCalculatedTotal] = useState(total);
+
   const couponHandler = () => {
     const validCoupon = couponList.find(
       (item) => item.name === coupon.toLowerCase()
     );
     if (validCoupon) {
-      setvalid(true);
+      setvalid(false);
+      setIsCouponApplied(true);
       let finalDiscount =
         total - (total / 100) * validCoupon.discountedPercentage;
       setCalculatedTotal(finalDiscount);
     } else {
-      setvalid(false);
+      setvalid(true);
     }
   };
 
@@ -487,38 +490,44 @@ const ConfirmTicket = () => {
                     </Box>
                     <hr style={{ backgroundColor: "#000" }} />
                     {/* Promo and Vouchers */}
-                    <Box sx={{ mt: 4 }}>
-                      <Typography sx={{ fontWeight: "700" }}>
-                        Promo and Vouchers
-                      </Typography>
-                      <TextField
-                        onChange={(e) => setCoupon(e.target.value)}
-                        id="standard-basic"
-                        label="Coupon Here!"
-                        variant="standard"
-                        required
-                        value={coupon.toUpperCase()}
-                        sx={{ mb: 4 }}
-                      />
-                      <Button
-                        variant="contained"
-                        sx={{
-                          marginX: "6px",
-                          marginTop: "10px",
-                          color: "#FFFFFF",
-                          backgroundColor: "#118EEA",
-                          "&:hover": {
-                            backgroundColor: "#118EEA",
-                          },
-                        }}
-                        onClick={() => couponHandler()}
-                      >
-                        Apply
-                      </Button>
-                      <Typography sx={{ color: "red", mt: 1 }}>
-                        {!valid ? "Invalid Coupon" : ""}
-                      </Typography>
+                    <Box sx={{ mt: 2 }}>
+                      {isCouponApplied ? (
+                        <>
+                          <Typography sx={{ color: "#0CCE6B" }}>
+                            COUPON APPLIED: {coupon.toUpperCase()}
+                          </Typography>
+                        </>
+                      ) : (
+                        <>
+                          <TextField
+                            onChange={(e) => setCoupon(e.target.value)}
+                            id="outlined-basic"
+                            label="have a coupon apply here"
+                            variant="outlined"
+                            required
+                            value={coupon.toUpperCase()}
+                          />
+                          <Button
+                            variant="contained"
+                            sx={{
+                              marginX: "6px",
+                              marginTop: "10px",
+                              color: "#FFFFFF",
+                              backgroundColor: "#118EEA",
+                              "&:hover": {
+                                backgroundColor: "#118EEA",
+                              },
+                            }}
+                            onClick={() => couponHandler()}
+                          >
+                            Apply
+                          </Button>
+                        </>
+                      )}
                     </Box>
+                    <Typography sx={{ color: "#A40606", mt: 1 }}>
+                      {valid ? "Invalid Coupon" : ""}
+                    </Typography>
                     <hr style={{ backgroundColor: "#000" }} />
                     <Box
                       className="Total"
@@ -541,7 +550,12 @@ const ConfirmTicket = () => {
                           fontSize: "16px",
                           lineHeight: "19px",
                           marginTop: "16px",
-                          marginLeft: "auto",
+                          marginLeft: {
+                            lg: "auto",
+                            md: "auto",
+                            sm: "auto",
+                            xs: "16rem",
+                          },
                         }}
                       >
                         {RegularData.length !== 0 || filteredData.length !== 0
@@ -549,15 +563,6 @@ const ConfirmTicket = () => {
                           : 0}
                       </Typography>
                     </Box>
-                    {valid ? (
-                      <Box>
-                        <Typography>COUPON APPLY :{` ${coupon}`}</Typography>
-                      </Box>
-                    ) : (
-                      <Typography>
-                        COUPON APPLY : {` ${coupon} NotValid`}
-                      </Typography>
-                    )}
                     <hr style={{ backgroundColor: "#000" }} />
                   </Box>
                   {/* Payments Modes */}

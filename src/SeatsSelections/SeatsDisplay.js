@@ -241,7 +241,14 @@ const SeatsDisplay = () => {
             </Box>
             {/* 2nd Column */}
             <Box sx={{ cursor: "pointer" }}>
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "30px",
+                  justifyContent: "center",
+                }}
+              >
                 {seatSideRender?.map((seatData) => {
                   return (
                     <Box
