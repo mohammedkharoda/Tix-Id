@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 /* eslint-disable no-restricted-globals */
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -75,19 +74,19 @@ const slotSlice = createSlice({
     toggle(state) {
       state.toggle = false;
     },
+
     seatsSelected(state, action) {
       const seatSelect = action.payload;
       state.SeatSelected = {
         seatName: seatSelect,
       };
     },
+
     removeSelectedSeats(state, action) {
       const removeSeats = action.payload;
-      state.SeatSelected.seatName.filter((item) => {
-        if (item === removeSeats) {
-          console.log("==>>", item);
-        }
-      });
+      state.SeatSelected.seatName = state.SeatSelected.seatName.filter(
+        (item) => item !== removeSeats
+      );
     },
   },
 });

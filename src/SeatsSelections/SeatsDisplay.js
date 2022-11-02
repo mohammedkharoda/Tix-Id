@@ -13,10 +13,10 @@ import Protected from "../Login/Protected";
 const SeatsDisplay = () => {
   const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
+  const removeSelect = useSelector((state) => state.slot.removeSelectedSeats);
   const [seatNameRender, setSeatNameRender] = useState();
   const [seatSideRender, setSeatSideRender] = useState();
   const [multipleSeats, setMultipleSeats] = useState([]);
-  const [isExistData, setIsExistsData] = useState([]);
   const dispatch = useDispatch();
 
   // ==>> Calculating the Total Amount of the Tickets
@@ -147,16 +147,15 @@ const SeatsDisplay = () => {
   const { id } = useParams();
 
   const handler = (SeatName) => {
-    let isExist = seatsSelect.seatName.find((seat) => seat === SeatName.name);
-    // console.log(SeatName.name);
-    // console.log("exits ==>>", isExist);
-    // console.log("NAME =>", seatsSelect.seatName);
+    let isExist = seatsSelect.seatName.find((seat) => seat == SeatName.name);
+    let multipleSeatsHandler = [...multipleSeats, SeatName.name];
 
     if (isExist == SeatName.name) {
+      const removeSeat = multipleSeats.filter((item) => item !== isExist);
+      setMultipleSeats(removeSeat);
       dispatch(slotActions.removeSelectedSeats(isExist));
     } else {
-      let multipleSeatsHandler = [...multipleSeats, SeatName.name];
-      if (seatsSelect.seatName.length < 5) {
+      if (seatsSelect.seatName.length < 5 || isExist == SeatName.name) {
         dispatch(slotActions.seatsSelected(multipleSeatsHandler));
         setMultipleSeats(multipleSeatsHandler);
       } else {
@@ -170,7 +169,7 @@ const SeatsDisplay = () => {
     if (seatsSelect.seatName.length !== 0) {
       return Navigate(`/confirmTicket/${id}`);
     } else {
-      alert("No Seats");
+      alert("No Seats Book.Please Book a Seat!!");
     }
   };
   return (
@@ -253,7 +252,7 @@ const SeatsDisplay = () => {
                         border: "1px solid #9DA8BE",
                         borderRadius: "6px",
                         padding: "4px 4px",
-                        backgroundColor: multipleSeats.find(
+                        backgroundColor: seatsSelect.seatName.find(
                           (item) => item === seatData.name
                         )
                           ? "#118EEA"

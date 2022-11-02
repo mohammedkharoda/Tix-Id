@@ -18,7 +18,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 const Login = () => {
   const navigate = useNavigate();
   // ============= password ==================
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     password: "",
     showPassword: false,
   });
@@ -65,14 +65,15 @@ const Login = () => {
     ) {
       localStorage.setItem("isLoggedIn", "true");
       setIsLoggedIn(true);
-      // window.location.href = "/movieHome";
       navigate("/movieHome");
+    } else if (phoneNumber !== "7778878653") {
+      alert("Wrong Phone Number");
+      values.phoneNumber = "";
       setIsPhoneNumber("");
-      values.password = "";
     } else {
-      alert("Wrong Credentials");
+      alert("Wrong Password");
       values.password = "";
-      setIsPhoneNumber("");
+      setValues("");
     }
   };
 

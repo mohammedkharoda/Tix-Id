@@ -24,7 +24,8 @@ const ConfirmTicket = () => {
   useEffect(() => {
     if (id) {
       let temp = movieData.primary.find((movieInfo) => movieInfo.id === +id);
-      setMovieInfo(temp);
+      let temp2 = movieData.secondary.find((movieInfo) => movieInfo.id === +id);
+      setMovieInfo(temp || temp2);
     }
   }, [id]);
 
@@ -72,8 +73,14 @@ const ConfirmTicket = () => {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          flexDirection: { sm: "column", md: "row", lg: "row", xs: "column" },
+          flexDirection: {
+            sm: "column",
+            md: "column",
+            lg: "row",
+            xs: "column",
+          },
           gap: { lg: "250px", md: "190px" },
+          overflowX: "hidden",
         }}
       >
         <Box component="section">
@@ -82,7 +89,7 @@ const ConfirmTicket = () => {
             component="div"
             sx={{
               marginTop: "140px",
-              marginLeft: { lg: "72px", md: "72px", xs: "30px" },
+              marginLeft: { lg: "72px", md: "72px", xs: "15px", sm: "72px" },
               marginRight: "auto",
             }}
           >
@@ -144,7 +151,7 @@ const ConfirmTicket = () => {
                     component="div"
                     sx={{
                       border: "0.5px  black",
-                      width: "420px",
+                      width: { lg: "420px", md: "420px", xs: "280px" },
                       backgroundColor: "#000",
                       borderStyle: "solid",
                     }}
@@ -178,7 +185,7 @@ const ConfirmTicket = () => {
                     component="div"
                     sx={{
                       border: "0.5px  black",
-                      width: "420px",
+                      width: { lg: "420px", md: "420px", xs: "280px" },
                       backgroundColor: "#000",
                       borderStyle: "solid",
                     }}
@@ -253,7 +260,7 @@ const ConfirmTicket = () => {
                         component="div"
                         sx={{
                           border: "0.5px  black",
-                          width: "420px",
+                          width: { lg: "420px", md: "420px", xs: "280px" },
                           backgroundColor: "#000",
                           borderStyle: "solid",
                         }}
@@ -290,7 +297,7 @@ const ConfirmTicket = () => {
                       component="div"
                       sx={{
                         border: "0.5px  black",
-                        width: "420px",
+                        width: { lg: "420px", md: "420px", xs: "280px" },
                         backgroundColor: "#000",
                         borderStyle: "solid",
                       }}
@@ -304,7 +311,7 @@ const ConfirmTicket = () => {
           <Box component="div" sx={{ cursor: "pointer" }}>
             <Box
               sx={{
-                display: "flex",
+                display: { lg: "flex", md: "flex", sm: "none", xs: "none" },
                 justifyContent: "flex-start",
                 marginTop: "62px",
                 gap: "25px",
@@ -349,10 +356,10 @@ const ConfirmTicket = () => {
                 xs: "0",
               },
               borderRadius: "13px",
-              paddingLeft: { xs: "34px" },
+              paddingLeft: { xs: "14px" },
               paddingRight: { xs: "100px" },
               padding: { lg: "30px 48px", xl: "18px 48px", sm: "30px 48px" },
-              marginTop: { lg: "170px", md: "124px", sm: "80px", xs: "80px" },
+              marginTop: { lg: "170px", sm: "80px", xs: "80px" },
               marginLeft: { sm: "35px" },
             }}
           >
@@ -398,7 +405,12 @@ const ConfirmTicket = () => {
                           fontSize: "16px",
                           lineHeight: "19px",
                           marginTop: "16px",
-                          marginLeft: "auto",
+                          marginLeft: {
+                            lg: "auto",
+                            md: "auto",
+                            sm: "auto",
+                            xs: "110px",
+                          },
                         }}
                       >
                         {`Rs ${
@@ -446,7 +458,12 @@ const ConfirmTicket = () => {
                           fontSize: "16px",
                           lineHeight: "19px",
                           marginTop: "16px",
-                          marginLeft: "auto",
+                          marginLeft: {
+                            lg: "auto",
+                            md: "auto",
+                            sm: "auto",
+                            xs: "100px",
+                          },
                         }}
                       >
                         {`Rs ${
@@ -534,10 +551,12 @@ const ConfirmTicket = () => {
                     </Box>
                     {valid ? (
                       <Box>
-                        <Typography>COUPON APPLIED : {`${coupon}`}</Typography>
+                        <Typography>COUPON APPLY :{` ${coupon}`}</Typography>
                       </Box>
                     ) : (
-                      ""
+                      <Typography>
+                        COUPON APPLY : {` ${coupon} NotValid`}
+                      </Typography>
                     )}
                     <hr style={{ backgroundColor: "#000" }} />
                   </Box>
@@ -585,26 +604,28 @@ const ConfirmTicket = () => {
                 </Box>
               </Box>
             </Box>
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "#1A2C50",
-                width: "419px",
-                height: "64px",
-                marginTop: "50px",
-              }}
-            >
-              <Typography
-                sx={{ color: "#FFBE00", fontSize: "24px", fontWeight: "500" }}
+            <Box className="buttonConfirm">
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#1A2C50",
+                  width: { lg: "419px", md: "419px", sm: "200px", xs: "200px" },
+                  height: { lg: "64px", md: "64px", sm: "0%", xs: "0%" },
+                  marginTop: "50px",
+                }}
               >
-                <Link
-                  to="./finalTicket"
-                  style={{ textDecoration: "none", color: "#fff" }}
+                <Typography
+                  sx={{ color: "#FFBE00", fontSize: "24px", fontWeight: "500" }}
                 >
-                  Book Ticket
-                </Link>
-              </Typography>
-            </Button>
+                  <Link
+                    to="./finalTicket"
+                    style={{ textDecoration: "none", color: "#fff" }}
+                  >
+                    Book Ticket
+                  </Link>
+                </Typography>
+              </Button>
+            </Box>
           </Box>
         </Box>
       </Box>

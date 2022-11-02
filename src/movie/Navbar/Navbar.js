@@ -44,7 +44,6 @@ const Navbar = () => {
           paddingRight: {
             lg: "72px",
             md: "72px",
-            sm: "120px",
             xs: "30px",
           },
         }}
