@@ -15,6 +15,7 @@ const MovieHome = () => {
       navigate("/login");
     }
   }, []);
+  
   return (
     <>
     <Protected/>

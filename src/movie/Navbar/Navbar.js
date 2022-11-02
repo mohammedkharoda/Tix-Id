@@ -53,7 +53,7 @@ const Navbar = () => {
           sx={{
             marginTop: "24px",
             marginBottom: "24px",
-            marginLeft: { lg: "72px", md: "72px", sm: "20px", xs: "20px" },
+            marginLeft: { lg: "45px", md: "45px", sm: "45px", xs: "20px" },
             height: 32,
             width: 64,
           }}
@@ -133,13 +133,34 @@ const Navbar = () => {
               gap: "48px",
             }}
           >
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                fontWeight: "500",
+                fontSize: "18px",
+              }}
+            >
               <Typography sx={{ color: "#383782" }}>Home</Typography>
             </Link>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                fontWeight: "500",
+                fontSize: "18px",
+              }}
+            >
               <Typography sx={{ color: "#000" }}>Movies</Typography>
             </Link>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                fontWeight: "500",
+                fontSize: "18px",
+              }}
+            >
               <Typography sx={{ color: "#000" }}>Payments</Typography>
             </Link>
             <Link

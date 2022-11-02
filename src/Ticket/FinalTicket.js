@@ -35,7 +35,7 @@ const FinalTicket = () => {
             sx={{
               fontWeight: "700",
               fontSize: "56px",
-              fontFamily: "Roboto",
+              fontFamily: "Montserrat",
               textTransform: "capitalize",
             }}
           >

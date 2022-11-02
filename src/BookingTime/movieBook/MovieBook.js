@@ -82,7 +82,7 @@ const MovieBook = () => {
           <Typography variant="h5">Select Date</Typography>
           <Typography
             sx={{
-              fontFamily: "Roboto",
+              fontFamily: "Montserrat",
               fontStyle: "Normal",
               fontSize: "20px",
               marginTop: "18px",

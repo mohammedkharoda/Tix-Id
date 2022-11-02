@@ -77,7 +77,7 @@ const movieSelection = () => {
                   <Box>
                     <Typography
                       sx={{
-                        fontFamily: "Roboto",
+                        fontFamily: "Montserrat",
                         fontStyle: "normal",
                         fontWeight: 700,
                         fontSize: {
@@ -87,10 +87,12 @@ const movieSelection = () => {
                           xs: "25px",
                         },
                         marginTop: {
-                          lg: "52px",
                           md: "20px",
                           sm: "12px",
                           xs: "8px",
+                        },
+                        paddingTop: {
+                          lg: "60px",
                         },
                         textAlign: "center",
                         color: "#333",
@@ -114,7 +116,7 @@ const movieSelection = () => {
                     >
                       <Typography
                         sx={{
-                          fontFamily: "Roboto",
+                          fontFamily: "Montserrat",
                           fontWeight: "700",
                           fontSize: {
                             xs: "10px",
@@ -137,7 +139,7 @@ const movieSelection = () => {
                       </Typography>
                       <Typography
                         sx={{
-                          fontFamily: "Roboto",
+                          fontFamily: "Montserrat",
                           fontWeight: "700",
                           fontSize: {
                             xs: "10px",
@@ -160,7 +162,7 @@ const movieSelection = () => {
                       </Typography>
                       <Typography
                         sx={{
-                          fontFamily: "Roboto",
+                          fontFamily: "Montserrat",
                           fontWeight: "700",
                           fontSize: {
                             xs: "10px",

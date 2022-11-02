@@ -17,7 +17,7 @@ const CardBook = () => {
   const headingTypo = {
     fontWeight: "700",
     fontSize: "28px",
-    fontFamily: "Roboto",
+    fontFamily: "Montserrat",
   };
   const margins = {
     marginTop: "36px",

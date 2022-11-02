@@ -26,14 +26,14 @@ const SeeMoreMovie = () => {
         >
           <Typography
             sx={{
-              fontFamily: "Roboto",
+              fontFamily: "Montserrat",
               fontStyle: "normal",
               fontWeight: "500",
               fontSize: "24px",
               lineHeight: "32px",
               textTransform: "capitalize",
               color: "#333",
-              fontSize: { md: "22px", sm: "20px", xs: "18px" },
+              fontSize: { md: "24px", sm: "20px", xs: "18px" },
               fontWeight: { md: "700", sm: "600" },
             }}
           >
@@ -53,7 +53,7 @@ const SeeMoreMovie = () => {
           <Typography
             sx={{
               fontWeight: "500",
-              fontSize: { lg: "24px", md: "18px", sm: "16px" },
+              fontSize: { lg: "20px", md: "18px", sm: "16px" },
               lineHeight: "32px",
               textAlign: "center",
               textTransform: "capitalization",
@@ -102,7 +102,7 @@ const SeeMoreMovie = () => {
                     {items.title}
                     <Typography
                       sx={{
-                        fontFamily: "Roboto",
+                        fontFamily: "Montserrat",
                         fontWeight: "400",
                         fontSize: { lg: "16px", md: "14px", sm: "25px" },
                         color: "#414A63",

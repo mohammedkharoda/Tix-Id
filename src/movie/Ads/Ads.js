@@ -12,7 +12,7 @@ const Ads = () => {
         <Stack>
           <Box
             sx={{
-              marginTop: "90px",
+              marginTop: "120px",
               marginRight: "180px",
               marginLeft: "180px",
               display: { xs: "none", lg: "block", xl: "block" },
@@ -32,7 +32,12 @@ const Ads = () => {
               >
                 {AdsData.map((item) => (
                   <SwiperSlide>
-                    <img src={item.adsImage} style={{ width: "100%" }} />
+                    <Box sx={{ width: "1296px", height: "304px" }}>
+                      <img
+                        src={item.adsImage}
+                        style={{ width: "100%", height: "100%" }}
+                      />
+                    </Box>
                   </SwiperSlide>
                 ))}
               </Swiper>

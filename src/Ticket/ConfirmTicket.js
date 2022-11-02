@@ -424,7 +424,7 @@ const ConfirmTicket = () => {
                       </Typography>
                       <Typography
                         sx={{
-                          fontFamily: "Roboto",
+                          fontFamily: "Montserrat",
                           fontStyle: "normal",
                           fontWeight: "700",
                           fontSize: "16px",
@@ -475,7 +475,7 @@ const ConfirmTicket = () => {
                       </Typography>
                       <Typography
                         sx={{
-                          fontFamily: "Roboto",
+                          fontFamily: "Montserrat",
                           fontStyle: "normal",
                           fontWeight: "700",
                           fontSize: "16px",
@@ -502,7 +502,7 @@ const ConfirmTicket = () => {
                           <TextField
                             onChange={(e) => setCoupon(e.target.value)}
                             id="outlined-basic"
-                            label="have a coupon apply here"
+                            label="Coupon Here!"
                             variant="outlined"
                             required
                             value={coupon.toUpperCase()}
@@ -529,6 +529,70 @@ const ConfirmTicket = () => {
                       {valid ? "Invalid Coupon" : ""}
                     </Typography>
                     <hr style={{ backgroundColor: "#000" }} />
+                    <Box className="Total" sx={{ display: "flex" }}>
+                      <Typography
+                        sx={{
+                          fontWeight: "400",
+                          fontSize: "16px",
+                          lineHeight: "19px",
+                          color: "#333",
+                          marginTop: "16px",
+                        }}
+                      >
+                        SubTotal
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontWeight: "400px",
+                          fontSize: "16px",
+                          lineHeight: "19px",
+                          marginTop: "16px",
+                          marginLeft: {
+                            lg: "auto",
+                            md: "auto",
+                            sm: "auto",
+                            xs: "15rem",
+                          },
+                        }}
+                      >
+                        {RegularData.length !== 0 || filteredData.length !== 0
+                          ? total
+                          : 0}
+                      </Typography>
+                    </Box>
+                    <Box
+                      className="Total"
+                      sx={{ display: "flex", marginBottom: "27px" }}
+                    >
+                      <Typography
+                        sx={{
+                          fontWeight: "400",
+                          fontSize: "16px",
+                          lineHeight: "19px",
+                          color: "#333",
+                          marginTop: "16px",
+                        }}
+                      >
+                        Discount
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontWeight: "400px",
+                          fontSize: "16px",
+                          lineHeight: "19px",
+                          marginTop: "16px",
+                          marginLeft: {
+                            lg: "auto",
+                            md: "auto",
+                            sm: "auto",
+                            xs: "15rem",
+                          },
+                        }}
+                      >
+                        {isCouponApplied ? `${coupon.slice(-2)}%` : 0}
+                      </Typography>
+                    </Box>
+                    <hr style={{ backgroundColor: "#000" }} />
                     <Box
                       className="Total"
                       sx={{ display: "flex", marginBottom: "27px" }}
@@ -554,13 +618,11 @@ const ConfirmTicket = () => {
                             lg: "auto",
                             md: "auto",
                             sm: "auto",
-                            xs: "16rem",
+                            xs: "17rem",
                           },
                         }}
                       >
-                        {RegularData.length !== 0 || filteredData.length !== 0
-                          ? calculatedTotal
-                          : 0}
+                        {isCouponApplied ? calculatedTotal : 0}
                       </Typography>
                     </Box>
                     <hr style={{ backgroundColor: "#000" }} />
@@ -587,7 +649,12 @@ const ConfirmTicket = () => {
                         fontSize: "12px",
                         lineHeight: "19px",
                         marginTop: "16px",
-                        marginLeft: "auto",
+                        marginLeft: {
+                          lg: "auto",
+                          md: "auto",
+                          sm: "auto",
+                          xs: "8rem",
+                        },
                         color: "#118EEA",
                       }}
                     >
@@ -614,7 +681,7 @@ const ConfirmTicket = () => {
                 variant="contained"
                 sx={{
                   backgroundColor: "#1A2C50",
-                  width: { lg: "419px", md: "419px", sm: "200px", xs: "200px" },
+                  width: { lg: "419px", md: "419px", sm: "200px", xs: "250px" },
                   height: { lg: "64px", md: "64px", sm: "0%", xs: "0%" },
                   marginTop: "50px",
                 }}
