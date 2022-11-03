@@ -15,7 +15,7 @@ const Footer = () => {
           <Box
             sx={{
               display: "grid",
-              marginLeft: { sm: "25px", md: "25px", xs: "25px" },
+              // marginLeft: { sm: "25px", md: "25px", xs: "25px" },
               gridTemplateColumns: {
                 lg: "repeat(5,1fr)",
                 md: "repeat(5,1fr)",
@@ -29,7 +29,7 @@ const Footer = () => {
           >
             <Box
               sx={{
-                marginLeft: { lg: "28px", md: "28px" },
+                // marginLeft: { lg: "28px", md: "28px" },
                 marginRight: "auto",
               }}
             >
@@ -151,7 +151,7 @@ const Footer = () => {
               </ul>
             </Box>
 
-            <Box sx={{ marginRight: "25px" }}>
+            <Box>
               <Box
                 sx={{
                   fontStyle: "normal",
@@ -195,11 +195,11 @@ const Footer = () => {
 
               <Box>
                 <p style={{ marginBottom: "24px" }}>Download Aplikasi TIX ID</p>
-                <div>
+                <Box sx={{ display: "flex", gap: "10px" }}>
                   <img src={GooglePlay} alt="" />
 
                   <img src={AppStore} alt="" />
-                </div>
+                </Box>
               </Box>
 
               <Box sx={{ marginTop: "26px" }}>

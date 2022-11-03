@@ -64,8 +64,8 @@ const DisplayMovie = () => {
           <Box
             sx={{
               marginLeft: { lg: "0", md: "70px", xs: "0px" },
-              width: { lg: "413px", md: "413px" },
-              height: { lg: "364px", md: "364px", sm: "364px", xs: "364px" },
+              width: { md: "413px" },
+              height: { xs: "364px" },
             }}
           >
             <img
@@ -79,9 +79,7 @@ const DisplayMovie = () => {
               }}
             />
           </Box>
-          <Box
-            sx={{ marginLeft: { lg: "0", md: "70px", sm: "70px", xs: "10px" } }}
-          >
+          <Box sx={{ marginLeft: { lg: "0", sm: "70px", xs: "10px" } }}>
             {/* Genera */}
             <Box sx={flexDisplay}>
               <Typography sx={typoSx}>{data.title}</Typography>

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Star from "../../assets/Star.svg";
 import { Box, Typography } from "@mui/material";
 import { theatreData, movieData } from "../../movie/data";
@@ -7,10 +7,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { slotActions } from "../../components/Slices/ticketShow";
 import { ticketVisibility } from "../../components/Slices/ticketVisible";
-import { useParams } from "react-router-dom";
 
 const SlotSelection = () => {
-  let { id } = useParams();
   const dispatch = useDispatch();
   const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const movieId = movieData.primary.map((movieIds) => movieIds.id);
@@ -51,19 +49,17 @@ const SlotSelection = () => {
     color: "#5A637A",
     width: "325px",
     marginRight: "72px",
-    marginLeft: { xs: "50px", lg: "72px", md: "72px" },
+    // marginLeft: { xs: "50px",  md: "72px" },
   };
 
   const gridLayout = {
     display: "grid",
     gridTemplateColumns: {
-      lg: "repeat(4,0fr)",
-      md: "repeat(4,0fr)",
       sm: "repeat(4,0fr)",
       xs: "repeat(2,0fr)",
     },
     gridTemplateRows: "repeat(2,0fr)",
-    marginLeft: { xs: "50px", lg: "72px", md: "72px" },
+    // marginLeft: { xs: "50px", md: "72px" },
     gap: "24px",
     marginTop: "16px",
     gridRowGap: "10px",
@@ -102,7 +98,7 @@ const SlotSelection = () => {
 
   const locationSx = {
     color: "#5A637A",
-    marginLeft: { xs: "50px", lg: "72px", md: "72px" },
+    // marginLeft: { xs: "50px", md: "72px" },
     marginTop: "18px",
     fontWeight: "400",
     fontSize: "16px",
@@ -120,14 +116,6 @@ const SlotSelection = () => {
   const cinemaBadge = {
     color: "#fff",
     background: "#000E62",
-    padding: "6px 8px",
-    borderRadius: "4px",
-    marginRight: "auto",
-  };
-
-  const plazaBadge = {
-    color: "#fff",
-    background: "#F2C46F",
     padding: "6px 8px",
     borderRadius: "4px",
     marginRight: "auto",
@@ -153,7 +141,7 @@ const SlotSelection = () => {
               <Box
                 sx={{
                   marginRight: "16px",
-                  marginLeft: { lg: "72px", md: "72px" },
+                  // marginLeft: { lg: "72px", md: "72px" },
                 }}
               >
                 <img src={`${Star}`} />

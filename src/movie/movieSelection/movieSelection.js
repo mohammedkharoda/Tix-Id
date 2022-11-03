@@ -12,16 +12,14 @@ const movieSelection = () => {
       <Box
         sx={{
           marginLeft: {
-            xs: "61px",
-            sm: "80",
-            md: "100px",
-            lg: "181px",
+            xs: "40px",
+            sm: "80px",
+            lg: "250px",
           },
           marginRight: {
-            xs: "61px",
-            sm: "80",
-            md: "100px",
-            lg: "181px",
+            xs: "40px",
+            sm: "80px",
+            lg: "250px",
           },
           marginTop: "150px",
         }}
@@ -54,15 +52,7 @@ const movieSelection = () => {
         >
           {movieData.primary.map((item) => (
             <SwiperSlide>
-              <Box
-                sx={{
-                  paddingLeft: {
-                    sm: "45px",
-                    md: "65px",
-                    lg: "75px",
-                  },
-                }}
-              >
+              <Box>
                 <Box>
                   <Link to={`/movieBook/${item.id}`}>
                     <img
@@ -82,7 +72,6 @@ const movieSelection = () => {
                         fontWeight: 700,
                         fontSize: {
                           lg: "36px",
-                          md: "24px",
                           sm: "18px",
                           xs: "25px",
                         },
@@ -90,9 +79,6 @@ const movieSelection = () => {
                           md: "20px",
                           sm: "12px",
                           xs: "8px",
-                        },
-                        paddingTop: {
-                          lg: "60px",
                         },
                         textAlign: "center",
                         color: "#333",
@@ -107,10 +93,9 @@ const movieSelection = () => {
                         justifyContent: "center",
                         alignItems: "center",
                         marginTop: {
-                          sm: "15px",
+                          xs: "20px",
                           md: "25px",
                           lg: "35px",
-                          xs: "20px",
                         },
                       }}
                     >
@@ -120,7 +105,6 @@ const movieSelection = () => {
                           fontWeight: "700",
                           fontSize: {
                             xs: "10px",
-                            sm: "12px",
                             md: "15px",
                             lg: "18px",
                           },

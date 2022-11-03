@@ -4,7 +4,6 @@ import MovieHome from "./movie/MovieHome";
 import { ContainerSlots } from "./BookingTime/ContainerSlots";
 import SeatsDisplay from "./SeatsSelections/SeatsDisplay";
 import ConfirmTicket from "./Ticket/ConfirmTicket";
-import Protected from "./Login/Protected";
 import FinalTicket from "./Ticket/FinalTicket";
 function App() {
   return (

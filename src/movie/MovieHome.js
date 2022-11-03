@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import Navbar from "./Navbar/Navbar";
 import MovieSelection from "./movieSelection/movieSelection";
 import Ads from "./Ads/Ads";
@@ -7,25 +6,23 @@ import SeeMoreMovie from "./seeMoreMovie.js/SeeMoreMovie";
 import Footer from "./Footer/Footer";
 import { Box } from "@mui/system";
 import Protected from "../Login/Protected";
+import MaxWrapper from "../MaxWrapper";
+import SecondaryWrapper from "../SecondaryWrapper";
 const MovieHome = () => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    const tokenData = localStorage.getItem("isLoggedIn");
-    if (tokenData === null || tokenData === undefined) {
-      navigate("/login");
-    }
-  }, []);
-  
   return (
     <>
-    <Protected/>
-      <Box>
-        <Navbar />
-        <MovieSelection />
-        <Ads />
-        <SeeMoreMovie />
-        <Footer />
-      </Box>
+      <Protected />
+      <MaxWrapper>
+        <SecondaryWrapper>
+          <Box>
+            <Navbar />
+            <MovieSelection />
+            <Ads />
+            <SeeMoreMovie />
+            <Footer />
+          </Box>
+        </SecondaryWrapper>
+      </MaxWrapper>
     </>
   );
 };

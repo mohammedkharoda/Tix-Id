@@ -13,15 +13,13 @@ const Ads = () => {
           <Box
             sx={{
               marginTop: "120px",
-              marginRight: "180px",
-              marginLeft: "180px",
-              display: { xs: "none", lg: "block", xl: "block" },
+              display: { xs: "none", lg: "block" },
             }}
           >
-            <Box>
+            <Box sx={{ width: "100%" }}>
               <Swiper
                 slidesPerView={1}
-                spaceBetween={50}
+                spaceBetween={20}
                 pagination={{ clickable: true }}
                 keyboard={true}
                 autoplay={{
@@ -32,7 +30,7 @@ const Ads = () => {
               >
                 {AdsData.map((item) => (
                   <SwiperSlide>
-                    <Box sx={{ width: "1296px", height: "304px" }}>
+                    <Box>
                       <img
                         src={item.adsImage}
                         style={{ width: "100%", height: "100%" }}

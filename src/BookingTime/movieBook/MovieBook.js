@@ -6,7 +6,6 @@ import { theatreData } from "../../movie/data";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { slotActions } from "../../components/Slices/ticketShow";
-import Footer from "../../movie/Footer/Footer";
 
 const MovieBook = () => {
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ const MovieBook = () => {
   const boxSX = {
     padding: "18px",
     border: "1px solid #5A637A",
-    width: { lg: "86px", md: "86px", sm: "86px", xs: "50%" },
+    width: "86px",
     height: "82px",
     borderRadius: "8px",
     cursor: "pointer",
@@ -58,7 +57,7 @@ const MovieBook = () => {
   const selected = {
     padding: "18px",
     border: "1px solid #5A637A",
-    width: { lg: "86px", md: "86px", sm: "86px", xs: "50%" },
+    width: "86px",
     height: "82px",
     borderRadius: "8px",
     cursor: "pointer",
@@ -75,7 +74,6 @@ const MovieBook = () => {
         component="section"
         sx={{
           marginTop: "100px",
-          marginLeft: { lg: "72px", md: "72px", sm: "10px", xs: "15px" },
         }}
       >
         <Box>
@@ -96,7 +94,7 @@ const MovieBook = () => {
             sx={{
               marginTop: "30px",
               display: "flex",
-              flexDirection: { lg: "row", md: "row", sm: "row", xs: "column" },
+              flexDirection: { sm: "row", xs: "column" },
               gap: "24px",
               alignItems: "center",
             }}

@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -8,22 +8,16 @@ const CardBook = () => {
   const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const dateSelector = useSelector((state) => state.slot.DateAndDay);
   let { id } = useParams();
-  const mainHeaderBox = {
-    marginTop: "30px",
-    marginBottom: "30px",
-    marginLeft: { md: "30px", sm: "30px", xs: "0px" },
-    marginRight: { md: "30px", sm: "30px" },
-  };
+
   const headingTypo = {
     fontWeight: "700",
     fontSize: "28px",
     fontFamily: "Noto Sans",
   };
-  const margins = {
-    marginTop: "36px",
-    marginLeft: { lg: "24px", xs: "10px" },
-    marginRight: "24px",
-    marginBottom: "174px",
+  const padding = {
+    padding: "36px 0",
+    paddingLeft: { lg: "24px", xs: "10px" },
+    paddingRight: "24px",
   };
 
   const boldText = {
@@ -55,22 +49,21 @@ const CardBook = () => {
     color: "#FFBE00",
     textAlign: "center",
     borderRadius: "5px",
-    padding: "16px 12px",
     textTransform: "uppercase",
     fontSize: "24px",
     marginTop: "36px",
   };
   return (
     <>
-      <Box component="section" sx={mainHeaderBox}>
+      <Box component="section">
         <Box
           sx={{
             border: "1px solid #5A637A",
-            height: { lg: "333px", md: "333px", sm: "333px", xs: "368px" },
-            borderRadius: { lg: "12px", md: "12px", sm: "8px" },
+            height: "auto",
+            borderRadius: { md: "12px", sm: "8px" },
           }}
         >
-          <Box sx={margins}>
+          <Box sx={padding}>
             <Box>
               <Typography sx={headingTypo}>
                 {selectedSlot.showType.showTypeName}
@@ -80,7 +73,7 @@ const CardBook = () => {
                 {dateSelector.day},{dateSelector.date}
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Box sx={{ width: "258px  " }}>
+                <Box sx={{ width: "auto" }}>
                   <Typography sx={boldText}>
                     {selectedSlot.theatreName}
                   </Typography>
@@ -93,14 +86,21 @@ const CardBook = () => {
             <Typography sx={warningTypo}>
               *GST AND OTHER PRICE ARE EXCLUDED
             </Typography>
-            <Box sx={button}>
-              <Link
-                to={`/seatsSelect/${id}`}
-                style={{ textDecoration: "none", color: "#fff" }}
+            {dateSelector.day && dateSelector.date ? (
+              <Button
+                variant="contained"
+                sx={dateSelector.day && dateSelector.date ? button : ""}
               >
-                Book Now
-              </Link>
-            </Box>
+                <Link
+                  to={`/seatsSelect/${id}`}
+                  style={{ textDecoration: "none", color: "#fff" }}
+                >
+                  Book Now
+                </Link>
+              </Button>
+            ) : (
+              ""
+            )}
           </Box>
         </Box>
       </Box>

@@ -10,18 +10,16 @@ const SeeMoreMovie = () => {
     <>
       <Box
         sx={{
-          marginTop: { lg: "177px", md: "177px", xs: "50px" },
-          marginLeft: { lg: "72px", md: "72px" },
-          paddingLeft: { lg: "0px", md: "0px", xs: "50px" },
-          marginRight: { lg: "72px", md: "72px" },
-          marginBottom: "147px",
+          marginTop: { md: "177px", xs: "177px" },
+          marginBottom: "150px",
         }}
       >
         <Box
           sx={{
-            display: { lg: "flex", md: "flex", xs: "flex" },
-            justifyContent: "space-between",
-            flexDirection: { lg: "row", xs: "column", md: "row", sm: "row" },
+            display: "flex",
+            justifyContent: { sm: "space-around", md: "space-between" },
+            flexDirection: { xs: "column", sm: "row" },
+            paddingLeft: { sm: "0px", xs: "25px" },
           }}
         >
           <Typography
@@ -33,7 +31,7 @@ const SeeMoreMovie = () => {
               lineHeight: "32px",
               textTransform: "capitalize",
               color: "#333",
-              fontSize: { md: "24px", sm: "20px", xs: "18px" },
+              fontSize: { md: "24px", xs: "18px" },
               fontWeight: { md: "700", sm: "600" },
             }}
           >
@@ -43,7 +41,7 @@ const SeeMoreMovie = () => {
                 fontWeight: "400",
                 lineHeight: "24px",
                 color: "#414A63",
-                fontSize: { lg: "18px", md: "16px", sm: "15px", xs: "13px" },
+                fontSize: { md: "16px", sm: "15px", xs: "13px" },
                 overflowWrap: { xs: "break-word" },
               }}
             >
@@ -73,16 +71,19 @@ const SeeMoreMovie = () => {
                 md: "row",
                 lg: "row",
               },
+              textAlign: "center",
             }}
           >
             {movieData.secondary.map((items) => (
               <Box>
-                <Box>
+                <Box
+                  sx={{ padding: { md: "0px", sm: "0 180px", xs: " 0 10px" } }}
+                >
                   <Link to={`/movieBook/${items.id}`}>
                     <img
                       src={items.linkImg}
                       style={{
-                        width: "80%",
+                        width: "100%",
                         borderRadius: "20px",
                         marginTop: "1.5rem",
                         marginBottom: "1.5rem",
@@ -95,7 +96,7 @@ const SeeMoreMovie = () => {
                   <Typography
                     sx={{
                       fontWeight: "500",
-                      fontSize: { lg: "24px", md: "18px", sm: "25px" },
+                      fontSize: { lg: "24px", sm: "20px" },
                       color: "#333",
                     }}
                   >
@@ -104,7 +105,7 @@ const SeeMoreMovie = () => {
                       sx={{
                         fontFamily: "Noto Sans",
                         fontWeight: "400",
-                        fontSize: { lg: "16px", md: "14px", sm: "25px" },
+                        fontSize: { lg: "16px", sm: "20px" },
                         color: "#414A63",
                       }}
                     >

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../movie/Footer/Footer";
 import { useNavigate, useParams } from "react-router-dom";
 import { movieData } from "../movie/data";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Protected from "../Login/Protected";
 const FinalTicket = () => {
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
@@ -35,12 +35,12 @@ const FinalTicket = () => {
             variant="h3"
             sx={{
               fontWeight: "700",
-              fontSize: "56px",
+              fontSize: { md: "56px", xs: "35px" },
               fontFamily: "Noto Sans",
               textTransform: "capitalize",
             }}
           >
-            Hurray!!Movie Booked
+            Hurray!!{""} Movie Booked
           </Typography>
           <Box
             sx={{

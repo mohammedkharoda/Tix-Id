@@ -4,10 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   SelectedTheatre: {
     // TheaterData
-    theaterLocation: "",
     theatreId: "",
     theatreName: "",
-    theatreAddress: "",
     movieId: "",
     // => ShowTypes
     showType: {
@@ -47,8 +45,6 @@ const slotSlice = createSlice({
       const data = action.payload;
       state.SelectedTheatre = {
         theatreId: data.theaterId,
-        theaterLocation: "",
-        theatreAddress: "",
         movieId: data.movieId,
         theatreName: data.theatreName,
         showType: {
@@ -88,12 +84,6 @@ const slotSlice = createSlice({
         (item) => item !== removeSeats
       );
     },
-  },
-
-  resetRedux(state) {
-    state.DateAndDay = "";
-    state.SeatSelected = [];
-    state.SelectedTheatre = {};
   },
 });
 

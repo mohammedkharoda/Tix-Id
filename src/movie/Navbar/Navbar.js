@@ -25,171 +25,167 @@ const Navbar = () => {
     localStorage.removeItem("isLoggedIn");
   };
   return (
-    <AppBar
-      position="absolute"
-      sx={{
-        backgroundColor: "transparent",
-        boxShadow: "0px 0px",
-        marginBottom: "80px",
-      }}
-    >
-      <Toolbar
+    <Box id="WrapperChild">
+      <AppBar
+        position="absolute"
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          gap: {
-            lg: "62%",
-          },
-          marginBottom: "24px",
-          paddingRight: {
-            lg: "72px",
-            md: "72px",
-            xs: "30px",
-          },
+          backgroundColor: "transparent",
+          boxShadow: "0px 0px",
+          marginBottom: "80px",
+          padding: "0 60px",
         }}
       >
-        <Link to="/">
-          <Box
-            component="img"
-            sx={{
-              marginTop: "24px",
-              marginBottom: "24px",
-              marginLeft: { lg: "45px", md: "45px", sm: "45px", xs: "20px" },
-              height: 32,
-              width: 64,
-            }}
-            alt="Tix Logo."
-            src={TixLogo}
-          />
-        </Link>
+        <Toolbar
+          sx={{
+            display: "flex",
+            marginBottom: "24px",
+            justifyContent: "space-between",
+          }}
+        >
+          <Link to="/">
+            <Box
+              component="img"
+              sx={{
+                marginTop: "24px",
+                marginBottom: "24px",
+                height: "100%",
+                width: "100%",
+              }}
+              alt="Tix Logo."
+              src={TixLogo}
+            />
+          </Link>
 
-        {isMobile ? (
-          <>
-            <IconButton onClick={handleMenu}>
-              <HiMenu />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              /* to open the anchor at the top below the cursor */
-              anchorEl={anchor}
-              /* anchor origin so that it open it that location */
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={open}
-            >
-              <IconButton onClick={() => setAnchor(null)}>
-                <IoMdClose />
+          {isMobile ? (
+            <>
+              <IconButton onClick={handleMenu}>
+                <HiMenu />
               </IconButton>
-              <MenuItem onClick={() => setAnchor(null)}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "30px",
-                  }}
-                >
-                  <Link to="/" style={{ textDecoration: "none" }}>
-                    <Typography sx={{ color: "#383782" }}>Home</Typography>
-                  </Link>
-                  <Link to="/" style={{ textDecoration: "none" }}>
-                    <Typography sx={{ color: "#000" }}>Movies</Typography>
-                  </Link>
-                  <Link to="/" style={{ textDecoration: "none" }}>
-                    <Typography sx={{ color: "#000" }}>Payments</Typography>
-                  </Link>
-                  <Link
-                    to="/login"
-                    style={{ textDecoration: "none" }}
-                    onClick={FormSubmitHandler}
+              <Menu
+                id="menu-appbar"
+                /* to open the anchor at the top below the cursor */
+                anchorEl={anchor}
+                /* anchor origin so that it open it that location */
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={open}
+              >
+                <IconButton onClick={() => setAnchor(null)}>
+                  <IoMdClose />
+                </IconButton>
+                <MenuItem onClick={() => setAnchor(null)}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "30px",
+                      flexWrap: { sm: "no-wrap", xs: "wrap" },
+                      justifyContent: { sm: "no-wrap", xs: "center" },
+                    }}
                   >
-                    <Typography
-                      sx={{
-                        color: "#fff",
-                        backgroundColor: "#F2C46F",
-                        borderRadius: "50%",
-                        width: "40px",
-                        height: "40px",
-                        textAlign: "center",
-                        fontWeight: "500",
-                        fontSize: "25px",
-                      }}
+                    <Link to="/" style={{ textDecoration: "none" }}>
+                      <Typography sx={{ color: "#383782" }}>Home</Typography>
+                    </Link>
+                    <Link to="/" style={{ textDecoration: "none" }}>
+                      <Typography sx={{ color: "#000" }}>Movies</Typography>
+                    </Link>
+                    <Link to="/" style={{ textDecoration: "none" }}>
+                      <Typography sx={{ color: "#000" }}>Payments</Typography>
+                    </Link>
+                    <Link
+                      to="/login"
+                      style={{ textDecoration: "none" }}
+                      onClick={FormSubmitHandler}
                     >
-                      A
-                    </Typography>
-                  </Link>
-                </Box>
-              </MenuItem>
-            </Menu>
-          </>
-        ) : (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "48px",
-            }}
-          >
-            <Link
-              to="/"
-              style={{
-                textDecoration: "none",
-                fontWeight: "500",
-                fontSize: "18px",
+                      <Typography
+                        sx={{
+                          color: "#fff",
+                          backgroundColor: "#F2C46F",
+                          borderRadius: "50%",
+                          width: "40px",
+                          height: "40px",
+                          textAlign: "center",
+                          fontWeight: "500",
+                          fontSize: "25px",
+                        }}
+                      >
+                        A
+                      </Typography>
+                    </Link>
+                  </Box>
+                </MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "48px",
               }}
             >
-              <Typography sx={{ color: "#383782" }}>Home</Typography>
-            </Link>
-            <Link
-              to="/"
-              style={{
-                textDecoration: "none",
-                fontWeight: "500",
-                fontSize: "18px",
-              }}
-            >
-              <Typography sx={{ color: "#000" }}>Movies</Typography>
-            </Link>
-            <Link
-              to="/"
-              style={{
-                textDecoration: "none",
-                fontWeight: "500",
-                fontSize: "18px",
-              }}
-            >
-              <Typography sx={{ color: "#000" }}>Payments</Typography>
-            </Link>
-            <Link
-              to="/login"
-              style={{ textDecoration: "none" }}
-              onClick={FormSubmitHandler}
-            >
-              <Typography
-                sx={{
-                  color: "#fff",
-                  backgroundColor: "#F2C46F",
-                  borderRadius: "50%",
-                  width: "40px",
-                  height: "40px",
-                  textAlign: "center",
+              <Link
+                to="/"
+                style={{
+                  textDecoration: "none",
                   fontWeight: "500",
-                  fontSize: "25px",
+                  fontSize: "18px",
                 }}
               >
-                A
-              </Typography>
-            </Link>
-          </Box>
-        )}
-      </Toolbar>
-    </AppBar>
+                <Typography sx={{ color: "#383782" }}>Home</Typography>
+              </Link>
+              <Link
+                to="/"
+                style={{
+                  textDecoration: "none",
+                  fontWeight: "500",
+                  fontSize: "18px",
+                }}
+              >
+                <Typography sx={{ color: "#000" }}>Movies</Typography>
+              </Link>
+              <Link
+                to="/"
+                style={{
+                  textDecoration: "none",
+                  fontWeight: "500",
+                  fontSize: "18px",
+                }}
+              >
+                <Typography sx={{ color: "#000" }}>Payments</Typography>
+              </Link>
+              <Link
+                to="/login"
+                style={{ textDecoration: "none" }}
+                onClick={FormSubmitHandler}
+              >
+                <Typography
+                  sx={{
+                    color: "#fff",
+                    backgroundColor: "#F2C46F",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    textAlign: "center",
+                    fontWeight: "500",
+                    fontSize: "25px",
+                  }}
+                >
+                  A
+                </Typography>
+              </Link>
+            </Box>
+          )}
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };
 
