@@ -89,7 +89,7 @@ const MovieBook = () => {
             Book Ticket for the Latest Show Of {dateSelector.date}
           </Typography>
         </Box>
-        <Box>
+        <Box sx={{ width: { xs: "500px" } }}>
           <Box
             sx={{
               marginTop: "30px",

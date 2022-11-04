@@ -120,10 +120,10 @@ const SeatsDisplay = () => {
     }
   };
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const seatsConfirm = () => {
     if (seatsSelect.seatName.length !== 0) {
-      return Navigate(`/confirmTicket/${id}`);
+      return navigate(`/confirmTicket/${id}`);
     } else {
       alert("No Seats Book.Please Book a Seat!!");
     }
@@ -159,189 +159,192 @@ const SeatsDisplay = () => {
                 The Screen You Are Watching at{" "}
                 {selectedSlot.showType.showTypeName}
               </Typography>
-
-              <Box
-                component="div"
-                className="SeatsBox"
-                sx={{
-                  display: "flex",
-                  gap: "25px",
-                  width: "100%",
-                  height: "auto",
-                }}
-              >
-                <Box sx={{ cursor: "pointer" }}>
-                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
-                    {row?.map((seatData) => {
-                      return (
-                        <Box
-                          sx={{
-                            display: "flex",
-                            width: "40px",
-                            height: "36px",
-                            border: "1px solid #9DA8BE",
-                            borderRadius: "6px",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            backgroundColor: seatsSelect.seatName.find(
-                              (item) => item === seatData.name
-                            )
-                              ? "#118EEA"
-                              : "#fff",
-                          }}
-                          onClick={() => handler(seatData)}
-                        >
-                          {seatData.name}
-                        </Box>
-                      );
-                    })}
-                  </Box>
-                </Box>
-                {/* 2nd Column */}
-                <Box sx={{ cursor: "pointer" }}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: "30px",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {Siderow?.map((seatData) => {
-                      return (
-                        <Box
-                          sx={{
-                            display: "flex",
-                            width: "40px",
-                            height: "36px",
-                            border: "1px solid #9DA8BE",
-                            borderRadius: "6px",
-                            padding: "4px 4px",
-                            backgroundColor: seatsSelect.seatName.find(
-                              (item) => item === seatData.name
-                            )
-                              ? "#118EEA"
-                              : "#fff",
-                          }}
-                          onClick={() => handler(seatData)}
-                        >
-                          {seatData.name}
-                        </Box>
-                      );
-                    })}
-                  </Box>
+            </Box>
+          </Box>
+          <Box sx={{ overflow: "auto" }}>
+            <Box
+              component="div"
+              sx={{
+                display: "flex",
+                gap: "30px",
+                width: "1300px",
+                height: "auto",
+                overflow: "auto",
+              }}
+            >
+              <Box sx={{ cursor: "pointer" }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
+                  {row?.map((seatData) => {
+                    return (
+                      <Box
+                        key={seatData.name}
+                        sx={{
+                          display: "flex",
+                          width: "40px",
+                          height: "36px",
+                          border: "1px solid #9DA8BE",
+                          borderRadius: "6px",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          backgroundColor: seatsSelect.seatName.find(
+                            (item) => item === seatData.name
+                          )
+                            ? "#118EEA"
+                            : "#fff",
+                        }}
+                        onClick={() => handler(seatData)}
+                      >
+                        {seatData.name}
+                      </Box>
+                    );
+                  })}
                 </Box>
               </Box>
-              {/* Screen Side */}
-              <Box
-                sx={{
-                  backgroundColor: "#118EEA",
-                  width: "100%",
-                  height: "60px",
-                  textAlign: "center",
-                  marginTop: "100px",
-                }}
-              >
-                <Typography sx={{ padding: "16px 0px" }}>
-                  Screen This Side
-                </Typography>
-              </Box>
-              {/* Tickets Confirms */}
-              <Box component="section">
+              {/* 2nd Column */}
+              <Box sx={{ cursor: "pointer" }}>
                 <Box
-                  component="div"
                   sx={{
                     display: "flex",
-                    justifyContent: "space-between",
-                    margin: "0px 25px",
-                    alignItems: { lg: "center", xs: "flex-start" },
-                    flexDirection: { lg: "row", xs: "column", sm: "row" },
-                    gap: { sm: "30px" },
-                    flexWrap: { sm: "wrap" },
-                    marginTop: "60px",
-                    marginBottom: "126px",
+                    flexWrap: "wrap",
+                    gap: "30px",
+                    justifyContent: "center",
                   }}
-                  className="Selected Data"
                 >
-                  <Box component="div" className="Total">
-                    <Typography>Total</Typography>
-                    <Typography
-                      sx={{
-                        fontWeight: "700",
-                        fontSize: "36px",
-                        lineHeight: "42px",
-                        marginTop: "12px",
-                      }}
-                    >
-                      {selectedSlot.showType.showTypeName ? total : " "}
-                    </Typography>
-                  </Box>
-                  <Box component="div" className="Seats">
-                    <Typography>Seats</Typography>
-                    <Typography
-                      sx={{
-                        fontWeight: "700",
-                        fontSize: {
-                          md: "36px",
-                          xs: "26px",
-                        },
-                        lineHeight: "42px",
-                        marginTop: "12px",
-                        marginBottom: "15px",
-                      }}
-                    >
-                      {`${seatsSelect.seatName}`}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Button
-                      variant="outlined"
-                      sx={{
-                        textTransform: "capitalize",
-                        textAlign: "center",
-                        padding: "12px 8px",
-                        marginBottom: { xs: "25px", lg: "0" },
-                      }}
-                    >
-                      <Typography
+                  {Siderow?.map((seatData) => {
+                    return (
+                      <Box
+                        key={seatData.name}
                         sx={{
-                          color: "#5A637A",
-                          height: "30px",
-                          width: "200px",
-                          fontSize: "20px",
-                          fontWeight: "500",
+                          display: "flex",
+                          width: "40px",
+                          height: "36px",
+                          border: "1px solid #9DA8BE",
+                          borderRadius: "6px",
+                          padding: "4px 4px",
+                          backgroundColor: seatsSelect.seatName.find(
+                            (item) => item === seatData.name
+                          )
+                            ? "#118EEA"
+                            : "#fff",
                         }}
-                        onClick={() => Navigate(`/movieBook/${id}`)}
+                        onClick={() => handler(seatData)}
                       >
-                        Change Date
-                      </Typography>
-                    </Button>
-                  </Box>
-                  <Box>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        backgroundColor: "#1A2C50",
-                        color: "#FFBE00",
-                        textTransform: "capitalize",
-                        textAlign: "center",
-                        padding: "12px 8px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          height: "30px",
-                          width: "200px",
-                          fontSize: "20px",
-                          fontWeight: "500",
-                        }}
-                        onClick={seatsConfirm}
-                      >
-                        Confirm
-                      </Typography>
-                    </Button>
-                  </Box>
+                        {seatData.name}
+                      </Box>
+                    );
+                  })}
                 </Box>
+              </Box>
+            </Box>
+          </Box>
+
+          {/* Screen Side */}
+          <Box
+            sx={{
+              backgroundColor: "#118EEA",
+              height: "60px",
+              textAlign: "center",
+              marginTop: "100px",
+            }}
+          >
+            <Typography sx={{ padding: "16px 0px" }}>
+              Screen This Side
+            </Typography>
+          </Box>
+          {/* Tickets Confirms */}
+          <Box component="section">
+            <Box
+              component="div"
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                margin: "0px 25px",
+                alignItems: { lg: "center", xs: "flex-start" },
+                flexDirection: { lg: "row", xs: "column", sm: "row" },
+                gap: { sm: "30px" },
+                flexWrap: { sm: "wrap" },
+                marginTop: "60px",
+                marginBottom: "126px",
+              }}
+              className="Selected Data"
+            >
+              <Box component="div" className="Total">
+                <Typography>Total</Typography>
+                <Typography
+                  sx={{
+                    fontWeight: "700",
+                    fontSize: "36px",
+                    lineHeight: "42px",
+                    marginTop: "12px",
+                  }}
+                >
+                  {selectedSlot.showType.showTypeName ? total : navigate(-1)}
+                </Typography>
+              </Box>
+              <Box component="div" className="Seats">
+                <Typography>Seats</Typography>
+                <Typography
+                  sx={{
+                    fontWeight: "700",
+                    fontSize: {
+                      md: "36px",
+                      xs: "26px",
+                    },
+                    lineHeight: "42px",
+                    marginTop: "12px",
+                    marginBottom: "15px",
+                  }}
+                >
+                  {`${seatsSelect.seatName}`}
+                </Typography>
+              </Box>
+              <Box>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    textTransform: "capitalize",
+                    textAlign: "center",
+                    padding: "12px 8px",
+                    marginBottom: { xs: "25px", lg: "0" },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: "#5A637A",
+                      height: "30px",
+                      width: "200px",
+                      fontSize: "20px",
+                      fontWeight: "500",
+                    }}
+                    onClick={() => navigate(`/movieBook/${id}`)}
+                  >
+                    Change Date
+                  </Typography>
+                </Button>
+              </Box>
+              <Box>
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#1A2C50",
+                    color: "#FFBE00",
+                    textTransform: "capitalize",
+                    textAlign: "center",
+                    padding: "12px 8px",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      height: "30px",
+                      width: "200px",
+                      fontSize: "20px",
+                      fontWeight: "500",
+                    }}
+                    onClick={seatsConfirm}
+                  >
+                    Confirm
+                  </Typography>
+                </Button>
               </Box>
             </Box>
           </Box>
