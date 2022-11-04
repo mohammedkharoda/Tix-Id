@@ -30,7 +30,7 @@ const Ads = () => {
               >
                 {AdsData.map((item) => (
                   <SwiperSlide>
-                    <Box>
+                    <Box key={item.id}>
                       <img
                         src={item.adsImage}
                         style={{ width: "100%", height: "100%" }}

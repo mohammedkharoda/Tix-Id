@@ -52,7 +52,7 @@ const movieSelection = () => {
         >
           {movieData.primary.map((item) => (
             <SwiperSlide>
-              <Box>
+              <Box key={item.id}>
                 <Box>
                   <Link to={`/movieBook/${item.id}`}>
                     <img

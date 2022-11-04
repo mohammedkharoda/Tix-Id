@@ -3,7 +3,6 @@ import { Box, TextField, MenuItem } from "@mui/material";
 import { ListItemIcon } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { locationData } from "../../movie/data";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { slotActions } from "../../components/Slices/ticketShow";
 export const TheaterSelect = () => {
@@ -56,7 +55,7 @@ export const TheaterSelect = () => {
           sx={selectSx}
         >
           {locationData.map((loc) => (
-            <MenuItem value={loc.locationId}>
+            <MenuItem value={loc.locationId} key={loc.locationId}>
               <ListItemIcon>
                 <LocationOnIcon />
                 {loc.locationName}

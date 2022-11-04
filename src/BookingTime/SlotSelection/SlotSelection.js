@@ -128,7 +128,7 @@ const SlotSelection = () => {
         }}
       >
         {theatreData.map((item) => (
-          <Box>
+          <Box key={item.id}>
             <Box
               style={{
                 display: "flex",
@@ -156,13 +156,14 @@ const SlotSelection = () => {
             <Typography sx={locationSx}>{item.address}</Typography>
             <Box>
               {item.showType.map((nameTheater) => (
-                <Box>
+                <Box key={nameTheater.id}>
                   <Typography sx={subHeadingTypo}>
                     {nameTheater.name}
                   </Typography>
                   <Box component="section" sx={gridLayout}>
                     {nameTheater.show.map((timings) => (
                       <Typography
+                        key={timings.id}
                         sx={
                           timings.id === selectedSlot.showType.showTypeId
                             ? selected

@@ -1,8 +1,4 @@
-/* eslint-disable no-redeclare */
-/* eslint-disable no-use-before-define */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable eqeqeq */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "../movie/Navbar/Navbar";
 import { Box, Button, Typography } from "@mui/material";
 import Footer from "../movie/Footer/Footer";
@@ -15,8 +11,6 @@ import SecondaryWrapper from "../SecondaryWrapper";
 const SeatsDisplay = () => {
   const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
-  const [seatNameRender, setSeatNameRender] = useState();
-  const [seatSideRender, setSeatSideRender] = useState();
   const [multipleSeats, setMultipleSeats] = useState([]);
   const dispatch = useDispatch();
 
@@ -42,117 +36,82 @@ const SeatsDisplay = () => {
   let total = regularAmount + premiumPrice * filteredData.length;
 
   // ==>> For Rendering the All the Seats
-  useEffect(() => {
-    //  ====>> For 1st Set of the SEATS
-    const row = [];
-    const Siderow = [];
-    let count = 1;
-    for (let seat = 1; seat < 81; seat++) {
-      const seatsData = { name: "", isSelected: false, price: "" };
-      if (seat <= 10) {
-        if (seat == 10) {
-          count = 10;
-        }
-        seatsData.name = "A" + count;
-        seatsData.price = 200;
-      }
-      if (seat >= 11 && seat <= 20) {
-        seatsData.name = "B" + parseInt(seat - 10);
-      }
-      if (seat >= 21 && seat <= 30) {
-        count = 1;
-        if (count == 1) {
-          seatsData.name = "C" + parseInt(seat - 20);
-        }
-      }
-      if (seat >= 31 && seat <= 40) {
-        count = 1;
-        if (count == 1) {
-          seatsData.name = "D" + parseInt(seat - 30);
-        }
-      }
-      if (seat >= 41 && seat <= 50) {
-        count = 1;
-        if (count == 1) {
-          seatsData.name = "E" + parseInt(seat - 40);
-        }
-      }
-      if (seat >= 51 && seat <= 60) {
-        count = 1;
-        if (count == 1) {
-          seatsData.name = "F" + parseInt(seat - 50);
-        }
-      }
-      if (seat >= 61 && seat <= 70) {
-        count = 1;
-        if (count == 1) {
-          seatsData.name = "G" + parseInt(seat - 60);
-        }
-      }
-
-      if (seat >= 71 && seat <= 80) {
-        count = 1;
-        if (count == 1) {
-          seatsData.name = "H" + parseInt(seat - 70);
-        }
-      }
-
-      row.push(seatsData);
-      count++;
+  //  ====>> For 1st Set of the SEATS
+  const row = [];
+  const Siderow = [];
+  let countSide = 11;
+  for (let seat = 1; seat < 81; seat++) {
+    const seatsSidePrimary = { name: "" };
+    const seatsSideSecondary = { name: "" };
+    if (seat <= 10) {
+      seatsSidePrimary.name = "A" + parseInt(seat);
     }
-    // console.log("row ===>>", row);
-    setSeatNameRender(row);
-    // ===============================================
-    //  ====>> For 2nd Side of the SEATS
-    for (let seatSide = 1; seatSide < 81; seatSide++) {
-      let countSide = 11;
-      const seatsSideData = { name: "", isSelected: false };
-      if (seatSide <= 10) {
-        if (seatSide <= 10) {
-          countSide = seatSide + 10;
-          seatsSideData.name = "A" + countSide;
-        }
-      } else if (seatSide <= 20) {
-        countSide = seatSide;
-        seatsSideData.name = "B" + countSide;
-      } else if (seatSide <= 30) {
-        countSide = seatSide - 10;
-        seatsSideData.name = "C" + countSide;
-      } else if (seatSide <= 40) {
-        countSide = seatSide - 20;
-        seatsSideData.name = "D" + countSide;
-      } else if (seatSide <= 50) {
-        countSide = seatSide - 30;
-        seatsSideData.name = "E" + countSide;
-      } else if (seatSide <= 60) {
-        countSide = seatSide - 40;
-        seatsSideData.name = "F" + countSide;
-      } else if (seatSide <= 70) {
-        countSide = seatSide - 50;
-        seatsSideData.name = "G" + countSide;
-      } else if (seatSide <= 80) {
-        countSide = seatSide - 60;
-        seatsSideData.name = "H" + countSide;
-      }
-      Siderow.push(seatsSideData);
-      count++;
+    if (seat >= 11 && seat <= 20) {
+      seatsSidePrimary.name = "B" + parseInt(seat - 10);
     }
-    // console.log("Siderow ===>>", Siderow);
-    setSeatSideRender(Siderow);
-  }, []);
+    if (seat >= 21 && seat <= 30) {
+      seatsSidePrimary.name = "C" + parseInt(seat - 20);
+    }
+    if (seat >= 31 && seat <= 40) {
+      seatsSidePrimary.name = "D" + parseInt(seat - 30);
+    }
+    if (seat >= 41 && seat <= 50) {
+      seatsSidePrimary.name = "E" + parseInt(seat - 40);
+    }
+    if (seat >= 51 && seat <= 60) {
+      seatsSidePrimary.name = "F" + parseInt(seat - 50);
+    }
+    if (seat >= 61 && seat <= 70) {
+      seatsSidePrimary.name = "G" + parseInt(seat - 60);
+    }
+
+    if (seat >= 71 && seat <= 80) {
+      seatsSidePrimary.name = "H" + parseInt(seat - 70);
+    }
+    // ===>> 2ND SIDE OF THE SEATS.
+    if (seat <= 10) {
+      countSide = seat + 10;
+      seatsSideSecondary.name = "A" + parseInt(countSide);
+    } else if (seat <= 20) {
+      countSide = seat;
+      seatsSideSecondary.name = "B" + parseInt(countSide);
+    } else if (seat <= 30) {
+      countSide = seat - 10;
+      seatsSideSecondary.name = "C" + parseInt(countSide);
+    } else if (seat <= 40) {
+      countSide = seat - 20;
+      seatsSideSecondary.name = "D" + parseInt(countSide);
+    } else if (seat <= 50) {
+      countSide = seat - 30;
+      seatsSideSecondary.name = "E" + parseInt(countSide);
+    } else if (seat <= 60) {
+      countSide = seat - 40;
+      seatsSideSecondary.name = "F" + parseInt(countSide);
+    } else if (seat <= 70) {
+      countSide = seat - 50;
+      seatsSideSecondary.name = "G" + parseInt(countSide);
+    } else if (seat <= 80) {
+      countSide = seat - 60;
+      seatsSideSecondary.name = "H" + parseInt(countSide);
+    }
+    Siderow.push(seatsSideSecondary);
+    row.push(seatsSidePrimary);
+    // count++;
+  }
+
   // ==>> For Rendering the All the Seats
 
   const { id } = useParams();
 
   const handler = (SeatName) => {
-    let isExist = seatsSelect.seatName.find((seat) => seat == SeatName.name);
+    let isExist = seatsSelect.seatName.find((seat) => seat === SeatName.name);
     let multipleSeatsHandler = [...multipleSeats, SeatName.name];
-    if (isExist == SeatName.name) {
+    if (isExist === SeatName.name) {
       const removeSeat = multipleSeats.filter((item) => item !== isExist);
       setMultipleSeats(removeSeat);
       dispatch(slotActions.removeSelectedSeats(isExist));
     } else {
-      if (seatsSelect.seatName.length < 5 || isExist == SeatName.name) {
+      if (seatsSelect.seatName.length < 5 || isExist === SeatName.name) {
         dispatch(slotActions.seatsSelected(multipleSeatsHandler));
         setMultipleSeats(multipleSeatsHandler);
       } else {
@@ -187,7 +146,6 @@ const SeatsDisplay = () => {
                 sx={{
                   fontSize: "36px",
                   fontWeight: "700",
-                  // marginLeft: { md: "72px", sm: "40px", xs: "10px" },
                 }}
               >
                 Select Seat
@@ -196,7 +154,6 @@ const SeatsDisplay = () => {
                 sx={{
                   fontWeight: "400",
                   marginBottom: "86px",
-                  // marginLeft: { md: "72px", sm: "40px", xs: "10px" },
                 }}
               >
                 The Screen You Are Watching at{" "}
@@ -208,14 +165,14 @@ const SeatsDisplay = () => {
                 className="SeatsBox"
                 sx={{
                   display: "flex",
-                  // marginLeft: { sm: "70px", xs: "15px" },
-                  gap: "50px",
-                  // marginRight: { sm: "70px", xs: "10px" },
+                  gap: "25px",
+                  width: "100%",
+                  height: "auto",
                 }}
               >
                 <Box sx={{ cursor: "pointer" }}>
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
-                    {seatNameRender?.map((seatData) => {
+                    {row?.map((seatData) => {
                       return (
                         <Box
                           sx={{
@@ -250,7 +207,7 @@ const SeatsDisplay = () => {
                       justifyContent: "center",
                     }}
                   >
-                    {seatSideRender?.map((seatData) => {
+                    {Siderow?.map((seatData) => {
                       return (
                         <Box
                           sx={{

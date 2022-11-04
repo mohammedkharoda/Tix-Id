@@ -75,7 +75,7 @@ const SeeMoreMovie = () => {
             }}
           >
             {movieData.secondary.map((items) => (
-              <Box>
+              <Box key={items.id}>
                 <Box
                   sx={{ padding: { md: "0px", sm: "0 180px", xs: " 0 10px" } }}
                 >
