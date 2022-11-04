@@ -57,10 +57,7 @@ const SeatsDisplay = () => {
         seatsData.price = 200;
       }
       if (seat >= 11 && seat <= 20) {
-        count = 1;
-        if (count == 1) {
-          seatsData.name = "B" + parseInt(seat - 10);
-        }
+        seatsData.name = "B" + parseInt(seat - 10);
       }
       if (seat >= 21 && seat <= 30) {
         count = 1;

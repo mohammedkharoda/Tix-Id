@@ -49,17 +49,15 @@ const SlotSelection = () => {
     color: "#5A637A",
     width: "325px",
     marginRight: "72px",
-    // marginLeft: { xs: "50px",  md: "72px" },
   };
 
   const gridLayout = {
     display: "grid",
     gridTemplateColumns: {
       sm: "repeat(4,0fr)",
-      xs: "repeat(2,0fr)",
+      xs: "repeat(3,1fr)",
     },
     gridTemplateRows: "repeat(2,0fr)",
-    // marginLeft: { xs: "50px", md: "72px" },
     gap: "24px",
     marginTop: "16px",
     gridRowGap: "10px",
@@ -98,7 +96,6 @@ const SlotSelection = () => {
 
   const locationSx = {
     color: "#5A637A",
-    // marginLeft: { xs: "50px", md: "72px" },
     marginTop: "18px",
     fontWeight: "400",
     fontSize: "16px",
@@ -141,7 +138,6 @@ const SlotSelection = () => {
               <Box
                 sx={{
                   marginRight: "16px",
-                  // marginLeft: { lg: "72px", md: "72px" },
                 }}
               >
                 <img src={`${Star}`} />
@@ -157,17 +153,13 @@ const SlotSelection = () => {
                 )}
               </Box>
             </Box>
-            <Box>
-              <Typography sx={locationSx}>{item.address}</Typography>
-            </Box>
+            <Typography sx={locationSx}>{item.address}</Typography>
             <Box>
               {item.showType.map((nameTheater) => (
                 <Box>
-                  <Box>
-                    <Typography sx={subHeadingTypo}>
-                      {nameTheater.name}
-                    </Typography>
-                  </Box>
+                  <Typography sx={subHeadingTypo}>
+                    {nameTheater.name}
+                  </Typography>
                   <Box component="section" sx={gridLayout}>
                     {nameTheater.show.map((timings) => (
                       <Typography

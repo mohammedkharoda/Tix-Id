@@ -7,12 +7,14 @@ import { Box } from "@mui/material";
 import Protected from "../Login/Protected";
 import MaxWrapper from "../MaxWrapper";
 import SecondaryWrapper from "../SecondaryWrapper";
+import Navbar from "../movie/Navbar/Navbar";
 export const ContainerSlots = () => {
   return (
     <>
       <Protected />
       <MaxWrapper>
         <SecondaryWrapper>
+          <Navbar />
           <MovieBook />
           <Box
             sx={{
@@ -24,15 +26,8 @@ export const ContainerSlots = () => {
               justifyContent: "space-between",
             }}
           >
-            <div>
-              <SlotSelection />
-            </div>
-            <Box
-              sx={{
-                marginTop: { lg: "-5%", md: "5%" },
-                marginRight: { lg: "182px" },
-              }}
-            >
+            <SlotSelection />
+            <Box>
               <DisplayMovie />
             </Box>
           </Box>

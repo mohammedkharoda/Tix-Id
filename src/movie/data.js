@@ -124,33 +124,6 @@ export const theatreData = [
     locationId: "loc--2",
     location: "Mumbai",
     theatreLogo: "CGV",
-    theaterDates: [
-      {
-        id: "dayDate-1",
-        dayName: "Mon",
-        date: "15 April",
-      },
-      {
-        id: "dayDate-2",
-        dayName: "Tue",
-        date: "16 April",
-      },
-      {
-        id: "dayDate-3",
-        dayName: "Wed",
-        date: "17 April",
-      },
-      {
-        id: "dayDate-4",
-        dayName: "Thr",
-        date: "18 April",
-      },
-      {
-        id: "dayDate-5",
-        dayName: "Fri",
-        date: "19 April",
-      },
-    ],
     showType: [
       {
         id: "showType-theatreData-1-1",
@@ -356,3 +329,31 @@ export const couponList = [
     discountedPercentage: 30,
   },
 ];
+
+export const theaterDates = [
+  {
+    id: "dayDate-1",
+    dayName: "Mon",
+    date: "15 April",
+  },
+  {
+    id: "dayDate-2",
+    dayName: "Tue",
+    date: "16 April",
+  },
+  {
+    id: "dayDate-3",
+    dayName: "Wed",
+    date: "17 April",
+  },
+  {
+    id: "dayDate-4",
+    dayName: "Thr",
+    date: "18 April",
+  },
+  {
+    id: "dayDate-5",
+    dayName: "Fri",
+    date: "19 April",
+  },
+]

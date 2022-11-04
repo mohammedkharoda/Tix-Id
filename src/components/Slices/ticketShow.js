@@ -11,7 +11,7 @@ const initialState = {
     showType: {
       showTypeId: "",
       showTypeName: "",
-      showTypemovie: "",
+      showTypeMovie: "",
       show: {
         // => Shows
         showId: "",

@@ -13,19 +13,23 @@ const DisplayMovie = () => {
   let { id } = useParams();
   const [data, setData] = useState(movieData);
 
+  console.log("id", id);
+
   useEffect(() => {
     movieData.primary.find((item) => {
-      if (item.id == id) {
+      if (item.id === +id) {
+        console.log("Itemid", item.id);
         setData(item);
       } else {
         movieData.secondary.find((item) => {
-          if (item.id == id) {
+          if (item.id === +id) {
+            console.log("Itemid", item.id);
             setData(item);
           }
         });
       }
     });
-  }, []);
+  });
 
   const typoSx = {
     fontWeight: "500",
@@ -51,11 +55,10 @@ const DisplayMovie = () => {
     color: "#333",
   };
 
-  const flexDisplay = {
-    display: "flex",
-    gap: "30px ",
-    marginTop: "11px",
-  };
+  // const flexDisplay = {
+  //   display: "flex",
+  //   gap: "30px ",
+  // };
 
   return (
     <>
@@ -63,7 +66,6 @@ const DisplayMovie = () => {
         <Box component="div">
           <Box
             sx={{
-              marginLeft: { lg: "0", md: "70px", xs: "0px" },
               width: { md: "413px" },
               height: { xs: "364px" },
             }}
@@ -79,29 +81,32 @@ const DisplayMovie = () => {
               }}
             />
           </Box>
-          <Box sx={{ marginLeft: { lg: "0", sm: "70px", xs: "10px" } }}>
+          <Box
+            sx={{ display: "flex", gap: "16px ", flexDirection: "column" }}
+            id="outer"
+          >
             {/* Genera */}
-            <Box sx={flexDisplay}>
+            <Box sx={{ display: "flex", gap: "30px ", marginTop: "11px" }}>
               <Typography sx={typoSx}>{data.title}</Typography>
             </Box>
-            <Box sx={flexDisplay}>
+            <Box sx={{ display: "flex", gap: "25px" }}>
               <Typography sx={categoryATypoSx}>Genre</Typography>
               <Typography sx={categoryBTypoSx}>{`${data.Genera}`}</Typography>
             </Box>
             {/* Time */}
-            <Box sx={flexDisplay}>
+            <Box sx={{ display: "flex", gap: "25px" }}>
               <Typography sx={categoryATypoSx}>Time</Typography>
               <Typography
                 sx={categoryBTypoSx}
               >{`${data.TimeHH}hr ${data.TimeMM}min`}</Typography>
             </Box>
             {/* Director */}
-            <Box sx={flexDisplay}>
+            <Box sx={{ display: "flex", gap: "25px" }}>
               <Typography sx={categoryATypoSx}>Director</Typography>
               <Typography sx={categoryBTypoSx}>{`${data.Director}`}</Typography>
             </Box>
             {/* Rating */}
-            <Box sx={flexDisplay}>
+            <Box sx={{ display: "flex", gap: "25px" }}>
               <Typography sx={categoryATypoSx}>Rating</Typography>
               <Typography
                 sx={{ categoryBTypoSx, marginBottom: "25px" }}

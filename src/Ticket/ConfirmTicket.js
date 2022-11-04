@@ -182,7 +182,7 @@ const ConfirmTicket = () => {
                         }}
                       >
                         {dateSelector.date == undefined
-                          ? navigate(-1)
+                          ? navigate(-2)
                           : `${dateSelector.date} , ${dateSelector.day}`}
                       </Typography>
                       <Box

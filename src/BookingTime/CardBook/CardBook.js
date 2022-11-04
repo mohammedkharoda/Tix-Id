@@ -86,7 +86,7 @@ const CardBook = () => {
             <Typography sx={warningTypo}>
               *GST AND OTHER PRICE ARE EXCLUDED
             </Typography>
-            {dateSelector.day && dateSelector.date ? (
+            {dateSelector.day && dateSelector.date && (
               <Button
                 variant="contained"
                 sx={dateSelector.day && dateSelector.date ? button : ""}
@@ -98,8 +98,6 @@ const CardBook = () => {
                   Book Now
                 </Link>
               </Button>
-            ) : (
-              ""
             )}
           </Box>
         </Box>

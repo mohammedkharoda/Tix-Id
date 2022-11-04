@@ -15,7 +15,6 @@ const Footer = () => {
           <Box
             sx={{
               display: "grid",
-              // marginLeft: { sm: "25px", md: "25px", xs: "25px" },
               gridTemplateColumns: {
                 lg: "repeat(5,1fr)",
                 md: "repeat(5,1fr)",
@@ -29,7 +28,6 @@ const Footer = () => {
           >
             <Box
               sx={{
-                // marginLeft: { lg: "28px", md: "28px" },
                 marginRight: "auto",
               }}
             >
@@ -46,7 +44,7 @@ const Footer = () => {
                   color: "#333",
                 }}
               >
-                <p>Perusahaan</p>
+                <p>Movies</p>
               </Box>
               <ul
                 style={{
@@ -59,13 +57,13 @@ const Footer = () => {
                 }}
               >
                 <li>
-                  <a>Kontak Kami</a>
+                  <a>Upcoming Movies</a>
                 </li>
                 <li>
-                  <a>Tentang</a>
+                  <a>Recently Trending</a>
                 </li>
                 <li>
-                  <a>Partner</a>
+                  <a>Popular Hits </a>
                 </li>
               </ul>
             </Box>
@@ -80,7 +78,7 @@ const Footer = () => {
                   color: "#333",
                 }}
               >
-                <p>Seputar</p>
+                <p>News</p>
               </Box>
               <ul
                 style={{
@@ -97,16 +95,16 @@ const Footer = () => {
                   <a>TIX ID News</a>
                 </li>
                 <li>
-                  <a>Bioskop</a>
+                  <a>Movie news in Language</a>
                 </li>
                 <li>
-                  <a>Tiket Saya</a>
+                  <a>Movie information's</a>
                 </li>
                 <li>
-                  <a>Pembayaran</a>
+                  <a>Assemble Movie Sets</a>
                 </li>
                 <li>
-                  <a>Cicilan</a>
+                  <a>Movie Talks</a>
                 </li>
               </ul>
             </Box>
@@ -120,7 +118,7 @@ const Footer = () => {
                   color: "#333",
                 }}
               >
-                <p>Dukungan</p>
+                <p>Movies Updates and Celebrite</p>
               </Box>
               <ul
                 style={{
@@ -134,16 +132,16 @@ const Footer = () => {
                 }}
               >
                 <li>
-                  <a>Pusat Bantuan</a>
+                  <a>Upcoming Movies</a>
                 </li>
                 <li>
-                  <a>Kebijakan Privasi</a>
+                  <a>Movies now and shows</a>
                 </li>
                 <li>
-                  <a>FAQ</a>
+                  <a>Movie Celebrities</a>
                 </li>
                 <li>
-                  <a>Syarat dan Ketentuan</a>
+                  <a>Trailers</a>
                 </li>
                 <li>
                   <a>Update Covid-19</a>
@@ -194,7 +192,7 @@ const Footer = () => {
               </ul>
 
               <Box>
-                <p style={{ marginBottom: "24px" }}>Download Aplikasi TIX ID</p>
+                <p style={{ marginBottom: "24px" }}>Download Our App TIX ID</p>
                 <Box sx={{ display: "flex", gap: "10px" }}>
                   <img src={GooglePlay} alt="" />
 
@@ -203,7 +201,7 @@ const Footer = () => {
               </Box>
 
               <Box sx={{ marginTop: "26px" }}>
-                <p>2021 TIX ID - PT Nusantara Elang Sejahtera.</p>
+                <p> © Copyright {new Date().getFullYear()} TIX ID</p>
               </Box>
             </Box>
           </Box>
