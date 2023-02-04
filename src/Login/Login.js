@@ -60,7 +60,7 @@ const Login = () => {
     if (
       phoneNumber.match(re) &&
       phoneNumber.length <= 10 &&
-      phoneNumber === "7778878653" &&
+      phoneNumber === "1234567890" &&
       values.password === "abcdef"
     ) {
       localStorage.setItem("isLoggedIn", "true");
