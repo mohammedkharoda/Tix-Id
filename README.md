@@ -28,7 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The Default login for testing purpose
 
-Dummy No: `7778878653`   
+Dummy No: `7778878653 or 1234567890`   
 Password: `abcdef`
 
 
