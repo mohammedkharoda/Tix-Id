@@ -6,8 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { movieData } from "../movie/data";
 import { useSelector } from "react-redux";
 import Protected from "../Login/Protected";
-import MaxWrapper from "../MaxWrapper";
-import SecondaryWrapper from "../SecondaryWrapper";
+import MaxWrapper from "../Wrappers/MaxWrapper";
+import SecondaryWrapper from "../../SecondaryWrapper";
 const FinalTicket = () => {
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
   const navigate = useNavigate();
