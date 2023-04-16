@@ -60,12 +60,12 @@ const Login = () => {
     if (
       phoneNumber.match(re) &&
       phoneNumber.length <= 10 &&
-      phoneNumber === "7778878653" &&
+      phoneNumber === "12345678" &&
       values.password === "abcdef"
     ) {
       localStorage.setItem("isLoggedIn", "true");
       navigate("/movieHome");
-    } else if (phoneNumber !== "7778878653") {
+    } else if (phoneNumber !== "12345678") {
       alert("Wrong Phone Number");
       values.phoneNumber = "";
       setIsPhoneNumber("");
