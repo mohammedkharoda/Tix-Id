@@ -1,10 +1,11 @@
-import Login from "./Login/Login";
+import React from 'react';
+import Login from "./components/Login/Login";
 import { Route, Routes, Navigate } from "react-router-dom";
-import MovieHome from "./movie/MovieHome";
-import { ContainerSlots } from "./BookingTime/ContainerSlots";
-import SeatsDisplay from "./SeatsSelections/SeatsDisplay";
-import ConfirmTicket from "./Ticket/ConfirmTicket";
-import FinalTicket from "./Ticket/FinalTicket";
+import MovieHome from "./components/movie/MovieHome";
+import { ContainerSlots } from "./components/BookingTime/ContainerSlots";
+import SeatsDisplay from "./components/SeatsSelections/SeatsDisplay";
+import ConfirmTicket from "./components/Ticket/ConfirmTicket";
+import FinalTicket from "./components/Ticket/FinalTicket";
 function App() {
   return (
     <>

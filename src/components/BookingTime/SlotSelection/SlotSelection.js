@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import Star from "../../assets/Star.svg";
+import Star from "../../../assets/Star.svg";
 import { Box, Typography } from "@mui/material";
 import { theatreData, movieData } from "../../movie/data";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { slotActions } from "../../components/Slices/ticketShow";
-import { ticketVisibility } from "../../components/Slices/ticketVisible";
+import { slotActions } from "../../Slices/ticketShow";
+import { ticketVisibility } from "../../Slices/ticketVisible";
 
 const SlotSelection = () => {
   const dispatch = useDispatch();

@@ -8,7 +8,7 @@ import {
   MenuItem,
   IconButton,
 } from "@mui/material";
-import TixLogo from "../../assets/tix id 1.svg";
+import TixLogo from "../../../assets/tix id 1.svg";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import { HiMenu } from "react-icons/hi";

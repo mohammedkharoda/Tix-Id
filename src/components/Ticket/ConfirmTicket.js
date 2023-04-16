@@ -5,13 +5,13 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Navbar from "../movie/Navbar/Navbar";
-import { ReactComponent as LeftArrow } from "../assets/arrowLeft.svg";
+import { ReactComponent as LeftArrow } from "../../assets/arrowLeft.svg";
 import Footer from "../movie/Footer/Footer";
 import { couponList } from "../movie/data";
 import Protected from "../Login/Protected";
 import GooglePayButton from "@google-pay/button-react";
-import MaxWrapper from "../MaxWrapper";
-import SecondaryWrapper from "../SecondaryWrapper";
+import MaxWrapper from "../Wrappers/MaxWrapper";
+import SecondaryWrapper from "../Wrappers/SecondaryWrapper";
 const ConfirmTicket = () => {
   let { id } = useParams();
   const navigate = useNavigate();

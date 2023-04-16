@@ -4,10 +4,10 @@ import { Box, Button, Typography } from "@mui/material";
 import Footer from "../movie/Footer/Footer";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { slotActions } from "../components/Slices/ticketShow";
+import { slotActions } from "../Slices/ticketShow";
 import Protected from "../Login/Protected";
-import MaxWrapper from "../MaxWrapper";
-import SecondaryWrapper from "../SecondaryWrapper";
+import MaxWrapper from "../Wrappers/MaxWrapper";
+import SecondaryWrapper from "../Wrappers/SecondaryWrapper";
 const SeatsDisplay = () => {
   const selectedSlot = useSelector((state) => state.slot.SelectedTheatre);
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);

@@ -6,8 +6,8 @@ import SeeMoreMovie from "./seeMoreMovie.js/SeeMoreMovie";
 import Footer from "./Footer/Footer";
 import { Box } from "@mui/system";
 import Protected from "../Login/Protected";
-import MaxWrapper from "../MaxWrapper";
-import SecondaryWrapper from "../SecondaryWrapper";
+import MaxWrapper from "../Wrappers/MaxWrapper";
+import SecondaryWrapper from "../Wrappers/SecondaryWrapper";
 const MovieHome = () => {
   return (
     <>

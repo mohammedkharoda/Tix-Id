@@ -7,7 +7,7 @@ import { movieData } from "../movie/data";
 import { useSelector } from "react-redux";
 import Protected from "../Login/Protected";
 import MaxWrapper from "../Wrappers/MaxWrapper";
-import SecondaryWrapper from "../../SecondaryWrapper";
+import SecondaryWrapper from "../Wrappers/SecondaryWrapper";
 const FinalTicket = () => {
   const seatsSelect = useSelector((state) => state.slot.SeatSelected);
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ const FinalTicket = () => {
               >
                 <img
                   style={{ width: "100%" }}
-                  src={require("../assets/45732-cinema-animation.gif")}
+                  src={require("../../assets/45732-cinema-animation.gif")}
                   alt="Successfully"
                 />
               </Box>

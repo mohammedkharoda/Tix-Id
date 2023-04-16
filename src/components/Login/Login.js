@@ -11,7 +11,7 @@ import {
   IconButton,
   FormControl,
 } from "@mui/material";
-import BackgroundImage from "../assets/Picture.png";
+import BackgroundImage from "../../assets/Picture.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Protected from "./Protected";
@@ -60,7 +60,7 @@ const Login = () => {
     if (
       phoneNumber.match(re) &&
       phoneNumber.length <= 10 &&
-      phoneNumber === "1234567890" &&
+      phoneNumber === "7778878653" &&
       values.password === "abcdef"
     ) {
       localStorage.setItem("isLoggedIn", "true");

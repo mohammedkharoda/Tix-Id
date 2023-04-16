@@ -5,8 +5,8 @@ import MovieBook from "./movieBook/MovieBook";
 import Footer from "../movie/Footer/Footer";
 import { Box } from "@mui/material";
 import Protected from "../Login/Protected";
-import MaxWrapper from "../MaxWrapper";
-import SecondaryWrapper from "../SecondaryWrapper";
+import MaxWrapper from "../Wrappers/MaxWrapper";
+import SecondaryWrapper from "../Wrappers/SecondaryWrapper";
 import Navbar from "../movie/Navbar/Navbar";
 export const ContainerSlots = () => {
   return (

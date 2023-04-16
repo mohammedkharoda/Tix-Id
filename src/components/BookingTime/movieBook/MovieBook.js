@@ -5,7 +5,7 @@ import Navbar from "../../movie/Navbar/Navbar";
 import { theaterDates } from "../../movie/data";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { slotActions } from "../../components/Slices/ticketShow";
+import { slotActions } from "../../Slices/ticketShow";
 
 const MovieBook = () => {
   const dispatch = useDispatch();

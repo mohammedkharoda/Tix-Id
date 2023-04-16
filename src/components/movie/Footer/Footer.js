@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Box } from "@mui/material";
-import TixLogo from "../../assets/tix id 1.svg";
-import GooglePlay from "../../assets/Google Play.svg";
-import AppStore from "../../assets/image 6.svg";
+import TixLogo from "../../../assets/tix id 1.svg";
+import GooglePlay from "../../../assets/Google Play.svg";
+import AppStore from "../../../assets/image 6.svg";
 import { BsInstagram } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
 import { BsFacebook } from "react-icons/bs";
