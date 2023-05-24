@@ -65,10 +65,6 @@ const Login = () => {
     ) {
       localStorage.setItem("isLoggedIn", "true");
       navigate("/movieHome");
-    } else if (phoneNumber !== "12345678") {
-      alert("Wrong Phone Number");
-      values.phoneNumber = "";
-      setIsPhoneNumber("");
     } else {
       alert("Wrong Password");
       values.password = "";
