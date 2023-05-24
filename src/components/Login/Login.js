@@ -58,10 +58,8 @@ const Login = () => {
   const FormSubmitHandler = () => {
     let re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
     if (
-      phoneNumber.match(re) &&
-      phoneNumber.length <= 10 &&
-      phoneNumber === "12345678" &&
-      values.password === "abcdef"
+      phoneNumber == "12345678" &&
+      values.password == "abcdef"
     ) {
       localStorage.setItem("isLoggedIn", "true");
       navigate("/movieHome");
